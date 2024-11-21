@@ -4,7 +4,7 @@ import { HttpProxyAgent } from "http-proxy-agent";
 import { globalAgent } from "https";
 import { HttpsProxyAgent } from "https-proxy-agent";
 import fetch, { RequestInit, Response } from "node-fetch";
-import * as fs from "node:fs";
+import * as vscode from "vscode";
 import tls from "node:tls";
 
 const { http, https } = (followRedirects as any).default;
@@ -37,7 +37,7 @@ export function fetchwithRequestOptions(
   if (customCerts) {
     ca.push(
       ...customCerts.map((customCert) =>
-        vscode.workspace.fs.readFileSync(customCert, "utf8"),
+        vscode.workspace.fs.readFile(vscode.Uri.file(customCert)),
       ),
     );
   }
@@ -55,14 +55,14 @@ export function fetchwithRequestOptions(
 
   // Handle ClientCertificateOptions
   if (requestOptions?.clientCertificate) {
-    agentOptions.cert = vscode.workspace.fs.readFileSync(
-      requestOptions.clientCertificate.cert,
-      "utf8",
+    agentOptions.cert = vscode.workspace.fs.readFile(
+      vscode.Uri.file(requestOptions.clientCertificate.cert),
     );
-    agentOptions.key = vscode.workspace.fs.readFileSync(
-      requestOptions.clientCertificate.key,
-      "utf8",
+
+    agentOptions.key = vscode.workspace.fs.readFile(
+      vscode.Uri.file(requestOptions.clientCertificate.key),
     );
+
     if (requestOptions.clientCertificate.passphrase) {
       agentOptions.passphrase = requestOptions.clientCertificate.passphrase;
     }

@@ -9,7 +9,7 @@ if (args[0] === "--target") {
 }
 
 if (!vscode.workspace.fs.stat(vscode.Uri.file("build")).then(() => true)) {
-  vscode.workspace.fs.mkdirSync("build");
+  vscode.workspace.fs.createDirectory(vscode.Uri.file("build"));
 }
 
 const isPreRelease = args.includes("--pre-release");

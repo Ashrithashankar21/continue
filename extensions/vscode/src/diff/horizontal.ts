@@ -1,4 +1,4 @@
-import * as fs from "node:fs";
+import * as vscode from "vscode";
 import * as os from "node:os";
 import * as path from "node:path";
 
@@ -47,10 +47,8 @@ export class DiffManager {
 
   private async setupDirectory() {
     // Make sure the diff directory exists
-    if (!vscode.workspace.fs.existsSync(DIFF_DIRECTORY)) {
-      vscode.workspace.fs.mkdirSync(DIFF_DIRECTORY, {
-        recursive: true,
-      });
+    if (!vscode.workspace.fs.stat(vscode.Uri.file(DIFF_DIRECTORY))) {
+      vscode.workspace.fs.createDirectory(vscode.Uri.file(DIFF_DIRECTORY));
     }
   }
 
@@ -84,9 +82,7 @@ export class DiffManager {
       // and there aren't write permissions to the root directory
       // and writing these to local causes separate issues
       // because the vscode.diff command will always try to read from remote
-      vscode.workspace.vscode.workspace.fs.createDirectory(
-        uriFromFilePath(this.remoteTmpDir),
-      );
+      vscode.workspace.fs.createDirectory(uriFromFilePath(this.remoteTmpDir));
       return path.join(
         this.remoteTmpDir,
         this.escapeFilepath(originalFilepath),
@@ -101,9 +97,7 @@ export class DiffManager {
   ): Promise<vscode.TextEditor | undefined> {
     // If the file doesn't yet exist or the basename is a single digit number (vscode terminal), don't open the diff editor
     try {
-      await vscode.workspace.vscode.workspace.fs.stat(
-        uriFromFilePath(newFilepath),
-      );
+      await vscode.workspace.fs.stat(uriFromFilePath(newFilepath));
     } catch (e) {
       console.log("File doesn't exist, not opening diff editor", e);
       return undefined;
@@ -221,9 +215,7 @@ export class DiffManager {
       } catch {}
     }
     this.diffs.delete(diffInfo.newFilepath);
-    vscode.workspace.vscode.workspace.fs.delete(
-      uriFromFilePath(diffInfo.newFilepath),
-    );
+    vscode.workspace.fs.delete(uriFromFilePath(diffInfo.newFilepath));
   }
 
   private inferNewFilepath() {

@@ -1,5 +1,5 @@
-import fs from "node:fs";
 import * as path from "node:path";
+import * as vscode from "vscode";
 
 import { runTests } from "@vscode/test-electron";
 import { defaultConfig } from "core/config/default";
@@ -23,64 +23,64 @@ const continueGlobalDir = path.resolve(
 );
 
 function setupTestWorkspace() {
-  if (vscode.workspace.fs.existsSync(testWorkspacePath)) {
-    vscode.workspace.fs.rmSync(testWorkspacePath, { recursive: true });
+  if (vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
+    vscode.workspace.fs.delete(vscode.Uri.file(testWorkspacePath));
   }
-  vscode.workspace.fs.mkdirSync(testWorkspacePath, {
-    recursive: true,
-  });
+  vscode.workspace.fs.createDirectory(vscode.Uri.file(testWorkspacePath));
 
-  vscode.workspace.fs.writeFileSync(
-    path.join(testWorkspacePath, "test.py"),
-    "print('Hello World!')",
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file(path.join(testWorkspacePath, "test.py")),
+    vscode.Uri.file("print('Hello World!')"),
   );
-  vscode.workspace.fs.writeFileSync(
-    path.join(testWorkspacePath, "index.js"),
-    "console.log('Hello World!')",
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file(path.join(testWorkspacePath, "index.js")),
+    vscode.Uri.file("console.log('Hello World!')"),
   );
-  vscode.workspace.fs.writeFileSync(
-    path.join(testWorkspacePath, "test.py"),
-    "print('Hello World!')",
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file(path.join(testWorkspacePath, "test.py")),
+    vscode.Uri.file("print('Hello World!')"),
   );
-  vscode.workspace.fs.mkdirSync(path.join(testWorkspacePath, "test-folder"));
-  vscode.workspace.fs.writeFileSync(
-    path.join(testWorkspacePath, "test-folder", "test.js"),
-    "console.log('Hello World!')",
+  vscode.workspace.fs.createDirectory(
+    vscode.Uri.file(path.join(testWorkspacePath, "test-folder")),
+  );
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file(path.join(testWorkspacePath, "test-folder", "test.js")),
+    vscode.Uri.file("console.log('Hello World!')"),
   );
 }
 
 function setupContinueGlobalDir() {
-  if (vscode.workspace.fs.existsSync(continueGlobalDir)) {
-    vscode.workspace.fs.rmSync(continueGlobalDir, { recursive: true });
+  if (vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
+    vscode.workspace.fs.delete(vscode.Uri.file(continueGlobalDir));
   }
-  vscode.workspace.fs.mkdirSync(continueGlobalDir, {
-    recursive: true,
-  });
-  vscode.workspace.fs.writeFileSync(
-    path.join(continueGlobalDir, "config.json"),
-    JSON.stringify({
-      ...defaultConfig,
-      models: [
-        {
-          title: "Test Model",
-          provider: "openai",
-          model: "gpt-3.5-turbo",
-          apiKey: "API_KEY",
-        },
-      ],
-    }),
+  vscode.workspace.fs.createDirectory(vscode.Uri.file(continueGlobalDir));
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file(path.join(continueGlobalDir, "config.json")),
+    vscode.Uri.file(
+      JSON.stringify({
+        ...defaultConfig,
+        models: [
+          {
+            title: "Test Model",
+            provider: "openai",
+            model: "gpt-3.5-turbo",
+            apiKey: "API_KEY",
+          },
+        ],
+      }),
+    ),
   );
 }
 
 function cleanupTestWorkspace() {
-  if (vscode.workspace.fs.existsSync(testWorkspacePath)) {
-    vscode.workspace.fs.rmSync(testWorkspacePath, { recursive: true });
+  if (vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
+    vscode.workspace.fs.delete(vscode.Uri.file(testWorkspacePath));
   }
 }
 
 function cleanupContinueGlobalDir() {
-  if (vscode.workspace.fs.existsSync(continueGlobalDir)) {
-    vscode.workspace.fs.rmSync(continueGlobalDir, { recursive: true });
+  if (vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
+    vscode.workspace.fs.delete(vscode.Uri.file(continueGlobalDir));
   }
 }
 

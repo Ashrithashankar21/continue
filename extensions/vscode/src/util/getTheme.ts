@@ -1,4 +1,3 @@
-import * as fs from "node:fs";
 import * as path from "node:path";
 
 import mergeJson from "core/util/merge";
@@ -52,7 +51,7 @@ export function getTheme() {
           if (theme.label === colorTheme) {
             const themePath = path.join(extension.extensionPath, theme.path);
             currentTheme = vscode.workspace.fs
-              .readFileSync(themePath)
+              .readFile(vscode.Uri.file(themePath))
               .toString();
             break;
           }

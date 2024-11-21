@@ -1,5 +1,3 @@
-import * as fs from "fs";
-
 import { ContinueServerClient } from "core/continueServer/stubs/client";
 import { EXTENSION_NAME } from "core/control-plane/env";
 import {
@@ -128,13 +126,13 @@ export class RemoteConfigSync {
       );
       const { configJson, configJs } = await client.getConfig();
 
-      vscode.workspace.fs.writeFileSync(
-        getConfigJsonPathForRemote(remoteConfigServerUrl),
-        configJson,
+      vscode.workspace.fs.writeFile(
+        vscode.Uri.file(getConfigJsonPathForRemote(remoteConfigServerUrl)),
+        new TextEncoder().encode(configJson),
       );
-      vscode.workspace.fs.writeFileSync(
-        getConfigJsPathForRemote(remoteConfigServerUrl),
-        configJs,
+      vscode.workspace.fs.writeFile(
+        vscode.Uri.file(getConfigJsPathForRemote(remoteConfigServerUrl)),
+        new TextEncoder().encode(configJs),
       );
       this.triggerReloadConfig();
     } catch (e) {

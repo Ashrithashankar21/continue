@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as vscode from "vscode";
 
 const directories = [
   // gui
@@ -21,8 +21,8 @@ const directories = [
 ];
 
 directories.forEach((dir) => {
-  if (vscode.workspace.fs.existsSync(dir)) {
-    vscode.workspace.fs.rmdirSync(dir, { recursive: true });
+  if (vscode.workspace.fs.stat(vscode.Uri.file(dir))) {
+    vscode.workspace.fs.delete(vscode.Uri.file(dir));
     console.log(`Removed ${dir}`);
   } else {
     console.log(`${dir} not found`);

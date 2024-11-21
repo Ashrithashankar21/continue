@@ -1,4 +1,4 @@
-import fs from "fs";
+import * as vscode from "vscode";
 
 import { IContextProvider } from "core";
 import { ConfigHandler } from "core/config/ConfigHandler";
@@ -8,7 +8,6 @@ import { FromCoreProtocol, ToCoreProtocol } from "core/protocol";
 import { InProcessMessenger } from "core/util/messenger";
 import { getConfigJsonPath, getConfigTsPath } from "core/util/paths";
 import { v4 as uuidv4 } from "uuid";
-import * as vscode from "vscode";
 
 import { ContinueCompletionProvider } from "../autocomplete/completionProvider";
 import {
@@ -252,21 +251,43 @@ export class VsCodeExtension {
 
     // Listen for file saving - use global file watcher so that changes
     // from outside the window are also caught
-    vscode.workspace.fs.watchFile(
-      getConfigJsonPath(),
-      { interval: 1000 },
-      async (stats) => {
-        await this.configHandler.reloadConfig();
-      },
+    const configJsonUri = vscode.Uri.file(getConfigJsonPath());
+    const configWatcher = vscode.workspace.createFileSystemWatcher(
+      configJsonUri.fsPath,
     );
 
-    vscode.workspace.fs.watchFile(
-      getConfigTsPath(),
-      { interval: 1000 },
-      (stats) => {
-        this.configHandler.reloadConfig();
-      },
+    configWatcher.onDidChange(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    configWatcher.onDidCreate(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    configWatcher.onDidDelete(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    context.subscriptions.push(configWatcher);
+
+    const configTsUri = vscode.Uri.file(getConfigTsPath());
+    const configTsWatcher = vscode.workspace.createFileSystemWatcher(
+      configTsUri.fsPath,
     );
+
+    configTsWatcher.onDidChange(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    configTsWatcher.onDidCreate(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    configTsWatcher.onDidDelete(async () => {
+      await this.configHandler.reloadConfig();
+    });
+
+    context.subscriptions.push(configTsWatcher);
 
     vscode.workspace.onDidSaveTextDocument(async (event) => {
       // Listen for file changes in the workspace

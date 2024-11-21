@@ -30,15 +30,13 @@ const {
 // Clear folders that will be packaged to ensure clean slate
 rimrafSync(path.join(__dirname, "..", "bin"));
 rimrafSync(path.join(__dirname, "..", "out"));
-vscode.workspace.fs.mkdirSync(
-  path.join(__dirname, "..", "out", "node_modules"),
-  {
-    recursive: true,
-  },
+
+vscode.workspace.fs.createDirectory(
+  vscode.Uri.file(path.join(__dirname, "..", "out", "node_modules")),
 );
 const guiDist = path.join(__dirname, "..", "..", "..", "gui", "dist");
-if (!vscode.workspace.fs.existsSync(guiDist)) {
-  vscode.workspace.fs.mkdirSync(guiDist, { recursive: true });
+if (!vscode.workspace.fs.stat(vscode.Uri.file(guiDist)).then(() => true)) {
+  await vscode.workspace.fs.createDirectory(vscode.Uri.file(guiDist));
 }
 
 // Get the target to package for
@@ -141,9 +139,11 @@ async function package(target, os, arch, exe) {
   await copyNodeModules();
 
   // Copy over any worker files
-  vscode.workspace.fs.cpSync(
-    "node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js",
-    "out/xhr-sync-worker.js",
+  vscode.workspace.fs.copy(
+    vscode.Uri.file(
+      "node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js",
+    ),
+    vscode.Uri.file("out/xhr-sync-worker.js"),
   );
 
   // Validate the all of the necessary files are present

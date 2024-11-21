@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as vscode from "vscode";
 const { execSync } = require("child_process");
 
 function execCmdSync(cmd) {
@@ -46,36 +46,42 @@ function validateFilesPresent(pathsToVerify) {
   let missingFiles = [];
   let emptyFiles = [];
   for (const path of pathsToVerify) {
-    if (!vscode.workspace.fs.existsSync(path)) {
+    if (!vscode.workspace.fs.stat(vscode.Uri.file(path))) {
       const parentFolder = path.split("/").slice(0, -1).join("/");
       const grandparentFolder = path.split("/").slice(0, -2).join("/");
       const grandGrandparentFolder = path.split("/").slice(0, -3).join("/");
 
       console.error(`File ${path} does not exist`);
-      if (!vscode.workspace.fs.existsSync(parentFolder)) {
+      if (!vscode.workspace.fs.stat(vscode.Uri.file(parentFolder))) {
         console.error(`Parent folder ${parentFolder} does not exist`);
       } else {
         console.error(
           "Contents of parent folder:",
-          vscode.workspace.fs.readdirSync(parentFolder),
+          vscode.workspace.fs.readDirectory(vscode.Uri.file(parentFolder)),
         );
       }
-      if (!vscode.workspace.fs.existsSync(grandparentFolder)) {
+      if (!vscode.workspace.fs.stat(vscode.Uri.file(grandparentFolder))) {
         console.error(`Grandparent folder ${grandparentFolder} does not exist`);
-        if (!vscode.workspace.fs.existsSync(grandGrandparentFolder)) {
+        if (
+          !vscode.workspace.fs
+            .stat(vscode.Uri.file(grandGrandparentFolder))
+            .then(() => true)
+        ) {
           console.error(
             `Grandgrandparent folder ${grandGrandparentFolder} does not exist`,
           );
         } else {
           console.error(
             "Contents of grandgrandparent folder:",
-            vscode.workspace.fs.readdirSync(grandGrandparentFolder),
+            vscode.workspace.fs.readDirectory(
+              vscode.Uri.file(grandGrandparentFolder),
+            ),
           );
         }
       } else {
         console.error(
           "Contents of grandparent folder:",
-          vscode.workspace.fs.readdirSync(grandparentFolder),
+          vscode.workspace.fs.readDirectory(vscode.Uri.file(grandparentFolder)),
         );
       }
 
@@ -83,8 +89,8 @@ function validateFilesPresent(pathsToVerify) {
     }
 
     if (
-      vscode.workspace.fs.existsSync(path) &&
-      vscode.workspace.fs.statSync(path).size === 0
+      vscode.workspace.fs.stat(vscode.Uri.file(path)) &&
+      vscode.workspace.fs.stat(vscode.Uri.file(path)).size === 0
     ) {
       console.error(`File ${path} is empty`);
       emptyFiles.push(path);

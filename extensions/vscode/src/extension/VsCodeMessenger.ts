@@ -292,14 +292,16 @@ export class VsCodeMessenger {
       );
       // Ensure keyboard shortcuts match OS
       if (process.platform !== "darwin") {
-        let tutorialContent = vscode.workspace.fs.readFileSync(
-          tutorialPath,
-          "utf8",
+        let tutorialContent = vscode.workspace.fs.readFile(
+          vscode.Uri.file(tutorialPath),
         );
         tutorialContent = tutorialContent
           .replace("⌘", "^")
           .replace("Cmd", "Ctrl");
-        vscode.workspace.fs.writeFileSync(tutorialPath, tutorialContent);
+        vscode.workspace.fs.writeFile(
+          vscode.Uri.file(tutorialPath),
+          vscode.Uri.file(tutorialContent),
+        );
       }
 
       const doc = await vscode.workspace.openTextDocument(

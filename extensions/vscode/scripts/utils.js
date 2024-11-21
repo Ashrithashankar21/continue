@@ -1,4 +1,4 @@
-const fs = require("fs");
+import * as vscode from "vscode";
 const ncp = require("ncp").ncp;
 const path = require("path");
 const { rimrafSync } = require("rimraf");
@@ -13,7 +13,9 @@ const continueDir = path.join(__dirname, "..", "..", "..");
 function copyConfigSchema() {
   // Modify and copy for .continuerc.json
   const schema = JSON.parse(
-    vscode.workspace.fs.readFileSync("config_schema.json", "utf8"),
+    vscode.workspace.fs
+      .readFile(vscode.Uri.file("config_schema.json"))
+      .toString(),
   );
   schema.definitions.SerializedContinueConfig.properties.mergeBehavior = {
     type: "string",
@@ -25,46 +27,56 @@ function copyConfigSchema() {
     "x-intellij-html-description":
       "<p>If set to <code>merge</code>, <code>.continuerc.json</code> will be applied on top of <code>config.json</code> (arrays and objects are merged). If set to <code>overwrite</code>, then every top-level property of <code>.continuerc.json</code> will overwrite that property from <code>config.json</code>.</p>",
   };
-  vscode.workspace.fs.writeFileSync(
-    "continue_rc_schema.json",
-    JSON.stringify(schema, null, 2),
+  vscode.workspace.fs.writeFile(
+    vscode.Uri.file("continue_rc_schema.json"),
+    new TextEncoder().encode(JSON.stringify(schema, null, 2)),
   );
 
   // Copy config schemas to intellij
-  vscode.workspace.fs.copyFileSync(
-    "config_schema.json",
-    path.join(
-      "..",
-      "intellij",
-      "src",
-      "main",
-      "resources",
-      "config_schema.json",
+  vscode.workspace.fs.copy(
+    vscode.Uri.file("config_schema.json"),
+    vscode.Uri.file(
+      path.join(
+        "..",
+        "intellij",
+        "src",
+        "main",
+        "resources",
+        "config_schema.json",
+      ),
     ),
   );
-  vscode.workspace.fs.copyFileSync(
-    "continue_rc_schema.json",
-    path.join(
-      "..",
-      "intellij",
-      "src",
-      "main",
-      "resources",
-      "continue_rc_schema.json",
+  vscode.workspace.fs.copy(
+    vscode.Uri.file("continue_rc_schema.json"),
+    vscode.Uri.file(
+      path.join(
+        "..",
+        "intellij",
+        "src",
+        "main",
+        "resources",
+        "continue_rc_schema.json",
+      ),
     ),
   );
 }
 
 function copyTokenizers() {
-  vscode.workspace.fs.copyFileSync(
-    path.join(__dirname, "../../../core/llm/llamaTokenizerWorkerPool.mjs"),
-    path.join(__dirname, "../out/llamaTokenizerWorkerPool.mjs"),
+  vscode.workspace.fs.copy(
+    vscode.Uri.file(
+      path.join(__dirname, "../../../core/llm/llamaTokenizerWorkerPool.mjs"),
+    ),
+    vscode.Uri.file(
+      path.join(__dirname, "../out/llamaTokenizerWorkerPool.mjs"),
+    ),
   );
   console.log("[info] Copied llamaTokenizerWorkerPool");
 
-  vscode.workspace.fs.copyFileSync(
-    path.join(__dirname, "../../../core/llm/llamaTokenizer.mjs"),
-    path.join(__dirname, "../out/llamaTokenizer.mjs"),
+  vscode.workspace.fs.copy(
+    vscode.Uri.file(
+      path.join(__dirname, "../../../core/llm/llamaTokenizer.mjs"),
+    ),
+    vscode.Uri.file(path.join(__dirname, "../out/llamaTokenizer.mjs")),
   );
   console.log("[info] Copied llamaTokenizer");
 }
@@ -106,11 +118,14 @@ async function buildGui(isGhAction) {
   );
 
   const indexHtmlPath = path.join(intellijExtensionWebviewPath, "index.html");
-  vscode.workspace.fs.copyFileSync(indexHtmlPath, "tmp_index.html");
+  vscode.workspace.fs.copy(
+    vscode.Uri.file(indexHtmlPath),
+    vscode.Uri.file("tmp_index.html"),
+  );
   rimrafSync(intellijExtensionWebviewPath);
-  vscode.workspace.fs.mkdirSync(intellijExtensionWebviewPath, {
-    recursive: true,
-  });
+  vscode.workspace.fs.createDirectory(
+    vscode.Uri.file(intellijExtensionWebviewPath),
+  );
 
   await new Promise((resolve, reject) => {
     ncp("dist", intellijExtensionWebviewPath, (error) => {
@@ -126,23 +141,28 @@ async function buildGui(isGhAction) {
   });
 
   // Put back index.html
-  if (vscode.workspace.fs.existsSync(indexHtmlPath)) {
+  if (
+    vscode.workspace.fs.stat(vscode.Uri.file(indexHtmlPath)).then(() => true)
+  ) {
     rimrafSync(indexHtmlPath);
   }
-  vscode.workspace.fs.copyFileSync("tmp_index.html", indexHtmlPath);
-  vscode.workspace.fs.unlinkSync("tmp_index.html");
+  vscode.workspace.fs.copy(
+    vscode.Uri.file("tmp_index.html"),
+    vscode.Uri.file(indexHtmlPath),
+  );
+  vscode.workspace.fs.delete(vscode.Uri.file("tmp_index.html"));
 
   // Copy over other misc. files
-  vscode.workspace.fs.copyFileSync(
-    "../extensions/vscode/gui/onigasm.wasm",
-    path.join(intellijExtensionWebviewPath, "onigasm.wasm"),
+  vscode.workspace.fs.copy(
+    vscode.Uri.file("../extensions/vscode/gui/onigasm.wasm"),
+    vscode.Uri.file(path.join(intellijExtensionWebviewPath, "onigasm.wasm")),
   );
 
   console.log("[info] Copied gui build to JetBrains extension");
 
   // Then copy over the dist folder to the VSCode extension //
   const vscodeGuiPath = path.join("../extensions/vscode/gui");
-  vscode.workspace.fs.mkdirSync(vscodeGuiPath, { recursive: true });
+  vscode.workspace.fs.createDirectory(vscode.Uri.file(vscodeGuiPath));
   await new Promise((resolve, reject) => {
     ncp("dist", vscodeGuiPath, (error) => {
       if (error) {
@@ -159,12 +179,16 @@ async function buildGui(isGhAction) {
   });
 
   if (
-    !vscode.workspace.fs.existsSync(path.join("dist", "assets", "index.js"))
+    !vscode.workspace.fs.stat(
+      vscode.Uri.file(path.join("dist", "assets", "index.js")),
+    )
   ) {
     throw new Error("gui build did not produce index.js");
   }
   if (
-    !vscode.workspace.fs.existsSync(path.join("dist", "assets", "index.css"))
+    !vscode.workspace.fs.stat(
+      vscode.Uri.file(path.join("dist", "assets", "index.css")),
+    )
   ) {
     throw new Error("gui build did not produce index.css");
   }
@@ -172,7 +196,7 @@ async function buildGui(isGhAction) {
 
 async function copyOnnxRuntimeFromNodeModules(target) {
   process.chdir(path.join(continueDir, "extensions", "vscode"));
-  vscode.workspace.fs.mkdirSync("bin", { recursive: true });
+  vscode.workspace.fs.createDirectory(vscode.Uri.file("bin"));
 
   await new Promise((resolve, reject) => {
     ncp(
@@ -216,8 +240,8 @@ async function copyOnnxRuntimeFromNodeModules(target) {
             "../bin/napi-v3/linux/x64",
             file,
           );
-          if (vscode.workspace.fs.existsSync(filepath)) {
-            vscode.workspace.fs.rmSync(filepath);
+          if (vscode.workspace.fs.stat(vscode.Uri.file(filepath))) {
+            vscode.workspace.fs.delete(vscode.Uri.file(filepath));
           }
         });
       }
@@ -248,9 +272,12 @@ async function copyTreeSitterWasms() {
     );
   });
 
-  vscode.workspace.fs.copyFileSync(
-    path.join(__dirname, "../../../core/vendor/tree-sitter.wasm"),
-    path.join(__dirname, "../out/tree-sitter.wasm"),
+  vscode.workspace.fs.copy(
+    path.join(
+      __dirname,
+      vscode.Uri.file("../../../core/vendor/tree-sitter.wasm"),
+    ),
+    path.join(__dirname, vscode.Uri.file("../out/tree-sitter.wasm")),
   );
   console.log("[info] Copied tree-sitter wasms");
 }
@@ -280,15 +307,15 @@ async function copyNodeModules() {
     "@vscode/ripgrep",
     "workerpool",
   ];
-  vscode.workspace.fs.mkdirSync("out/node_modules", { recursive: true });
+  vscode.workspace.fs.createDirectory(vscode.Uri.file("out/node_modules"));
 
   await Promise.all(
     NODE_MODULES_TO_COPY.map(
       (mod) =>
         new Promise((resolve, reject) => {
-          vscode.workspace.fs.mkdirSync(`out/node_modules/${mod}`, {
-            recursive: true,
-          });
+          vscode.workspace.fs.createDirectory(
+            vscode.Uri.file(`out/node_modules/${mod}`),
+          );
           ncp(
             `node_modules/${mod}`,
             `out/node_modules/${mod}`,
@@ -336,10 +363,10 @@ async function copyNodeModules() {
 async function downloadEsbuildBinary(target) {
   console.log("[info] Downloading pre-built esbuild binary");
   rimrafSync("out/node_modules/@esbuild");
-  vscode.workspace.fs.mkdirSync(`out/node_modules/@esbuild/${target}/bin`, {
-    recursive: true,
-  });
-  vscode.workspace.fs.mkdirSync(`out/tmp`, { recursive: true });
+  vscode.workspace.fs.createDirectory(
+    vscode.Uri.file(`out/node_modules/@esbuild/${target}/bin`),
+  );
+  vscode.workspace.fs.createDirectory(vscode.Uri.file(`out/tmp`));
   const downloadUrl = {
     "darwin-arm64":
       "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.17.19.tgz",
@@ -403,8 +430,8 @@ async function downloadSqliteBinary(target) {
     `curl -L -o ../../core/node_modules/sqlite3/build.tar.gz ${downloadUrl}`,
   );
   execCmdSync("cd ../../core/node_modules/sqlite3 && tar -xvzf build.tar.gz");
-  vscode.workspace.fs.unlinkSync(
-    "../../core/node_modules/sqlite3/build.tar.gz",
+  vscode.workspace.fs.delete(
+    vscode.Uri.file("../../core/node_modules/sqlite3/build.tar.gz"),
   );
 }
 
@@ -431,9 +458,9 @@ async function copySqliteBinary() {
 async function downloadRipgrepBinary(target) {
   console.log("[info] Downloading pre-built ripgrep binary");
   rimrafSync("node_modules/@vscode/ripgrep/bin");
-  vscode.workspace.fs.mkdirSync("node_modules/@vscode/ripgrep/bin", {
-    recursive: true,
-  });
+  vscode.workspace.fs.createDirectory(
+    vscode.Uri.file("node_modules/@vscode/ripgrep/bin"),
+  );
   4;
   const downloadUrl = {
     "darwin-arm64":
@@ -455,8 +482,8 @@ async function downloadRipgrepBinary(target) {
       `curl -L -o node_modules/@vscode/ripgrep/bin/build.zip ${downloadUrl}`,
     );
     execCmdSync("cd node_modules/@vscode/ripgrep/bin && unzip build.zip");
-    vscode.workspace.fs.unlinkSync(
-      "node_modules/@vscode/ripgrep/bin/build.zip",
+    vscode.workspace.fs.delete(
+      vscode.Uri.file("node_modules/@vscode/ripgrep/bin/build.zip"),
     );
   } else {
     execCmdSync(
@@ -465,8 +492,8 @@ async function downloadRipgrepBinary(target) {
     execCmdSync(
       "cd node_modules/@vscode/ripgrep/bin && tar -xvzf build.tar.gz",
     );
-    vscode.workspace.fs.unlinkSync(
-      "node_modules/@vscode/ripgrep/bin/build.tar.gz",
+    vscode.workspace.fs.delete(
+      vscode.Uri.file("node_modules/@vscode/ripgrep/bin/build.tar.gz"),
     );
   }
 }
@@ -484,7 +511,7 @@ async function installNodeModuleInTempDirAndCopyToCurrent(packageName, toCopy) {
   rimrafSync(`node_modules/${toCopy}`);
 
   // Ensure the temporary directory exists
-  vscode.workspace.fs.mkdirSync(tempDir, { recursive: true });
+  vscode.workspace.fs.createDirectory(vscode.Uri.file(tempDir));
 
   try {
     // Move to the temporary directory
@@ -495,8 +522,8 @@ async function installNodeModuleInTempDirAndCopyToCurrent(packageName, toCopy) {
 
     console.log(
       `Contents of: ${packageName}`,
-      vscode.workspace.fs.readdirSync(
-        path.join(tempDir, "node_modules", toCopy),
+      vscode.workspace.fs.readDirectory(
+        vscode.Uri.file(path.join(tempDir, "node_modules", toCopy)),
       ),
     );
 

@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import * as vscode from "vscode";
 import path from "path";
 
 import { FromWebviewProtocol, ToWebviewProtocol } from "core/protocol";
@@ -7,7 +7,6 @@ import { extractMinimalStackTraceInfo } from "core/util/extractMinimalStackTrace
 import { Message } from "core/util/messenger";
 import { Telemetry } from "core/util/posthog";
 import { v4 as uuidv4 } from "uuid";
-import * as vscode from "vscode";
 
 import { IMessenger } from "../../../core/util/messenger";
 
@@ -21,12 +20,14 @@ export async function showTutorial() {
   );
   // Ensure keyboard shortcuts match OS
   if (process.platform !== "darwin") {
-    let tutorialContent = vscode.workspace.fs.readFileSync(
-      tutorialPath,
-      "utf8",
+    let tutorialContent = vscode.workspace.fs.readFile(
+      vscode.Uri.file(tutorialPath),
     );
     tutorialContent = tutorialContent.replace("⌘", "^").replace("Cmd", "Ctrl");
-    vscode.workspace.fs.writeFileSync(tutorialPath, tutorialContent);
+    vscode.workspace.fs.writeFile(
+      vscode.Uri.file(tutorialPath),
+      new TextEncoder().encode(tutorialContent),
+    );
   }
 
   const doc = await vscode.workspace.openTextDocument(
