@@ -4,7 +4,7 @@
  * It is also not complete. Current status is that it is just beginning to be refactored.
  */
 
-const fs = require("fs");
+import * as vscode from "vscode";
 const path = require("path");
 const { rimrafSync } = require("rimraf");
 const {
@@ -30,12 +30,15 @@ const {
 // Clear folders that will be packaged to ensure clean slate
 rimrafSync(path.join(__dirname, "..", "bin"));
 rimrafSync(path.join(__dirname, "..", "out"));
-fs.mkdirSync(path.join(__dirname, "..", "out", "node_modules"), {
-  recursive: true,
-});
+vscode.workspace.fs.mkdirSync(
+  path.join(__dirname, "..", "out", "node_modules"),
+  {
+    recursive: true,
+  },
+);
 const guiDist = path.join(__dirname, "..", "..", "..", "gui", "dist");
-if (!fs.existsSync(guiDist)) {
-  fs.mkdirSync(guiDist, { recursive: true });
+if (!vscode.workspace.fs.existsSync(guiDist)) {
+  vscode.workspace.fs.mkdirSync(guiDist, { recursive: true });
 }
 
 // Get the target to package for
@@ -138,7 +141,7 @@ async function package(target, os, arch, exe) {
   await copyNodeModules();
 
   // Copy over any worker files
-  fs.cpSync(
+  vscode.workspace.fs.cpSync(
     "node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js",
     "out/xhr-sync-worker.js",
   );
@@ -153,11 +156,12 @@ async function package(target, os, arch, exe) {
 
     // onnx runtime bindngs
     `bin/napi-v3/${os}/${arch}/onnxruntime_binding.node`,
-    `bin/napi-v3/${os}/${arch}/${os === "darwin"
-      ? "libonnxruntime.1.14.0.dylib"
-      : os === "linux"
-        ? "libonnxruntime.so.1.14.0"
-        : "onnxruntime.dll"
+    `bin/napi-v3/${os}/${arch}/${
+      os === "darwin"
+        ? "libonnxruntime.1.14.0.dylib"
+        : os === "linux"
+          ? "libonnxruntime.so.1.14.0"
+          : "onnxruntime.dll"
     }`,
     "builtin-themes/dark_modern.json",
 
@@ -192,15 +196,17 @@ async function package(target, os, arch, exe) {
 
     // out/node_modules (to be accessed by extension.js)
     `out/node_modules/@vscode/ripgrep/bin/rg${exe}`,
-    `out/node_modules/@esbuild/${target === "win32-arm64"
-      ? "esbuild.exe"
-      : target === "win32-x64"
-        ? "win32-x64/esbuild.exe"
-        : `${target}/bin/esbuild`
+    `out/node_modules/@esbuild/${
+      target === "win32-arm64"
+        ? "esbuild.exe"
+        : target === "win32-x64"
+          ? "win32-x64/esbuild.exe"
+          : `${target}/bin/esbuild`
     }`,
-    `out/node_modules/@lancedb/vectordb-${os === "win32"
-      ? "win32-x64-msvc"
-      : `${target}${os === "linux" ? "-gnu" : ""}`
+    `out/node_modules/@lancedb/vectordb-${
+      os === "win32"
+        ? "win32-x64-msvc"
+        : `${target}${os === "linux" ? "-gnu" : ""}`
     }/index.node`,
     `out/node_modules/esbuild/lib/main.js`,
     `out/node_modules/esbuild/bin/esbuild`,

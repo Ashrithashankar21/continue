@@ -1,5 +1,6 @@
-import fs from "node:fs";
 import path from "node:path";
+
+import * as vscode from "vscode";
 
 import { IDE, ILLM } from "..";
 import { CodeSnippetsCodebaseIndex } from "../indexing/CodeSnippetsIndex";
@@ -17,8 +18,8 @@ class RepoMapGenerator {
   private maxRepoMapTokens: number;
 
   private repoMapPath: string = getRepoMapFilePath();
-  private writeStream: fs.WriteStream = fs.createWriteStream(this.repoMapPath);
-  private contentTokens: number = 0;
+  private writeStream!: NodeJS.WritableStream;
+  private contentTokens = 0;
   private repoMapDirs: string[] = [];
   private allPathsInDirs: Set<string> = new Set();
   private pathsInDirsWithSnippets: Set<string> = new Set();
@@ -50,7 +51,7 @@ class RepoMapGenerator {
     this.writeStream.end();
     this.logRepoMapGeneration();
 
-    return fs.readFileSync(this.repoMapPath, "utf8");
+    return (await vscode.workspace.fs.readFile(vscode.Uri.file(this.repoMapPath))).toString();
   }
 
   private async initializeWriteStream(): Promise<void> {
@@ -111,7 +112,7 @@ class RepoMapGenerator {
     let fileContent: string;
 
     try {
-      fileContent = await fs.promises.readFile(absolutePath, "utf8");
+      fileContent = (await vscode.workspace.fs.readFile(vscode.Uri.file(absolutePath))).toString();
     } catch (err) {
       console.error(
         "Failed to read file:\n" +

@@ -1,6 +1,7 @@
   import { execSync } from "child_process";
-  import * as fs from "fs";
   import * as path from "path";
+
+  import * as vscode from "vscode";
 
 import {
     ContextItem,
@@ -126,12 +127,20 @@ import {
       }
     }
   
-    private isGitRepository(dir: string): boolean {
+    private async isGitRepository(dir: string): Promise<boolean> {
       try {
         const gitDir = path.join(dir, ".git");
-        return fs.existsSync(gitDir);
+        const gitDirUri = vscode.Uri.file(gitDir);
+    
+        // Check if .git directory exists using Workspace FS
+        try {
+          await vscode.workspace.fs.stat(gitDirUri);
+          return true; // .git directory exists
+        } catch {
+          return false; // If stat throws an error, .git does not exist
+        }
       } catch (err) {
-        console.warn("Failed to check if directory is a Git repository:");
+        console.warn("Failed to check if directory is a Git repository:", err);
         return false;
       }
     }

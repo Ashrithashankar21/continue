@@ -1,6 +1,6 @@
-import fs from "fs";
-
 import ignore from "ignore";
+import * as vscode from "vscode";
+
 
 import { getGlobalContinueIgnorePath } from "../util/paths";
 
@@ -120,6 +120,7 @@ export function gitIgArrayFromFile(file: string) {
 }
 
 export const getGlobalContinueIgArray = () => {
-  const contents = fs.readFileSync(getGlobalContinueIgnorePath(), "utf8");
-  return gitIgArrayFromFile(contents);
+  return vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContinueIgnorePath().toString()))
+    .then((data) => gitIgArrayFromFile(data.toString()));
+    
 };

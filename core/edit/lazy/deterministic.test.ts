@@ -1,11 +1,13 @@
-import fs from "node:fs";
 import path from "node:path";
 
 // @ts-ignore no typings available
 import { diff as myersDiff } from "myers-diff";
+import * as vscode from "vscode";
+
 import { DiffLine } from "../..";
 import { myersDiff as continueMyersDiff } from "../../diff/myers";
 import { dedent } from "../../util";
+
 import { deterministicApplyLazyEdit } from "./deterministic";
 
 const UNIFIED_DIFF_SYMBOLS = {
@@ -57,10 +59,13 @@ async function expectDiff(file: string) {
     "test-examples",
     file + ".diff",
   );
-  const testFileContents = fs.readFileSync(testFilePath, "utf-8");
-  const [oldFile, newFile, expectedDiff] = testFileContents
-    .split("\n---\n")
-    .map((s) => s.replace(/^\n+/, "").trimEnd());
+  const testFileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(testFilePath));
+  const contentArray = testFileContents.toString().split("\n---\n").map((s) => s.trim());
+  
+  if (contentArray.length < 3) {
+    throw new Error("The diff file does not contain the expected sections for old file, new file, and expected diff.");
+  }
+  const [oldFile, newFile, expectedDiff] = contentArray;
   const { ourDiffs: streamDiffs } = await collectDiffs(oldFile, newFile, file);
   const displayedDiff = displayDiff(streamDiffs);
 
@@ -68,11 +73,11 @@ async function expectDiff(file: string) {
     console.log(
       "Expected diff was empty. Writing computed diff to the test file",
     );
-    fs.writeFileSync(
-      testFilePath,
-      `${oldFile}\n\n---\n\n${newFile}\n\n---\n\n${displayDiff(
+    await vscode.workspace.fs.writeFile(
+      vscode.Uri.file(testFilePath),
+      new TextEncoder().encode(`${oldFile}\n\n---\n\n${newFile}\n\n---\n\n${displayDiff(
         continueMyersDiff(oldFile, newFile),
-      )}`,
+      )}`),
     );
 
     throw new Error("Expected diff is empty");

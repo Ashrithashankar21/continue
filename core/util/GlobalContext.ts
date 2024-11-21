@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import * as vscode from "vscode";
 
 import { EmbeddingsProvider } from "../";
 
@@ -23,36 +23,36 @@ export type GlobalContextType = {
  * A way to persist global state
  */
 export class GlobalContext {
-  update<T extends keyof GlobalContextType>(
+  async update<T extends keyof GlobalContextType>(
     key: T,
     value: GlobalContextType[T],
   ) {
-    if (!fs.existsSync(getGlobalContextFilePath())) {
-      fs.writeFileSync(
-        getGlobalContextFilePath(),
-        JSON.stringify(
+    if (!vscode.workspace.fs.stat(vscode.Uri.file(getGlobalContextFilePath())).then(() => true)) {
+      await vscode.workspace.fs.writeFile(
+        vscode.Uri.file(getGlobalContextFilePath()),
+        new TextEncoder().encode(JSON.stringify(
           {
             [key]: value,
           },
           null,
           2,
-        ),
+        )),
       );
     } else {
-      const data = fs.readFileSync(getGlobalContextFilePath(), "utf-8");
+      const data = vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContextFilePath()));
 
       let parsed;
       try {
-        parsed = JSON.parse(data);
+        parsed = JSON.parse(data.toString());
       } catch (e: any) {
         console.warn(`Error updating global context: ${e}`);
         return;
       }
 
       parsed[key] = value;
-      fs.writeFileSync(
-        getGlobalContextFilePath(),
-        JSON.stringify(parsed, null, 2),
+      await vscode.workspace.fs.writeFile(
+        vscode.Uri.file(getGlobalContextFilePath()),
+        new TextEncoder().encode(JSON.stringify(parsed, null, 2)),
       );
     }
   }
@@ -60,13 +60,13 @@ export class GlobalContext {
   get<T extends keyof GlobalContextType>(
     key: T,
   ): GlobalContextType[T] | undefined {
-    if (!fs.existsSync(getGlobalContextFilePath())) {
+    if(!vscode.workspace.fs.stat(vscode.Uri.file(getGlobalContextFilePath())).then(() => true)){
       return undefined;
     }
 
-    const data = fs.readFileSync(getGlobalContextFilePath(), "utf-8");
+    const data = vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContextFilePath()));
     try {
-      const parsed = JSON.parse(data);
+      const parsed = JSON.parse(data.toString());
       return parsed[key];
     } catch (e: any) {
       console.warn(`Error parsing global context: ${e}`);

@@ -17,8 +17,8 @@ export class SecretStorage {
 
   constructor(context: vscode.ExtensionContext) {
     this.globalStoragePath = context.globalStorageUri.fsPath;
-    if (!fs.existsSync(this.globalStoragePath)) {
-      fs.mkdirSync(this.globalStoragePath);
+    if (!vscode.workspace.fs.existsSync(this.globalStoragePath)) {
+      vscode.workspace.fs.mkdirSync(this.globalStoragePath);
     }
     this.secrets = context.secrets;
   }
@@ -55,12 +55,12 @@ export class SecretStorage {
     const tag = cipher.getAuthTag();
 
     const result = Buffer.concat([salt, iv, tag, encrypted]);
-    fs.writeFileSync(filePath, result);
+    vscode.workspace.fs.writeFileSync(filePath, result);
   }
 
   async decrypt(filePath: string): Promise<string> {
     const key = await this.getOrCreateEncryptionKey();
-    const data = fs.readFileSync(filePath);
+    const data = vscode.workspace.fs.readFileSync(filePath);
 
     const salt = data.subarray(0, this.saltLength);
     const iv = data.subarray(this.saltLength, this.saltLength + this.ivLength);
@@ -99,7 +99,7 @@ export class SecretStorage {
 
   async get(key: string): Promise<string | undefined> {
     const filePath = this.keyToFilepath(key);
-    if (fs.existsSync(filePath)) {
+    if (vscode.workspace.fs.existsSync(filePath)) {
       const value = await this.decrypt(filePath);
       return value;
     }

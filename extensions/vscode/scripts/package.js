@@ -1,5 +1,5 @@
+import * as vscode from "vscode";
 const { exec } = require("child_process");
-const fs = require("fs");
 
 const args = process.argv.slice(2);
 let target;
@@ -8,8 +8,8 @@ if (args[0] === "--target") {
   target = args[1];
 }
 
-if (!fs.existsSync("build")) {
-  fs.mkdirSync("build");
+if (!vscode.workspace.fs.stat(vscode.Uri.file("build")).then(() => true)) {
+  vscode.workspace.fs.mkdirSync("build");
 }
 
 const isPreRelease = args.includes("--pre-release");

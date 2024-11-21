@@ -1,7 +1,7 @@
 import { IProtocol } from "core/protocol/index.js";
 import { IMessenger, type Message } from "core/util/messenger";
 import { ChildProcessWithoutNullStreams } from "node:child_process";
-import * as fs from "node:fs";
+import * as vscode from 'vscode';
 import net from "node:net";
 import { v4 as uuidv4 } from "uuid";
 
@@ -159,12 +159,12 @@ export class IpcMessenger<
       this._handleData(data);
     });
     process.stdout.on("close", () => {
-      fs.writeFileSync("./error.log", `${new Date().toISOString()}\n`);
+      vscode.workspace.fs.writeFile(vscode.Uri.file("./error.log"), Buffer.from(`${new Date().toISOString()}\n`));
       console.log("[info] Exiting Continue core...");
       process.exit(1);
     });
     process.stdin.on("close", () => {
-      fs.writeFileSync("./error.log", `${new Date().toISOString()}\n`);
+      vscode.workspace.fs.writeFile(vscode.Uri.file("./error.log"), Buffer.from(`${new Date().toISOString()}\n`));
       console.log("[info] Exiting Continue core...");
       process.exit(1);
     });

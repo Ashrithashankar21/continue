@@ -46,43 +46,46 @@ function validateFilesPresent(pathsToVerify) {
   let missingFiles = [];
   let emptyFiles = [];
   for (const path of pathsToVerify) {
-    if (!fs.existsSync(path)) {
+    if (!vscode.workspace.fs.existsSync(path)) {
       const parentFolder = path.split("/").slice(0, -1).join("/");
       const grandparentFolder = path.split("/").slice(0, -2).join("/");
       const grandGrandparentFolder = path.split("/").slice(0, -3).join("/");
 
       console.error(`File ${path} does not exist`);
-      if (!fs.existsSync(parentFolder)) {
+      if (!vscode.workspace.fs.existsSync(parentFolder)) {
         console.error(`Parent folder ${parentFolder} does not exist`);
       } else {
         console.error(
           "Contents of parent folder:",
-          fs.readdirSync(parentFolder),
+          vscode.workspace.fs.readdirSync(parentFolder),
         );
       }
-      if (!fs.existsSync(grandparentFolder)) {
+      if (!vscode.workspace.fs.existsSync(grandparentFolder)) {
         console.error(`Grandparent folder ${grandparentFolder} does not exist`);
-        if (!fs.existsSync(grandGrandparentFolder)) {
+        if (!vscode.workspace.fs.existsSync(grandGrandparentFolder)) {
           console.error(
             `Grandgrandparent folder ${grandGrandparentFolder} does not exist`,
           );
         } else {
           console.error(
             "Contents of grandgrandparent folder:",
-            fs.readdirSync(grandGrandparentFolder),
+            vscode.workspace.fs.readdirSync(grandGrandparentFolder),
           );
         }
       } else {
         console.error(
           "Contents of grandparent folder:",
-          fs.readdirSync(grandparentFolder),
+          vscode.workspace.fs.readdirSync(grandparentFolder),
         );
       }
 
       missingFiles.push(path);
     }
 
-    if (fs.existsSync(path) && fs.statSync(path).size === 0) {
+    if (
+      vscode.workspace.fs.existsSync(path) &&
+      vscode.workspace.fs.statSync(path).size === 0
+    ) {
       console.error(`File ${path} is empty`);
       emptyFiles.push(path);
     }

@@ -1,7 +1,7 @@
-import fs from "fs";
 
 import { open } from "sqlite";
 import sqlite3 from "sqlite3";
+import * as vscode from "vscode";
 
 import { DatabaseConnection } from "../indexing/refreshIndex.js";
 
@@ -73,8 +73,13 @@ export class DevDataSqliteDb {
 
   static async get() {
     const devDataSqlitePath = getDevDataSqlitePath();
-    if (DevDataSqliteDb.db && fs.existsSync(devDataSqlitePath)) {
-      return DevDataSqliteDb.db;
+    if (DevDataSqliteDb.db) {
+      try {
+        await vscode.workspace.fs.stat(vscode.Uri.file(devDataSqlitePath));
+        return DevDataSqliteDb.db;
+      } catch (error) {
+        DevDataSqliteDb.db = null;
+      }
     }
 
     DevDataSqliteDb.db = await open({

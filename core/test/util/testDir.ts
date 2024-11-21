@@ -1,34 +1,37 @@
-import fs from "fs";
 import os from "os";
 import path from "path";
+
+import * as vscode from "vscode";
 
 // Want this outside of the git repository so we can change branches in tests
 export const TEST_DIR = path.join(os.tmpdir(), "testDir");
 
-export function setUpTestDir() {
-  if (fs.existsSync(TEST_DIR)) {
-    fs.rmSync(TEST_DIR, { recursive: true });
-  }
-  fs.mkdirSync(TEST_DIR);
+export async function setUpTestDir() {
+  try {
+    if (await vscode.workspace.fs.stat(vscode.Uri.file(TEST_DIR))) {
+      await vscode.workspace.fs.delete(vscode.Uri.file(TEST_DIR), { recursive: true });
+    }
+  } catch { /* Directory does not exist, no need to delete */ }
+  
+  await vscode.workspace.fs.createDirectory(vscode.Uri.file(TEST_DIR));
 }
 
-export function tearDownTestDir() {
-  if (fs.existsSync(TEST_DIR)) {
-    fs.rmSync(TEST_DIR, { recursive: true });
-  }
+export async function tearDownTestDir() {
+  try {
+    await vscode.workspace.fs.delete(vscode.Uri.file(TEST_DIR), { recursive: true });
+  } catch { /* Directory does not exist, no need to delete */ }
 }
 
-export function addToTestDir(paths: (string | string[])[]) {
+export async function addToTestDir(paths: (string | [string, string])[]) {
   for (const p of paths) {
     const filepath = path.join(TEST_DIR, Array.isArray(p) ? p[0] : p);
-    fs.mkdirSync(path.dirname(filepath), { recursive: true });
-
+    await vscode.workspace.fs.createDirectory(vscode.Uri.file(path.dirname(filepath)));
     if (Array.isArray(p)) {
-      fs.writeFileSync(filepath, p[1]);
+      await vscode.workspace.fs.writeFile(vscode.Uri.file(filepath), new TextEncoder().encode((p[1])));
     } else if (p.endsWith("/")) {
-      fs.mkdirSync(filepath, { recursive: true });
+      await vscode.workspace.fs.createDirectory(vscode.Uri.file(filepath));
     } else {
-      fs.writeFileSync(filepath, "");
+      await vscode.workspace.fs.writeFile(vscode.Uri.file(filepath), new TextEncoder().encode(""));
     }
   }
 }

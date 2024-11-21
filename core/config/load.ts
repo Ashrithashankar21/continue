@@ -1,10 +1,11 @@
 import { execSync } from "child_process";
-import * as JSONC from "comment-json";
-import * as fs from "fs";
 import os from "os";
 import path from "path";
 
+import * as JSONC from "comment-json";
 import * as tar from "tar";
+import * as vscode from "vscode";
+
 import {
   BrowserSerializedContinueConfig,
   Config,
@@ -79,7 +80,9 @@ export interface ConfigResult<T> {
 }
 
 function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
-  let content = fs.readFileSync(filepath, "utf8");
+  const fileUri = vscode.Uri.file(filepath);
+  const fileData = vscode.workspace.fs.readFile(fileUri);
+  let content  = (Buffer.from(fileData.toString())).toString();
   const config = JSONC.parse(content) as unknown as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
     const env = {
@@ -548,8 +551,11 @@ async function handleEsbuildInstallation(ide: IDE, ideType: IdeType) {
 
   const esbuildPath = getEsbuildBinaryPath();
 
-  if (fs.existsSync(esbuildPath)) {
+  try {
+    await vscode.workspace.fs.stat(vscode.Uri.file(esbuildPath));
     return;
+  } catch {
+    // File does not exist, proceed with installation
   }
 
   console.debug("No esbuild binary detected");
@@ -586,13 +592,13 @@ async function promptEsbuildInstallation(ide: IDE): Promise<boolean> {
  */
 async function downloadAndInstallEsbuild(ide: IDE) {
   const esbuildPath = getEsbuildBinaryPath();
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "esbuild-"));
 
+  const tempDir = await vscode.workspace.fs.createDirectory(vscode.Uri.file(path.join(os.tmpdir(), `esbuild-${Date.now()}`)));
   try {
     const target = `${os.platform()}-${os.arch()}`;
     const version = "0.19.11";
     const url = `https://registry.npmjs.org/@esbuild/${target}/-/${target}-${version}.tgz`;
-    const tgzPath = path.join(tempDir, `esbuild-${version}.tgz`);
+    const tgzPath = path.join(tempDir as any, `esbuild-${version}.tgz`);
 
     console.debug(`Downloading esbuild from: ${url}`);
     execSync(`curl -fo "${tgzPath}" "${url}"`);
@@ -600,34 +606,50 @@ async function downloadAndInstallEsbuild(ide: IDE) {
     console.debug(`Extracting tgz file to: ${tempDir}`);
     await tar.x({
       file: tgzPath,
-      cwd: tempDir,
+      cwd: tempDir as any,
       strip: 2, // Remove the top two levels of directories
     });
 
     // Ensure the destination directory exists
     const destDir = path.dirname(esbuildPath);
-    if (!fs.existsSync(destDir)) {
-      fs.mkdirSync(destDir, { recursive: true });
+  
+    try {
+      await vscode.workspace.fs.stat(vscode.Uri.file(destDir));
+    } catch {
+      await vscode.workspace.fs.createDirectory(vscode.Uri.file(destDir));
     }
 
     // Move the file
-    const extractedBinaryPath = path.join(tempDir, "esbuild");
-    fs.renameSync(extractedBinaryPath, esbuildPath);
+    const extractedBinaryPath = path.join(tempDir as any, "esbuild");
+    await vscode.workspace.fs.rename(vscode.Uri.file(extractedBinaryPath), vscode.Uri.file(esbuildPath), { overwrite: true });
 
     // Ensure the binary is executable (not needed on Windows)
     if (os.platform() !== "win32") {
-      fs.chmodSync(esbuildPath, 0o755);
+    try {
+      // await vscode.workspace.fs.chmod(vscode.Uri.file(esbuildPath), 0o755);
+    } catch (error) {
+      console.warn("Error setting executable permissions on esbuild binary:", error);
     }
 
     // Clean up
-    fs.unlinkSync(tgzPath);
-    fs.rmSync(tempDir, { recursive: true });
+    try {
+        await vscode.workspace.fs.delete(vscode.Uri.file(tgzPath));
+    } catch (error) {
+        console.warn("Error deleting the downloaded tarball:", error);
+    }
 
+    try {
+        await vscode.workspace.fs.delete(vscode.Uri.file(tempDir as any), { recursive: true, useTrash: false });
+    } catch (error) {
+        console.warn("Error deleting the temporary directory:", error);
+    }
     await ide.showToast(
       "info",
       `'esbuild' successfully installed to ${esbuildPath}`,
     );
-  } catch (error) {
+  }
+}
+  catch (error) {
     console.error("Error downloading or saving esbuild binary:", error);
     throw error;
   }
@@ -680,24 +702,30 @@ async function buildConfigTsWithNodeModule() {
   });
 }
 
-function readConfigJs(): string | undefined {
+async function readConfigJs() {
   const configJsPath = getConfigJsPath();
 
-  if (!fs.existsSync(configJsPath)) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(configJsPath))) {
     return undefined;
   }
 
-  return fs.readFileSync(configJsPath, "utf8");
+  const fileUri = vscode.Uri.file(configJsPath);
+  const fileContent = await vscode.workspace.fs.readFile(fileUri);
+  const textDecoder = new TextDecoder("utf-8");
+  return textDecoder.decode(fileContent);
 }
 
 async function buildConfigTsandReadConfigJs(ide: IDE, ideType: IdeType) {
   const configTsPath = getConfigTsPath();
 
-  if (!fs.existsSync(configTsPath)) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(configTsPath))) {
     return;
   }
 
-  const currentContent = fs.readFileSync(configTsPath, "utf8");
+  const fileUri = vscode.Uri.file(configTsPath);
+  const fileContent = await vscode.workspace.fs.readFile(fileUri);
+  const textDecoder = new TextDecoder("utf-8");
+  const currentContent = textDecoder.decode(fileContent);
 
   // If the user hasn't modified the default config.ts, don't bother building
   if (currentContent.trim() === DEFAULT_CONFIG_TS_CONTENTS.trim()) {

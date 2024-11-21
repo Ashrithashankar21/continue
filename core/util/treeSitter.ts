@@ -1,6 +1,6 @@
-import fs from "node:fs";
 import * as path from "node:path";
 
+import * as vscode from "vscode";
 import Parser, { Language } from "web-tree-sitter";
 
 export enum LanguageName {
@@ -184,10 +184,10 @@ export async function getQueryForFile(
       : ["tree-sitter"]),
     queryPath,
   );
-  if (!fs.existsSync(sourcePath)) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(sourcePath)).then(() => true)) {
     return undefined;
   }
-  const querySource = fs.readFileSync(sourcePath).toString();
+  const querySource = vscode.workspace.fs.readFile(vscode.Uri.file(sourcePath)).toString();
 
   const query = language.query(querySource);
   return query;

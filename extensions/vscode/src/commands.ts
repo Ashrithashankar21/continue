@@ -142,9 +142,9 @@ async function addEntireFileToContext(
   webviewProtocol: VsCodeWebviewProtocol | undefined,
 ) {
   // If a directory, add all files in the directory
-  const stat = await vscode.workspace.fs.stat(filepath);
+  const stat = await vscode.workspace.vscode.workspace.fs.stat(filepath);
   if (stat.type === vscode.FileType.Directory) {
-    const files = await vscode.workspace.fs.readDirectory(filepath);
+    const files = await vscode.workspace.vscode.workspace.fs.readDirectory(filepath);
     for (const [filename, type] of files) {
       if (type === vscode.FileType.File) {
         addEntireFileToContext(
@@ -158,7 +158,7 @@ async function addEntireFileToContext(
   }
 
   // Get the contents of the file
-  const contents = (await vscode.workspace.fs.readFile(filepath)).toString();
+  const contents = (await vscode.workspace.vscode.workspace.fs.readFile(filepath)).toString();
   const rangeInFileWithContents = {
     filepath: filepath.fsPath,
     contents: contents,
@@ -548,9 +548,9 @@ const commandsMap: (
       // Open ~/.continue/continue.log
       const logFile = path.join(os.homedir(), ".continue", "continue.log");
       // Make sure the file/directory exist
-      if (!fs.existsSync(logFile)) {
-        fs.mkdirSync(path.dirname(logFile), { recursive: true });
-        fs.writeFileSync(logFile, "");
+      if (!vscode.workspace.fs.existsSync(logFile)) {
+        vscode.workspace.fs.mkdirSync(path.dirname(logFile), { recursive: true });
+        vscode.workspace.fs.writeFileSync(logFile, "");
       }
 
       const uri = vscode.Uri.file(logFile);

@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import { URL } from "node:url";
 
 import { Handler, HTTPResponse, Page } from "puppeteer";
@@ -6,6 +5,7 @@ import { Handler, HTTPResponse, Page } from "puppeteer";
 // @ts-ignore
 // @prettier-ignore
 import PCR from "puppeteer-chromium-resolver";
+import * as vscode from "vscode";
 
 import { ContinueConfig, IDE } from "../../..";
 import {
@@ -198,8 +198,13 @@ export class ChromiumInstaller {
     }
   }
 
-  isInstalled() {
-    return fs.existsSync(getChromiumPath());
+  async isInstalled() {
+    try {
+      await vscode.workspace.fs.stat(vscode.Uri.file((await getChromiumPath()).toString()));
+      return true;
+    } catch {
+      return false;
+    }
   }
 
   shouldInstallOnStartup() {

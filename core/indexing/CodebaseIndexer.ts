@@ -1,9 +1,10 @@
-import * as fs from "fs/promises";
+import * as vscode from "vscode";
 
 import { ConfigHandler } from "../config/ConfigHandler.js";
 import { IContinueServerClient } from "../continueServer/interface.js";
 import { IDE, IndexingProgressUpdate, IndexTag } from "../index.js";
 import { extractMinimalStackTraceInfo } from "../util/extractMinimalStackTraceInfo.js";
+import { getBasename } from "../util/index.js";
 import { getIndexSqlitePath, getLanceDbPath } from "../util/paths.js";
 
 import { ChunkCodebaseIndex } from "./chunk/ChunkCodebaseIndex.js";
@@ -17,7 +18,6 @@ import {
   RefreshIndexResults,
 } from "./types.js";
 import { walkDirAsync } from "./walkDir.js";
-import { getBasename } from "../util/index.js";
 
 export class PauseToken {
   constructor(private _paused: boolean) {}
@@ -62,13 +62,13 @@ export class CodebaseIndexer {
     const lanceDbFolder = getLanceDbPath();
 
     try {
-      await fs.unlink(sqliteFilepath);
+      await vscode.workspace.fs.delete(vscode.Uri.file(sqliteFilepath), { recursive: true });
     } catch (error) {
       console.error(`Error deleting ${sqliteFilepath} folder: ${error}`);
     }
 
     try {
-      await fs.rm(lanceDbFolder, { recursive: true, force: true });
+      await vscode.workspace.fs.delete(vscode.Uri.file(lanceDbFolder), { recursive: true, useTrash: false });
     } catch (error) {
       console.error(`Error deleting ${lanceDbFolder}: ${error}`);
     }

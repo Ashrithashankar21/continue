@@ -1,5 +1,6 @@
-import fs from "node:fs";
 import path from "node:path";
+
+import * as vscode from "vscode";
 
 import Mock from "../../../llm/llms/Mock";
 import { testConfigHandler, testIde } from "../../../test/util/fixtures";
@@ -40,8 +41,11 @@ export async function testAutocompleteFiltering(
   // Create a real file
   const [workspaceDir] = await ide.getWorkspaceDirs();
   const filepath = path.join(workspaceDir, test.filename);
-  fs.writeFileSync(filepath, test.input.replace(FIM_DELIMITER, ""));
 
+  await vscode.workspace.fs.writeFile(
+    vscode.Uri.file(filepath),
+    new Uint8Array(Buffer.from(test.input.replace(FIM_DELIMITER, "")))
+  );
   // Prepare completion input and provider
   const completionProvider = new CompletionProvider(
     configHandler,

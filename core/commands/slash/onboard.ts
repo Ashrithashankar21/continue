@@ -1,7 +1,7 @@
-import * as fs from "fs/promises";
 import * as path from "path";
 
 import ignore from "ignore";
+import * as vscode from "vscode";
 
 import { IDE, SlashCommand } from "../..";
 import {
@@ -54,16 +54,22 @@ const OnboardSlashCommand: SlashCommand = {
 };
 
 async function getEntriesFilteredByIgnore(dir: string, ide: IDE) {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-
+  const entries = await vscode.workspace.fs.readDirectory(vscode.Uri.file(dir));
   let ig = ignore().add(defaultIgnoreDir).add(defaultIgnoreFile);
 
   const gitIgnorePath = path.join(dir, ".gitignore");
 
-  const hasIgnoreFile = await fs
-    .access(gitIgnorePath)
-    .then(() => true)
-    .catch(() => false);
+  let hasIgnoreFile = false;
+  try {
+    try {
+      await vscode.workspace.fs.stat(vscode.Uri.file(gitIgnorePath));
+    hasIgnoreFile = true;
+    } catch {
+      hasIgnoreFile = false;
+    }
+  } catch {
+    hasIgnoreFile = false;
+  }
 
   if (hasIgnoreFile) {
     const gitIgnore = await ide.readFile(gitIgnorePath);
@@ -83,6 +89,19 @@ async function gatherProjectContext(
 ): Promise<string> {
   let context = "";
 
+  async function appendFileContent(entry, relativePath, context, fullPath) {
+    const filePath = fullPath;
+    const fileContentUint8 = await vscode.workspace.fs.readFile(filePath);
+    const fileContent = new TextDecoder("utf-8").decode(fileContentUint8);
+  
+    if (entry.name.toLowerCase() === "readme.md") {
+      context += `README for ${relativePath}:\n${fileContent}\n\n`;
+    } else if (LANGUAGE_DEP_MGMT_FILENAMES.includes(entry.name)) {
+      context += `${entry.name} for ${relativePath}:\n${fileContent}\n\n`;
+    }
+    return context;
+  }
+
   async function exploreDirectory(dir: string, currentDepth: number = 0) {
     if (currentDepth > MAX_EXPLORE_DEPTH) {
       return;
@@ -98,13 +117,7 @@ async function gatherProjectContext(
         context += `\nFolder: ${relativePath}\n`;
         await exploreDirectory(fullPath, currentDepth + 1);
       } else {
-        if (entry.name.toLowerCase() === "readme.md") {
-          const content = await fs.readFile(fullPath, "utf-8");
-          context += `README for ${relativePath}:\n${content}\n\n`;
-        } else if (LANGUAGE_DEP_MGMT_FILENAMES.includes(entry.name)) {
-          const content = await fs.readFile(fullPath, "utf-8");
-          context += `${entry.name} for ${relativePath}:\n${content}\n\n`;
-        }
+        await appendFileContent(entry, relativePath, context, fullPath);
       }
     }
   }

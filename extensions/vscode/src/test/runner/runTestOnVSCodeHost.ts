@@ -23,40 +23,40 @@ const continueGlobalDir = path.resolve(
 );
 
 function setupTestWorkspace() {
-  if (fs.existsSync(testWorkspacePath)) {
-    fs.rmSync(testWorkspacePath, { recursive: true });
+  if (vscode.workspace.fs.existsSync(testWorkspacePath)) {
+    vscode.workspace.fs.rmSync(testWorkspacePath, { recursive: true });
   }
-  fs.mkdirSync(testWorkspacePath, {
+  vscode.workspace.fs.mkdirSync(testWorkspacePath, {
     recursive: true,
   });
 
-  fs.writeFileSync(
+  vscode.workspace.fs.writeFileSync(
     path.join(testWorkspacePath, "test.py"),
     "print('Hello World!')",
   );
-  fs.writeFileSync(
+  vscode.workspace.fs.writeFileSync(
     path.join(testWorkspacePath, "index.js"),
     "console.log('Hello World!')",
   );
-  fs.writeFileSync(
+  vscode.workspace.fs.writeFileSync(
     path.join(testWorkspacePath, "test.py"),
     "print('Hello World!')",
   );
-  fs.mkdirSync(path.join(testWorkspacePath, "test-folder"));
-  fs.writeFileSync(
+  vscode.workspace.fs.mkdirSync(path.join(testWorkspacePath, "test-folder"));
+  vscode.workspace.fs.writeFileSync(
     path.join(testWorkspacePath, "test-folder", "test.js"),
     "console.log('Hello World!')",
   );
 }
 
 function setupContinueGlobalDir() {
-  if (fs.existsSync(continueGlobalDir)) {
-    fs.rmSync(continueGlobalDir, { recursive: true });
+  if (vscode.workspace.fs.existsSync(continueGlobalDir)) {
+    vscode.workspace.fs.rmSync(continueGlobalDir, { recursive: true });
   }
-  fs.mkdirSync(continueGlobalDir, {
+  vscode.workspace.fs.mkdirSync(continueGlobalDir, {
     recursive: true,
   });
-  fs.writeFileSync(
+  vscode.workspace.fs.writeFileSync(
     path.join(continueGlobalDir, "config.json"),
     JSON.stringify({
       ...defaultConfig,
@@ -73,14 +73,14 @@ function setupContinueGlobalDir() {
 }
 
 function cleanupTestWorkspace() {
-  if (fs.existsSync(testWorkspacePath)) {
-    fs.rmSync(testWorkspacePath, { recursive: true });
+  if (vscode.workspace.fs.existsSync(testWorkspacePath)) {
+    vscode.workspace.fs.rmSync(testWorkspacePath, { recursive: true });
   }
 }
 
 function cleanupContinueGlobalDir() {
-  if (fs.existsSync(continueGlobalDir)) {
-    fs.rmSync(continueGlobalDir, { recursive: true });
+  if (vscode.workspace.fs.existsSync(continueGlobalDir)) {
+    vscode.workspace.fs.rmSync(continueGlobalDir, { recursive: true });
   }
 }
 

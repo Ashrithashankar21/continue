@@ -1,8 +1,9 @@
-import { jest } from "@jest/globals";
-import fs from "fs";
 import path from "path";
 
+import { jest } from "@jest/globals";
+import * as vscode from "vscode";
 import Parser from "web-tree-sitter";
+
 import { Position } from "../../../..";
 import { testIde } from "../../../../test/util/fixtures";
 import { getAst, getTreePathAtCursor } from "../../../util/ast";
@@ -55,17 +56,15 @@ export async function testRootPathContext(
   );
   const workspaceDir = (await ide.getWorkspaceDirs())[0];
   const testFolderPath = path.join(workspaceDir, folderName);
-  fs.cpSync(folderPath, testFolderPath, {
-    recursive: true,
-    force: true,
+  await vscode.workspace.fs.copy(vscode.Uri.file(folderPath), vscode.Uri.file(testFolderPath), {
+    overwrite: true,
   });
 
   // Get results of root path context
   const startPath = path.join(testFolderPath, relativeFilepath);
-  const [prefix, suffix] = splitTextAtPosition(
-    fs.readFileSync(startPath, "utf8"),
-    position,
-  );
+  const fileContent = await vscode.workspace.fs.readFile(vscode.Uri.file(startPath));
+  const text = new TextDecoder("utf-8").decode(fileContent);
+  const [prefix, suffix] = splitTextAtPosition(text, position);
   const fileContents = prefix + suffix;
   const ast = await getAst(startPath, fileContents);
   if (!ast) {

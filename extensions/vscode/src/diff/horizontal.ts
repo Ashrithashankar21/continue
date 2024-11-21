@@ -25,7 +25,7 @@ async function readFile(path: string): Promise<string> {
 }
 
 async function writeFile(uri: vscode.Uri, contents: string) {
-  await vscode.workspace.fs.writeFile(uri, new TextEncoder().encode(contents));
+  await vscode.workspace.vscode.workspace.fs.writeFile(uri, new TextEncoder().encode(contents));
 }
 
 // THIS IS LOCAL
@@ -44,8 +44,8 @@ export class DiffManager {
 
   private async setupDirectory() {
     // Make sure the diff directory exists
-    if (!fs.existsSync(DIFF_DIRECTORY)) {
-      fs.mkdirSync(DIFF_DIRECTORY, {
+    if (!vscode.workspace.fs.existsSync(DIFF_DIRECTORY)) {
+      vscode.workspace.fs.mkdirSync(DIFF_DIRECTORY, {
         recursive: true,
       });
     }
@@ -81,7 +81,7 @@ export class DiffManager {
       // and there aren't write permissions to the root directory
       // and writing these to local causes separate issues
       // because the vscode.diff command will always try to read from remote
-      vscode.workspace.fs.createDirectory(uriFromFilePath(this.remoteTmpDir));
+      vscode.workspace.vscode.workspace.fs.createDirectory(uriFromFilePath(this.remoteTmpDir));
       return path.join(
         this.remoteTmpDir,
         this.escapeFilepath(originalFilepath),
@@ -96,7 +96,7 @@ export class DiffManager {
   ): Promise<vscode.TextEditor | undefined> {
     // If the file doesn't yet exist or the basename is a single digit number (vscode terminal), don't open the diff editor
     try {
-      await vscode.workspace.fs.stat(uriFromFilePath(newFilepath));
+      await vscode.workspace.vscode.workspace.fs.stat(uriFromFilePath(newFilepath));
     } catch (e) {
       console.log("File doesn't exist, not opening diff editor", e);
       return undefined;
@@ -214,7 +214,7 @@ export class DiffManager {
       } catch {}
     }
     this.diffs.delete(diffInfo.newFilepath);
-    vscode.workspace.fs.delete(uriFromFilePath(diffInfo.newFilepath));
+    vscode.workspace.vscode.workspace.fs.delete(uriFromFilePath(diffInfo.newFilepath));
   }
 
   private inferNewFilepath() {

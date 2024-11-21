@@ -19,14 +19,14 @@ globalThis.TextDecoder = TextDecoder;
 // Trying to delete this when for some reason SQLite is still in use causes tests to fail
 // globalThis.beforeAll(() => {
 //   // We can ignore TS warnings here since we set this explicitly in `./jest.global-setup.ts`
-//   if (fs.existsSync(process.env.CONTINUE_GLOBAL_DIR!)) {
-//     fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
+//   if (vscode.workspace.fs.existsSync(process.env.CONTINUE_GLOBAL_DIR!)) {
+//     vscode.workspace.fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
 //   }
 // });
 
 // globalThis.afterAll(() => {
 //   // We can ignore TS warnings here since we set this explicitly in `./jest.global-setup.ts`
-//   if (fs.existsSync(process.env.CONTINUE_GLOBAL_DIR!)) {
-//     fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
+//   if (vscode.workspace.fs.existsSync(process.env.CONTINUE_GLOBAL_DIR!)) {
+//     vscode.workspace.fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
 //   }
 // });

@@ -8,5 +8,8 @@
   },
   "scripts": {
     "prepare": "husky"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.95.0"
   }
 }

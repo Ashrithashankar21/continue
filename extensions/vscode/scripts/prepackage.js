@@ -1,4 +1,3 @@
-const fs = require("fs");
 const ncp = require("ncp").ncp;
 const path = require("path");
 const { rimrafSync } = require("rimraf");
@@ -12,12 +11,15 @@ const { copyConfigSchema } = require("./utils");
 // Clear folders that will be packaged to ensure clean slate
 rimrafSync(path.join(__dirname, "..", "bin"));
 rimrafSync(path.join(__dirname, "..", "out"));
-fs.mkdirSync(path.join(__dirname, "..", "out", "node_modules"), {
-  recursive: true,
-});
+vscode.workspace.fs.mkdirSync(
+  path.join(__dirname, "..", "out", "node_modules"),
+  {
+    recursive: true,
+  },
+);
 const guiDist = path.join(__dirname, "..", "..", "..", "gui", "dist");
-if (!fs.existsSync(guiDist)) {
-  fs.mkdirSync(guiDist, { recursive: true });
+if (!vscode.workspace.fs.existsSync(guiDist)) {
+  vscode.workspace.fs.mkdirSync(guiDist, { recursive: true });
 }
 
 // Get the target to package for
@@ -82,9 +84,11 @@ const exe = os === "win32" ? ".exe" : "";
   );
 
   const indexHtmlPath = path.join(intellijExtensionWebviewPath, "index.html");
-  fs.copyFileSync(indexHtmlPath, "tmp_index.html");
+  vscode.workspace.fs.copyFileSync(indexHtmlPath, "tmp_index.html");
   rimrafSync(intellijExtensionWebviewPath);
-  fs.mkdirSync(intellijExtensionWebviewPath, { recursive: true });
+  vscode.workspace.fs.mkdirSync(intellijExtensionWebviewPath, {
+    recursive: true,
+  });
 
   await new Promise((resolve, reject) => {
     ncp("dist", intellijExtensionWebviewPath, (error) => {
@@ -100,14 +104,14 @@ const exe = os === "win32" ? ".exe" : "";
   });
 
   // Put back index.html
-  if (fs.existsSync(indexHtmlPath)) {
+  if (vscode.workspace.fs.existsSync(indexHtmlPath)) {
     rimrafSync(indexHtmlPath);
   }
-  fs.copyFileSync("tmp_index.html", indexHtmlPath);
-  fs.unlinkSync("tmp_index.html");
+  vscode.workspace.fs.copyFileSync("tmp_index.html", indexHtmlPath);
+  vscode.workspace.fs.unlinkSync("tmp_index.html");
 
   // Copy over other misc. files
-  fs.copyFileSync(
+  vscode.workspace.fs.copyFileSync(
     "../extensions/vscode/gui/onigasm.wasm",
     path.join(intellijExtensionWebviewPath, "onigasm.wasm"),
   );
@@ -116,7 +120,7 @@ const exe = os === "win32" ? ".exe" : "";
 
   // Then copy over the dist folder to the VSCode extension //
   const vscodeGuiPath = path.join("../extensions/vscode/gui");
-  fs.mkdirSync(vscodeGuiPath, { recursive: true });
+  vscode.workspace.fs.mkdirSync(vscodeGuiPath, { recursive: true });
   await new Promise((resolve, reject) => {
     ncp("dist", vscodeGuiPath, (error) => {
       if (error) {
@@ -132,17 +136,21 @@ const exe = os === "win32" ? ".exe" : "";
     });
   });
 
-  if (!fs.existsSync(path.join("dist", "assets", "index.js"))) {
+  if (
+    !vscode.workspace.fs.existsSync(path.join("dist", "assets", "index.js"))
+  ) {
     throw new Error("gui build did not produce index.js");
   }
-  if (!fs.existsSync(path.join("dist", "assets", "index.css"))) {
+  if (
+    !vscode.workspace.fs.existsSync(path.join("dist", "assets", "index.css"))
+  ) {
     throw new Error("gui build did not produce index.css");
   }
 
   // Copy over native / wasm modules //
   process.chdir("../extensions/vscode");
 
-  fs.mkdirSync("bin", { recursive: true });
+  vscode.workspace.fs.mkdirSync("bin", { recursive: true });
 
   // onnxruntime-node
   await new Promise((resolve, reject) => {
@@ -187,8 +195,8 @@ const exe = os === "win32" ? ".exe" : "";
             "../bin/napi-v3/linux/x64",
             file,
           );
-          if (fs.existsSync(filepath)) {
-            fs.rmSync(filepath);
+          if (vscode.workspace.fs.existsSync(filepath)) {
+            vscode.workspace.fs.rmSync(filepath);
           }
         });
       }
@@ -199,7 +207,7 @@ const exe = os === "win32" ? ".exe" : "";
   console.log("[info] Copied onnxruntime-node");
 
   // tree-sitter-wasm
-  fs.mkdirSync("out", { recursive: true });
+  vscode.workspace.fs.mkdirSync("out", { recursive: true });
 
   await new Promise((resolve, reject) => {
     ncp(
@@ -225,7 +233,7 @@ const exe = os === "win32" ? ".exe" : "";
   ];
 
   for (const f of filesToCopy) {
-    fs.copyFileSync(
+    vscode.workspace.fs.copyFileSync(
       path.join(__dirname, f),
       path.join(__dirname, "..", "out", path.basename(f)),
     );
@@ -293,7 +301,7 @@ const exe = os === "win32" ? ".exe" : "";
     rimrafSync(`node_modules/${toCopy}`);
 
     // Ensure the temporary directory exists
-    fs.mkdirSync(tempDir, { recursive: true });
+    vscode.workspace.fs.mkdirSync(tempDir, { recursive: true });
 
     try {
       // Move to the temporary directory
@@ -304,7 +312,9 @@ const exe = os === "win32" ? ".exe" : "";
 
       console.log(
         `Contents of: ${packageName}`,
-        fs.readdirSync(path.join(tempDir, "node_modules", toCopy)),
+        vscode.workspace.fs.readdirSync(
+          path.join(tempDir, "node_modules", toCopy),
+        ),
       );
 
       // Without this it seems the file isn't completely written to disk
@@ -374,18 +384,20 @@ const exe = os === "win32" ? ".exe" : "";
       execCmdSync(
         "cd ../../core/node_modules/sqlite3 && tar -xvzf build.tar.gz",
       );
-      fs.unlinkSync("../../core/node_modules/sqlite3/build.tar.gz");
+      vscode.workspace.fs.unlinkSync(
+        "../../core/node_modules/sqlite3/build.tar.gz",
+      );
     }
 
     // Download and unzip esbuild
     console.log("[info] Downloading pre-built esbuild binary");
     rimrafSync("node_modules/@esbuild");
-    fs.mkdirSync("node_modules/@esbuild", { recursive: true });
+    vscode.workspace.fs.mkdirSync("node_modules/@esbuild", { recursive: true });
     execCmdSync(
       `curl -o node_modules/@esbuild/esbuild.zip https://continue-server-binaries.s3.us-west-1.amazonaws.com/${target}/esbuild.zip`,
     );
     execCmdSync(`cd node_modules/@esbuild && unzip esbuild.zip`);
-    fs.unlinkSync("node_modules/@esbuild/esbuild.zip");
+    vscode.workspace.fs.unlinkSync("node_modules/@esbuild/esbuild.zip");
   } else {
     // Download esbuild from npm in tmp and copy over
     console.log("npm installing esbuild binary");
@@ -438,13 +450,15 @@ const exe = os === "win32" ? ".exe" : "";
     "workerpool",
   ];
 
-  fs.mkdirSync("out/node_modules", { recursive: true });
+  vscode.workspace.fs.mkdirSync("out/node_modules", { recursive: true });
 
   await Promise.all(
     NODE_MODULES_TO_COPY.map(
       (mod) =>
         new Promise((resolve, reject) => {
-          fs.mkdirSync(`out/node_modules/${mod}`, { recursive: true });
+          vscode.workspace.fs.mkdirSync(`out/node_modules/${mod}`, {
+            recursive: true,
+          });
           ncp(
             `node_modules/${mod}`,
             `out/node_modules/${mod}`,
@@ -466,7 +480,7 @@ const exe = os === "win32" ? ".exe" : "";
   console.log(`[info] Copied ${NODE_MODULES_TO_COPY.join(", ")}`);
 
   // Copy over any worker files
-  fs.cpSync(
+  vscode.workspace.fs.cpSync(
     "node_modules/jsdom/lib/jsdom/living/xhr/xhr-sync-worker.js",
     "out/xhr-sync-worker.js",
   );
@@ -481,11 +495,12 @@ const exe = os === "win32" ? ".exe" : "";
 
     // onnx runtime bindngs
     `bin/napi-v3/${os}/${arch}/onnxruntime_binding.node`,
-    `bin/napi-v3/${os}/${arch}/${os === "darwin"
-      ? "libonnxruntime.1.14.0.dylib"
-      : os === "linux"
-        ? "libonnxruntime.so.1.14.0"
-        : "onnxruntime.dll"
+    `bin/napi-v3/${os}/${arch}/${
+      os === "darwin"
+        ? "libonnxruntime.1.14.0.dylib"
+        : os === "linux"
+          ? "libonnxruntime.so.1.14.0"
+          : "onnxruntime.dll"
     }`,
     "builtin-themes/dark_modern.json",
 
@@ -520,15 +535,17 @@ const exe = os === "win32" ? ".exe" : "";
 
     // out/node_modules (to be accessed by extension.js)
     `out/node_modules/@vscode/ripgrep/bin/rg${exe}`,
-    `out/node_modules/@esbuild/${target === "win32-arm64"
-      ? "esbuild.exe"
-      : target === "win32-x64"
-        ? "win32-x64/esbuild.exe"
-        : `${target}/bin/esbuild`
+    `out/node_modules/@esbuild/${
+      target === "win32-arm64"
+        ? "esbuild.exe"
+        : target === "win32-x64"
+          ? "win32-x64/esbuild.exe"
+          : `${target}/bin/esbuild`
     }`,
-    `out/node_modules/@lancedb/vectordb-${os === "win32"
-      ? "win32-x64-msvc"
-      : `${target}${os === "linux" ? "-gnu" : ""}`
+    `out/node_modules/@lancedb/vectordb-${
+      os === "win32"
+        ? "win32-x64-msvc"
+        : `${target}${os === "linux" ? "-gnu" : ""}`
     }/index.node`,
     `out/node_modules/esbuild/lib/main.js`,
     `out/node_modules/esbuild/bin/esbuild`,

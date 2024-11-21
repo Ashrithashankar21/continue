@@ -1,6 +1,7 @@
-import * as fs from "node:fs";
 import { homedir } from "node:os";
 import path from "path";
+
+import * as vscode from "vscode";
 
 import { languageForFilepath } from "../../autocomplete/constants/AutocompleteLanguageInfo.js";
 import { SlashCommand } from "../../index.js";
@@ -84,10 +85,13 @@ const ShareSlashCommand: SlashCommand = {
       outputDir = outputDir.replace(/^./, workspaceDirectory);
     }
 
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
+    const outputDirUri = vscode.Uri.file(outputDir);
 
+    try {
+      await vscode.workspace.fs.stat(outputDirUri);
+    } catch {
+      await vscode.workspace.fs.createDirectory(outputDirUri);
+    }
     const dtString = asBasicISOString(getOffsetDatetime(now));
     const outPath = path.join(outputDir, `${dtString}_session.md`); //TODO: more flexible naming?
 

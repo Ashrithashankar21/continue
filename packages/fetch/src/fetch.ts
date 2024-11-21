@@ -36,7 +36,7 @@ export function fetchwithRequestOptions(
       : requestOptions?.caBundlePath;
   if (customCerts) {
     ca.push(
-      ...customCerts.map((customCert) => fs.readFileSync(customCert, "utf8")),
+      ...customCerts.map((customCert) => vscode.workspace.fs.readFileSync(customCert, "utf8")),
     );
   }
 
@@ -53,11 +53,11 @@ export function fetchwithRequestOptions(
 
   // Handle ClientCertificateOptions
   if (requestOptions?.clientCertificate) {
-    agentOptions.cert = fs.readFileSync(
+    agentOptions.cert = vscode.workspace.fs.readFileSync(
       requestOptions.clientCertificate.cert,
       "utf8",
     );
-    agentOptions.key = fs.readFileSync(
+    agentOptions.key = vscode.workspace.fs.readFileSync(
       requestOptions.clientCertificate.key,
       "utf8",
     );

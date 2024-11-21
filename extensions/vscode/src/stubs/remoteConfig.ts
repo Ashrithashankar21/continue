@@ -128,11 +128,11 @@ export class RemoteConfigSync {
       );
       const { configJson, configJs } = await client.getConfig();
 
-      fs.writeFileSync(
+      vscode.workspace.fs.writeFileSync(
         getConfigJsonPathForRemote(remoteConfigServerUrl),
         configJson,
       );
-      fs.writeFileSync(
+      vscode.workspace.fs.writeFileSync(
         getConfigJsPathForRemote(remoteConfigServerUrl),
         configJs,
       );

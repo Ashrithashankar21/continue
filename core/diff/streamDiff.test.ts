@@ -1,10 +1,12 @@
-import fs from "node:fs";
 import path from "node:path";
 
 // @ts-ignore no typings available
 import { changed, diff as myersDiff } from "myers-diff";
+import * as vscode from "vscode";
+
 import { streamDiff } from "../diff/streamDiff.js";
 import { DiffLine, DiffLineType } from "../index.js";
+
 import { generateLines } from "./util.js";
 
 // "modification" is an extra type used to represent an "old" + "new" diff line
@@ -60,8 +62,9 @@ async function expectDiff(file: string) {
     "test-examples",
     file + ".diff",
   );
-  const testFileContents = fs.readFileSync(testFilePath, "utf-8");
-  const [oldText, newText, expectedDiff] = testFileContents
+  const testFileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(testFilePath));
+  const [oldText, newText, expectedDiff] = new TextDecoder("utf-8")
+    .decode(testFileContents)
     .split("\n---\n")
     .map((s) => s.replace(/^\n+/, "").trimEnd());
   const oldLines = oldText.split("\n");
@@ -73,9 +76,9 @@ async function expectDiff(file: string) {
     console.log(
       "Expected diff was empty. Writing computed diff to the test file",
     );
-    fs.writeFileSync(
-      testFilePath,
-      `${oldText}\n\n---\n\n${newText}\n\n---\n\n${displayedDiff}`,
+    await vscode.workspace.fs.writeFile(
+      vscode.Uri.file(testFilePath),
+      new TextEncoder().encode(`${oldText}\n\n---\n\n${newText}\n\n---\n\n${displayedDiff}`),
     );
 
     throw new Error("Expected diff is empty");

@@ -170,6 +170,13 @@
       "command": "node",
       "args": ["${workspaceFolder}/scripts/uninstall.js"],
       "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "watch-web",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": ["$ts-webpack-watch", "$tslint-webpack-watch"]
     }
   ]
 }

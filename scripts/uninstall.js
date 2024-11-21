@@ -21,8 +21,8 @@ const directories = [
 ];
 
 directories.forEach((dir) => {
-  if (fs.existsSync(dir)) {
-    fs.rmdirSync(dir, { recursive: true });
+  if (vscode.workspace.fs.existsSync(dir)) {
+    vscode.workspace.fs.rmdirSync(dir, { recursive: true });
     console.log(`Removed ${dir}`);
   } else {
     console.log(`${dir} not found`);
