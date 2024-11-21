@@ -32,11 +32,11 @@ Moonshot AI currently provides the following models:
 
 ## Configuration Options
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `apiKey` | Moonshot API key | Required |
-| `apiBase` | API base URL | `https://api.moonshot.cn/v1/` |
-| `model` | Model name to use | `moonshot-v1-8k` |
+| Option    | Description       | Default                       |
+| --------- | ----------------- | ----------------------------- |
+| `apiKey`  | Moonshot API key  | Required                      |
+| `apiBase` | API base URL      | `https://api.moonshot.cn/v1/` |
+| `model`   | Model name to use | `moonshot-v1-8k`              |
 
 ## Example
 
@@ -58,3 +58,4 @@ Here's a complete configuration example:
     }
   ]
 }
+```

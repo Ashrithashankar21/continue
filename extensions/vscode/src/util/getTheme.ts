@@ -51,7 +51,9 @@ export function getTheme() {
         for (const theme of extension.packageJSON.contributes.themes) {
           if (theme.label === colorTheme) {
             const themePath = path.join(extension.extensionPath, theme.path);
-            currentTheme = vscode.workspace.fs.readFileSync(themePath).toString();
+            currentTheme = vscode.workspace.fs
+              .readFileSync(themePath)
+              .toString();
             break;
           }
         }

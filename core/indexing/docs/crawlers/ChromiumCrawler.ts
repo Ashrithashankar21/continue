@@ -200,7 +200,9 @@ export class ChromiumInstaller {
 
   async isInstalled() {
     try {
-      await vscode.workspace.fs.stat(vscode.Uri.file((await getChromiumPath()).toString()));
+      await vscode.workspace.fs.stat(
+        vscode.Uri.file((await getChromiumPath()).toString()),
+      );
       return true;
     } catch {
       return false;

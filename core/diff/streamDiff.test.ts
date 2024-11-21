@@ -62,7 +62,9 @@ async function expectDiff(file: string) {
     "test-examples",
     file + ".diff",
   );
-  const testFileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(testFilePath));
+  const testFileContents = await vscode.workspace.fs.readFile(
+    vscode.Uri.file(testFilePath),
+  );
   const [oldText, newText, expectedDiff] = new TextDecoder("utf-8")
     .decode(testFileContents)
     .split("\n---\n")
@@ -78,7 +80,9 @@ async function expectDiff(file: string) {
     );
     await vscode.workspace.fs.writeFile(
       vscode.Uri.file(testFilePath),
-      new TextEncoder().encode(`${oldText}\n\n---\n\n${newText}\n\n---\n\n${displayedDiff}`),
+      new TextEncoder().encode(
+        `${oldText}\n\n---\n\n${newText}\n\n---\n\n${displayedDiff}`,
+      ),
     );
 
     throw new Error("Expected diff is empty");

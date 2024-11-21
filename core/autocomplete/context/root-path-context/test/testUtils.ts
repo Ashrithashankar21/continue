@@ -56,13 +56,19 @@ export async function testRootPathContext(
   );
   const workspaceDir = (await ide.getWorkspaceDirs())[0];
   const testFolderPath = path.join(workspaceDir, folderName);
-  await vscode.workspace.fs.copy(vscode.Uri.file(folderPath), vscode.Uri.file(testFolderPath), {
-    overwrite: true,
-  });
+  await vscode.workspace.fs.copy(
+    vscode.Uri.file(folderPath),
+    vscode.Uri.file(testFolderPath),
+    {
+      overwrite: true,
+    },
+  );
 
   // Get results of root path context
   const startPath = path.join(testFolderPath, relativeFilepath);
-  const fileContent = await vscode.workspace.fs.readFile(vscode.Uri.file(startPath));
+  const fileContent = await vscode.workspace.fs.readFile(
+    vscode.Uri.file(startPath),
+  );
   const text = new TextDecoder("utf-8").decode(fileContent);
   const [prefix, suffix] = splitTextAtPosition(text, position);
   const fileContents = prefix + suffix;

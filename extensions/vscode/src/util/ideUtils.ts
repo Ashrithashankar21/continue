@@ -169,7 +169,9 @@ export class VsCodeIdeUtils {
 
   async fileExists(filepath: string): Promise<boolean> {
     try {
-      await vscode.workspace.vscode.workspace.fs.stat(uriFromFilePath(filepath));
+      await vscode.workspace.vscode.workspace.fs.stat(
+        uriFromFilePath(filepath),
+      );
       return true;
     } catch {
       return false;
@@ -299,7 +301,9 @@ export class VsCodeIdeUtils {
     range: vscode.Range,
   ): Promise<string> {
     const contents = new TextDecoder().decode(
-      await vscode.workspace.vscode.workspace.fs.readFile(vscode.Uri.file(filepath)),
+      await vscode.workspace.vscode.workspace.fs.readFile(
+        vscode.Uri.file(filepath),
+      ),
     );
     const lines = contents.split("\n");
     return `${lines

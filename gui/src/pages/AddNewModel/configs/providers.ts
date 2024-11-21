@@ -125,9 +125,7 @@ export const providers: Partial<Record<ModelProvider, ProviderInfo>> = {
     tags: [ModelProviderTags.RequiresApiKey],
     refPage: "moonshot",
     apiKeyUrl: "https://docs.moonshot.cn/docs/getting-started",
-    packages: [
-      models.moonshotChat,
-    ],
+    packages: [models.moonshotChat],
     collectInputFor: [
       {
         inputType: "text",

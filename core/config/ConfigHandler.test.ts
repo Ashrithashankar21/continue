@@ -28,12 +28,15 @@ describe.skip("Test the ConfigHandler and E2E config loading", () => {
     config.systemMessage = "SYSTEM";
     return config;
 }`;
-    await vscode.workspace.fs.writeFile(vscode.Uri.file(getConfigTsPath()), new Uint8Array(Buffer.from(configTs, "utf-8"))); 
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await vscode.workspace.fs.writeFile(
+      vscode.Uri.file(getConfigTsPath()),
+      new Uint8Array(Buffer.from(configTs, "utf-8")),
+    );
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const config = await testConfigHandler.reloadConfig();
     /**
      * @ts-ignore is applied because this test is skipped
-     * 
+     *
      */
     // @ts-ignore
     expect(config.systemMessage).toBe("SYSTEM");
@@ -42,7 +45,9 @@ describe.skip("Test the ConfigHandler and E2E config loading", () => {
   test.skip("should acknowledge override from .continuerc.json", async () => {
     await vscode.workspace.fs.writeFile(
       vscode.Uri.file(path.join(TEST_DIR, ".continuerc.json")),
-      new Uint8Array(Buffer.from(JSON.stringify({ systemMessage: "SYSTEM2" }), "utf-8"))
+      new Uint8Array(
+        Buffer.from(JSON.stringify({ systemMessage: "SYSTEM2" }), "utf-8"),
+      ),
     );
     const config = await testConfigHandler.reloadConfig();
     /**

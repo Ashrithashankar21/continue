@@ -8,18 +8,18 @@ import { IpcIde } from "./IpcIde";
 import { IpcMessenger } from "./IpcMessenger";
 import { setupCoreLogging } from "./logging";
 import { TcpMessenger } from "./TcpMessenger";
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 async function appendToFile(uri: vscode.Uri, content: string) {
   try {
-      // Read the existing content
-      const existingContent = await vscode.workspace.fs.readFile(uri);
-      const newContent = Buffer.concat([existingContent, Buffer.from(content)]);
-      
-      // Write the appended content back
-      await vscode.workspace.fs.writeFile(uri, newContent);
+    // Read the existing content
+    const existingContent = await vscode.workspace.fs.readFile(uri);
+    const newContent = Buffer.concat([existingContent, Buffer.from(content)]);
+
+    // Write the appended content back
+    await vscode.workspace.fs.writeFile(uri, newContent);
   } catch (error) {
-      console.error("Error appending to file:", error);
+    console.error("Error appending to file:", error);
   }
 }
 
@@ -45,11 +45,14 @@ program.action(async () => {
     const ide = new IpcIde(messenger);
     const promptLogsPath = vscode.Uri.file(getPromptLogsPath());
     const core = new Core(messenger, ide, async (text) => {
-    appendToFile(promptLogsPath, text + "\n\n");
+      appendToFile(promptLogsPath, text + "\n\n");
     });
     console.log("Core started");
   } catch (e) {
-    vscode.workspace.fs.writeFile(vscode.Uri.file("./error.log"), Buffer.from(`${new Date().toISOString()} ${e}\n`));
+    vscode.workspace.fs.writeFile(
+      vscode.Uri.file("./error.log"),
+      Buffer.from(`${new Date().toISOString()} ${e}\n`),
+    );
     console.log("Error: ", e);
     process.exit(1);
   }

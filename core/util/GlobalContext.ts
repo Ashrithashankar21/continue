@@ -27,19 +27,27 @@ export class GlobalContext {
     key: T,
     value: GlobalContextType[T],
   ) {
-    if (!vscode.workspace.fs.stat(vscode.Uri.file(getGlobalContextFilePath())).then(() => true)) {
+    if (
+      !vscode.workspace.fs
+        .stat(vscode.Uri.file(getGlobalContextFilePath()))
+        .then(() => true)
+    ) {
       await vscode.workspace.fs.writeFile(
         vscode.Uri.file(getGlobalContextFilePath()),
-        new TextEncoder().encode(JSON.stringify(
-          {
-            [key]: value,
-          },
-          null,
-          2,
-        )),
+        new TextEncoder().encode(
+          JSON.stringify(
+            {
+              [key]: value,
+            },
+            null,
+            2,
+          ),
+        ),
       );
     } else {
-      const data = vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContextFilePath()));
+      const data = vscode.workspace.fs.readFile(
+        vscode.Uri.file(getGlobalContextFilePath()),
+      );
 
       let parsed;
       try {
@@ -60,11 +68,17 @@ export class GlobalContext {
   get<T extends keyof GlobalContextType>(
     key: T,
   ): GlobalContextType[T] | undefined {
-    if(!vscode.workspace.fs.stat(vscode.Uri.file(getGlobalContextFilePath())).then(() => true)){
+    if (
+      !vscode.workspace.fs
+        .stat(vscode.Uri.file(getGlobalContextFilePath()))
+        .then(() => true)
+    ) {
       return undefined;
     }
 
-    const data = vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContextFilePath()));
+    const data = vscode.workspace.fs.readFile(
+      vscode.Uri.file(getGlobalContextFilePath()),
+    );
     try {
       const parsed = JSON.parse(data.toString());
       return parsed[key];

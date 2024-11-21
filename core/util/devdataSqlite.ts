@@ -1,4 +1,3 @@
-
 import { open } from "sqlite";
 import sqlite3 from "sqlite3";
 import * as vscode from "vscode";

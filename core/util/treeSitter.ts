@@ -187,7 +187,9 @@ export async function getQueryForFile(
   if (!vscode.workspace.fs.stat(vscode.Uri.file(sourcePath)).then(() => true)) {
     return undefined;
   }
-  const querySource = vscode.workspace.fs.readFile(vscode.Uri.file(sourcePath)).toString();
+  const querySource = vscode.workspace.fs
+    .readFile(vscode.Uri.file(sourcePath))
+    .toString();
 
   const query = language.query(querySource);
   return query;

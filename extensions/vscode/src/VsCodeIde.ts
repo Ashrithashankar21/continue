@@ -52,10 +52,12 @@ class VsCodeIde implements IDE {
   }
   async fileExists(filepath: string): Promise<boolean> {
     const absPath = await this.ideUtils.resolveAbsFilepathInWorkspace(filepath);
-    return vscode.workspace.vscode.workspace.fs.stat(uriFromFilePath(absPath)).then(
-      () => true,
-      () => false,
-    );
+    return vscode.workspace.vscode.workspace.fs
+      .stat(uriFromFilePath(absPath))
+      .then(
+        () => true,
+        () => false,
+      );
   }
 
   async gotoDefinition(location: Location): Promise<RangeInFile[]> {
@@ -285,7 +287,9 @@ class VsCodeIde implements IDE {
     const pathToLastModified: { [path: string]: number } = {};
     await Promise.all(
       files.map(async (file) => {
-        const stat = await vscode.workspace.vscode.workspace.fs.stat(uriFromFilePath(file));
+        const stat = await vscode.workspace.vscode.workspace.fs.stat(
+          uriFromFilePath(file),
+        );
         pathToLastModified[file] = stat.mtime;
       }),
     );
@@ -340,7 +344,8 @@ class VsCodeIde implements IDE {
       vscode.workspace.workspaceFolders?.map((folder) => folder.uri) || [];
     const configs: ContinueRcJson[] = [];
     for (const workspaceDir of workspaceDirs) {
-      const files = await vscode.workspace.vscode.workspace.fs.readDirectory(workspaceDir);
+      const files =
+        await vscode.workspace.vscode.workspace.fs.readDirectory(workspaceDir);
       for (const [filename, type] of files) {
         if (
           (type === vscode.FileType.File ||
@@ -592,7 +597,9 @@ class VsCodeIde implements IDE {
   }
 
   async listDir(dir: string): Promise<[string, FileType][]> {
-    return vscode.workspace.vscode.workspace.fs.readDirectory(uriFromFilePath(dir)) as any;
+    return vscode.workspace.vscode.workspace.fs.readDirectory(
+      uriFromFilePath(dir),
+    ) as any;
   }
 
   getIdeSettingsSync(): IdeSettings {

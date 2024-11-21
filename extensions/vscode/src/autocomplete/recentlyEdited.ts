@@ -110,13 +110,15 @@ export class RecentlyEditedTracker {
   private async _getContentsForRange(
     entry: Omit<VsCodeRecentlyEditedRange, "lines" | "symbols">,
   ): Promise<string> {
-    return vscode.workspace.vscode.workspace.fs.readFile(entry.uri).then((content) =>
-      content
-        .toString()
-        .split("\n")
-        .slice(entry.range.start.line, entry.range.end.line + 1)
-        .join("\n"),
-    );
+    return vscode.workspace.vscode.workspace.fs
+      .readFile(entry.uri)
+      .then((content) =>
+        content
+          .toString()
+          .split("\n")
+          .slice(entry.range.start.line, entry.range.end.line + 1)
+          .join("\n"),
+      );
   }
 
   public async getRecentlyEditedRanges(): Promise<RecentlyEditedRange[]> {

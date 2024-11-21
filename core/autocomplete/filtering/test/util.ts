@@ -44,7 +44,7 @@ export async function testAutocompleteFiltering(
 
   await vscode.workspace.fs.writeFile(
     vscode.Uri.file(filepath),
-    new Uint8Array(Buffer.from(test.input.replace(FIM_DELIMITER, "")))
+    new Uint8Array(Buffer.from(test.input.replace(FIM_DELIMITER, ""))),
   );
   // Prepare completion input and provider
   const completionProvider = new CompletionProvider(

@@ -59,11 +59,18 @@ async function expectDiff(file: string) {
     "test-examples",
     file + ".diff",
   );
-  const testFileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(testFilePath));
-  const contentArray = testFileContents.toString().split("\n---\n").map((s) => s.trim());
-  
+  const testFileContents = await vscode.workspace.fs.readFile(
+    vscode.Uri.file(testFilePath),
+  );
+  const contentArray = testFileContents
+    .toString()
+    .split("\n---\n")
+    .map((s) => s.trim());
+
   if (contentArray.length < 3) {
-    throw new Error("The diff file does not contain the expected sections for old file, new file, and expected diff.");
+    throw new Error(
+      "The diff file does not contain the expected sections for old file, new file, and expected diff.",
+    );
   }
   const [oldFile, newFile, expectedDiff] = contentArray;
   const { ourDiffs: streamDiffs } = await collectDiffs(oldFile, newFile, file);
@@ -75,9 +82,11 @@ async function expectDiff(file: string) {
     );
     await vscode.workspace.fs.writeFile(
       vscode.Uri.file(testFilePath),
-      new TextEncoder().encode(`${oldFile}\n\n---\n\n${newFile}\n\n---\n\n${displayDiff(
-        continueMyersDiff(oldFile, newFile),
-      )}`),
+      new TextEncoder().encode(
+        `${oldFile}\n\n---\n\n${newFile}\n\n---\n\n${displayDiff(
+          continueMyersDiff(oldFile, newFile),
+        )}`,
+      ),
     );
 
     throw new Error("Expected diff is empty");

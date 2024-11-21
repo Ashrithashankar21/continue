@@ -252,13 +252,21 @@ export class VsCodeExtension {
 
     // Listen for file saving - use global file watcher so that changes
     // from outside the window are also caught
-    vscode.workspace.fs.watchFile(getConfigJsonPath(), { interval: 1000 }, async (stats) => {
-      await this.configHandler.reloadConfig();
-    });
+    vscode.workspace.fs.watchFile(
+      getConfigJsonPath(),
+      { interval: 1000 },
+      async (stats) => {
+        await this.configHandler.reloadConfig();
+      },
+    );
 
-    vscode.workspace.fs.watchFile(getConfigTsPath(), { interval: 1000 }, (stats) => {
-      this.configHandler.reloadConfig();
-    });
+    vscode.workspace.fs.watchFile(
+      getConfigTsPath(),
+      { interval: 1000 },
+      (stats) => {
+        this.configHandler.reloadConfig();
+      },
+    );
 
     vscode.workspace.onDidSaveTextDocument(async (event) => {
       // Listen for file changes in the workspace
@@ -329,7 +337,9 @@ export class VsCodeExtension {
           // To make sure continue-proxy models and anything else requiring it get updated access token
           this.configHandler.reloadConfig();
         });
-        void this.core.invoke("didChangeControlPlaneSessionInfo", { sessionInfo });
+        void this.core.invoke("didChangeControlPlaneSessionInfo", {
+          sessionInfo,
+        });
       }
     });
 

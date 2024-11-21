@@ -62,13 +62,18 @@ export class CodebaseIndexer {
     const lanceDbFolder = getLanceDbPath();
 
     try {
-      await vscode.workspace.fs.delete(vscode.Uri.file(sqliteFilepath), { recursive: true });
+      await vscode.workspace.fs.delete(vscode.Uri.file(sqliteFilepath), {
+        recursive: true,
+      });
     } catch (error) {
       console.error(`Error deleting ${sqliteFilepath} folder: ${error}`);
     }
 
     try {
-      await vscode.workspace.fs.delete(vscode.Uri.file(lanceDbFolder), { recursive: true, useTrash: false });
+      await vscode.workspace.fs.delete(vscode.Uri.file(lanceDbFolder), {
+        recursive: true,
+        useTrash: false,
+      });
     } catch (error) {
       console.error(`Error deleting ${lanceDbFolder}: ${error}`);
     }
@@ -145,9 +150,7 @@ export class CodebaseIndexer {
     }
   }
 
-  async *refreshFiles(
-    files: string[],
-  ): AsyncGenerator<IndexingProgressUpdate> {
+  async *refreshFiles(files: string[]): AsyncGenerator<IndexingProgressUpdate> {
     let progress = 0;
     if (files.length === 0) {
       yield {

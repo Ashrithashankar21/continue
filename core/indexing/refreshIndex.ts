@@ -1,6 +1,5 @@
 import crypto from "node:crypto";
 
-
 import plimit from "p-limit";
 import { open, type Database } from "sqlite";
 import sqlite3 from "sqlite3";
@@ -86,7 +85,12 @@ export class SqliteDb {
   private static indexSqlitePath = getIndexSqlitePath();
 
   static async get() {
-    if (SqliteDb.db && (await vscode.workspace.fs.stat(vscode.Uri.file(SqliteDb.indexSqlitePath)))) {
+    if (
+      SqliteDb.db &&
+      (await vscode.workspace.fs.stat(
+        vscode.Uri.file(SqliteDb.indexSqlitePath),
+      ))
+    ) {
       return SqliteDb.db;
     }
 

@@ -32,12 +32,12 @@ class FileSystemIde implements IDE {
   pathSep(): Promise<string> {
     return Promise.resolve(path.sep);
   }
-  async fileExists(filepath: string): Promise<boolean>{
+  async fileExists(filepath: string): Promise<boolean> {
     try {
-        await vscode.workspace.fs.stat(vscode.Uri.file(filepath));
-        return true;
+      await vscode.workspace.fs.stat(vscode.Uri.file(filepath));
+      return true;
     } catch {
-        return false;
+      return false;
     }
   }
 
@@ -77,16 +77,18 @@ class FileSystemIde implements IDE {
     return Promise.resolve(dir);
   }
   async listDir(dir: string): Promise<[string, FileType][]> {
-    const entries = await vscode.workspace.fs.readDirectory(vscode.Uri.file(dir));
+    const entries = await vscode.workspace.fs.readDirectory(
+      vscode.Uri.file(dir),
+    );
     const all: [string, FileType][] = entries.map(
       ([name, type]: [string, vscode.FileType]) => [
         name,
         type === vscode.FileType.Directory
           ? FileType.Directory
           : type === vscode.FileType.SymbolicLink
-          ? FileType.SymbolicLink
-          : FileType.File,
-      ]
+            ? FileType.SymbolicLink
+            : FileType.File,
+      ],
     );
     return Promise.resolve(all);
   }
@@ -172,7 +174,10 @@ class FileSystemIde implements IDE {
   }
 
   async writeFile(path: string, contents: string): Promise<void> {
-    return vscode.workspace.fs.writeFile(vscode.Uri.file(path), new TextEncoder().encode(contents));
+    return vscode.workspace.fs.writeFile(
+      vscode.Uri.file(path),
+      new TextEncoder().encode(contents),
+    );
   }
 
   showVirtualFile(title: string, contents: string): Promise<void> {
@@ -199,10 +204,10 @@ class FileSystemIde implements IDE {
     return new Promise((resolve, reject) => {
       vscode.workspace.fs.readFile(vscode.Uri.file(filepath)).then(
         (contents) => resolve(new TextDecoder("utf-8").decode(contents)),
-        (err) => reject(err)
+        (err) => reject(err),
       );
-  });
-}
+    });
+  }
 
   getCurrentFile(): Promise<undefined> {
     return Promise.resolve(undefined);

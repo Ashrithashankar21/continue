@@ -7,7 +7,7 @@ const {
   execCmdSync,
   autodetectPlatformAndArch,
 } = require("../scripts/util");
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 // Clean slate
 const bin = path.join(__dirname, "bin");

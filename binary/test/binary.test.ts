@@ -4,7 +4,7 @@ import { FromIdeProtocol, ToIdeProtocol } from "core/protocol/index.js";
 import FileSystemIde from "core/util/filesystem";
 import { IMessenger } from "core/util/messenger";
 import { ReverseMessageIde } from "core/util/reverseMessageIde";
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 import {
   ChildProcessWithoutNullStreams,
   execSync,
@@ -58,21 +58,22 @@ async function initializeContinueGlobalDir() {
   try {
     const dirStat = await vscode.workspace.fs.stat(continueGlobalDirUri);
     if (dirStat) {
-      await vscode.workspace.fs.delete(continueGlobalDirUri, { recursive: true });
+      await vscode.workspace.fs.delete(continueGlobalDirUri, {
+        recursive: true,
+      });
     }
   } catch (error) {
-    if ((error as vscode.FileSystemError).code !== 'FileNotFound') {
-      console.error('Error checking or deleting directory:', error);
+    if ((error as vscode.FileSystemError).code !== "FileNotFound") {
+      console.error("Error checking or deleting directory:", error);
     }
   }
 
   try {
     await vscode.workspace.fs.createDirectory(continueGlobalDirUri);
   } catch (error) {
-    console.error('Error creating directory:', error);
+    console.error("Error creating directory:", error);
   }
 }
 
 // Call the function to ensure the directory is initialized
 initializeContinueGlobalDir();
-

@@ -26,7 +26,7 @@
         // "local" for entirely local development of control plane/proxy
         // "CONTROL_PLANE_ENV": "staging"
       }
-    },
+    }
     // {
     //   "type": "node",
     //   "request": "launch",

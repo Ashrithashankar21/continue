@@ -63,7 +63,7 @@ async function getEntriesFilteredByIgnore(dir: string, ide: IDE) {
   try {
     try {
       await vscode.workspace.fs.stat(vscode.Uri.file(gitIgnorePath));
-    hasIgnoreFile = true;
+      hasIgnoreFile = true;
     } catch {
       hasIgnoreFile = false;
     }
@@ -93,7 +93,7 @@ async function gatherProjectContext(
     const filePath = fullPath;
     const fileContentUint8 = await vscode.workspace.fs.readFile(filePath);
     const fileContent = new TextDecoder("utf-8").decode(fileContentUint8);
-  
+
     if (entry.name.toLowerCase() === "readme.md") {
       context += `README for ${relativePath}:\n${fileContent}\n\n`;
     } else if (LANGUAGE_DEP_MGMT_FILENAMES.includes(entry.name)) {

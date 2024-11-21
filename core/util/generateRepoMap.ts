@@ -51,7 +51,9 @@ class RepoMapGenerator {
     this.writeStream.end();
     this.logRepoMapGeneration();
 
-    return (await vscode.workspace.fs.readFile(vscode.Uri.file(this.repoMapPath))).toString();
+    return (
+      await vscode.workspace.fs.readFile(vscode.Uri.file(this.repoMapPath))
+    ).toString();
   }
 
   private async initializeWriteStream(): Promise<void> {
@@ -112,7 +114,9 @@ class RepoMapGenerator {
     let fileContent: string;
 
     try {
-      fileContent = (await vscode.workspace.fs.readFile(vscode.Uri.file(absolutePath))).toString();
+      fileContent = (
+        await vscode.workspace.fs.readFile(vscode.Uri.file(absolutePath))
+      ).toString();
     } catch (err) {
       console.error(
         "Failed to read file:\n" +

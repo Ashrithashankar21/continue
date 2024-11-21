@@ -20,10 +20,16 @@ function safeParseArray<T>(
 class HistoryManager {
   list(options: ListHistoryOptions): SessionInfo[] {
     const filepath = getSessionsListPath();
-    if (!vscode.workspace.fs.stat(vscode.Uri.file(filepath.toString())).then(() => true)){
+    if (
+      !vscode.workspace.fs
+        .stat(vscode.Uri.file(filepath.toString()))
+        .then(() => true)
+    ) {
       return [];
     }
-    const content = vscode.workspace.fs.readFile(vscode.Uri.file(filepath.toString()));
+    const content = vscode.workspace.fs.readFile(
+      vscode.Uri.file(filepath.toString()),
+    );
 
     let sessions = safeParseArray<SessionInfo>(content.toString()) ?? [];
     sessions = sessions.filter((session: any) => {
@@ -43,14 +49,17 @@ class HistoryManager {
   async delete(sessionId: string) {
     // Delete a session
     const sessionFile = getSessionFilePath(sessionId);
-    if (!vscode.workspace.fs.stat(vscode.Uri.file(sessionFile)).then(() => true)) {
-
+    if (
+      !vscode.workspace.fs.stat(vscode.Uri.file(sessionFile)).then(() => true)
+    ) {
       throw new Error(`Session file ${sessionFile} does not exist`);
     }
     await vscode.workspace.fs.delete(vscode.Uri.file(sessionFile));
     // Read and update the sessions list
     const sessionsListFile = getSessionsListPath();
-    const sessionsListRaw = vscode.workspace.fs.readFile(vscode.Uri.file(sessionsListFile.toString()));
+    const sessionsListRaw = vscode.workspace.fs.readFile(
+      vscode.Uri.file(sessionsListFile.toString()),
+    );
     let sessionsList =
       safeParseArray<SessionInfo>(
         sessionsListRaw.toString(),
@@ -70,8 +79,9 @@ class HistoryManager {
   load(sessionId: string): PersistedSessionInfo {
     try {
       const sessionFile = getSessionFilePath(sessionId);
-      if (!vscode.workspace.fs.stat(vscode.Uri.file(sessionFile)).then(() => true)) {
-
+      if (
+        !vscode.workspace.fs.stat(vscode.Uri.file(sessionFile)).then(() => true)
+      ) {
         throw new Error(`Session file ${sessionFile} does not exist`);
       }
       const session: PersistedSessionInfo = JSON.parse(
@@ -100,14 +110,19 @@ class HistoryManager {
     // Read and update the sessions list
     const sessionsListFilePath = getSessionsListPath();
     try {
-      const rawSessionsList = vscode.workspace.fs.readFile(vscode.Uri.file(sessionsListFilePath.toString()));
+      const rawSessionsList = vscode.workspace.fs.readFile(
+        vscode.Uri.file(sessionsListFilePath.toString()),
+      );
 
       let sessionsList: SessionInfo[];
       try {
         sessionsList = JSON.parse(rawSessionsList.toString());
       } catch (e) {
         if (rawSessionsList.toString().trim() === "") {
-          await vscode.workspace.fs.writeFile(vscode.Uri.file(sessionsListFilePath.toString()), new TextEncoder().encode(JSON.stringify([])));
+          await vscode.workspace.fs.writeFile(
+            vscode.Uri.file(sessionsListFilePath.toString()),
+            new TextEncoder().encode(JSON.stringify([])),
+          );
           sessionsList = [];
         } else {
           throw e;

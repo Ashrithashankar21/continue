@@ -1,7 +1,6 @@
 import ignore from "ignore";
 import * as vscode from "vscode";
 
-
 import { getGlobalContinueIgnorePath } from "../util/paths";
 
 export const DEFAULT_IGNORE_FILETYPES = [
@@ -120,7 +119,7 @@ export function gitIgArrayFromFile(file: string) {
 }
 
 export const getGlobalContinueIgArray = () => {
-  return vscode.workspace.fs.readFile(vscode.Uri.file(getGlobalContinueIgnorePath().toString()))
+  return vscode.workspace.fs
+    .readFile(vscode.Uri.file(getGlobalContinueIgnorePath().toString()))
     .then((data) => gitIgArrayFromFile(data.toString()));
-    
 };

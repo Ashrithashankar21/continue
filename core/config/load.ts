@@ -82,7 +82,7 @@ export interface ConfigResult<T> {
 function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
   const fileUri = vscode.Uri.file(filepath);
   const fileData = vscode.workspace.fs.readFile(fileUri);
-  let content  = (Buffer.from(fileData.toString())).toString();
+  let content = Buffer.from(fileData.toString()).toString();
   const config = JSONC.parse(content) as unknown as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
     const env = {
@@ -593,7 +593,9 @@ async function promptEsbuildInstallation(ide: IDE): Promise<boolean> {
 async function downloadAndInstallEsbuild(ide: IDE) {
   const esbuildPath = getEsbuildBinaryPath();
 
-  const tempDir = await vscode.workspace.fs.createDirectory(vscode.Uri.file(path.join(os.tmpdir(), `esbuild-${Date.now()}`)));
+  const tempDir = await vscode.workspace.fs.createDirectory(
+    vscode.Uri.file(path.join(os.tmpdir(), `esbuild-${Date.now()}`)),
+  );
   try {
     const target = `${os.platform()}-${os.arch()}`;
     const version = "0.19.11";
@@ -612,7 +614,7 @@ async function downloadAndInstallEsbuild(ide: IDE) {
 
     // Ensure the destination directory exists
     const destDir = path.dirname(esbuildPath);
-  
+
     try {
       await vscode.workspace.fs.stat(vscode.Uri.file(destDir));
     } catch {
@@ -621,35 +623,44 @@ async function downloadAndInstallEsbuild(ide: IDE) {
 
     // Move the file
     const extractedBinaryPath = path.join(tempDir as any, "esbuild");
-    await vscode.workspace.fs.rename(vscode.Uri.file(extractedBinaryPath), vscode.Uri.file(esbuildPath), { overwrite: true });
+    await vscode.workspace.fs.rename(
+      vscode.Uri.file(extractedBinaryPath),
+      vscode.Uri.file(esbuildPath),
+      { overwrite: true },
+    );
 
     // Ensure the binary is executable (not needed on Windows)
     if (os.platform() !== "win32") {
-    try {
-      // await vscode.workspace.fs.chmod(vscode.Uri.file(esbuildPath), 0o755);
-    } catch (error) {
-      console.warn("Error setting executable permissions on esbuild binary:", error);
-    }
+      try {
+        // await vscode.workspace.fs.chmod(vscode.Uri.file(esbuildPath), 0o755);
+      } catch (error) {
+        console.warn(
+          "Error setting executable permissions on esbuild binary:",
+          error,
+        );
+      }
 
-    // Clean up
-    try {
+      // Clean up
+      try {
         await vscode.workspace.fs.delete(vscode.Uri.file(tgzPath));
-    } catch (error) {
+      } catch (error) {
         console.warn("Error deleting the downloaded tarball:", error);
-    }
+      }
 
-    try {
-        await vscode.workspace.fs.delete(vscode.Uri.file(tempDir as any), { recursive: true, useTrash: false });
-    } catch (error) {
+      try {
+        await vscode.workspace.fs.delete(vscode.Uri.file(tempDir as any), {
+          recursive: true,
+          useTrash: false,
+        });
+      } catch (error) {
         console.warn("Error deleting the temporary directory:", error);
+      }
+      await ide.showToast(
+        "info",
+        `'esbuild' successfully installed to ${esbuildPath}`,
+      );
     }
-    await ide.showToast(
-      "info",
-      `'esbuild' successfully installed to ${esbuildPath}`,
-    );
-  }
-}
-  catch (error) {
+  } catch (error) {
     console.error("Error downloading or saving esbuild binary:", error);
     throw error;
   }
