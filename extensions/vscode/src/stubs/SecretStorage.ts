@@ -2,8 +2,6 @@ import * as crypto from "crypto";
 import * as vscode from "vscode";
 import * as path from "path";
 
-import * as vscode from "vscode";
-
 const ENCRYPTION_KEY_NAME = "dev.continue.continue";
 
 /**
@@ -104,7 +102,7 @@ export class SecretStorage {
 
   async get(key: string): Promise<string | undefined> {
     const filePath = this.keyToFilepath(key);
-    if (vscode.workspace.fs.stat(vscode.Uri.file(filePath))) {
+    if (!vscode.workspace.fs.stat(vscode.Uri.file(filePath))) {
       const value = await this.decrypt(filePath);
       return value;
     }

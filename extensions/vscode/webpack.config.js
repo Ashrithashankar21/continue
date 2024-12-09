@@ -45,7 +45,7 @@ const webExtensionConfig = {
       timers: require.resolve("timers-browserify"),
       tty: require.resolve("tty-browserify"),
       url: require.resolve("url"),
-      util: require.resolve("util"),
+      util: require.resolve("util/"),
       vm: require.resolve("vm-browserify"),
       zlib: require.resolve("browserify-zlib"),
     },
