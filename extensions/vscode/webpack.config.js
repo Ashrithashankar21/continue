@@ -26,7 +26,7 @@ const webExtensionConfig = {
       // Webpack 5 no longer polyfills Node.js core modules automatically.
       // see https://webpack.js.org/configuration/resolve/#resolvefallback
       // for the list of Node.js core module polyfills.
-      assert: require.resolve("assert"),
+      assert: require.resolve("assert/"),
       buffer: require.resolve("buffer"),
       console: require.resolve("console-browserify"),
       constants: require.resolve("constants-browserify"),
@@ -38,13 +38,14 @@ const webExtensionConfig = {
       os: require.resolve("os-browserify"),
       path: require.resolve("path-browserify"),
       punycode: require.resolve("punycode"),
+      process: require.resolve('process/browser'),
       querystring: require.resolve("querystring-es3"),
       stream: require.resolve("stream-browserify"),
       string_decoder: require.resolve("string_decoder"),
       sys: require.resolve("util"),
       timers: require.resolve("timers-browserify"),
       tty: require.resolve("tty-browserify"),
-      url: require.resolve("url"),
+      url: require.resolve("url/"),
       util: require.resolve("util/"),
       vm: require.resolve("vm-browserify"),
       zlib: require.resolve("browserify-zlib"),
@@ -66,10 +67,37 @@ const webExtensionConfig = {
   plugins: [
     new webpack.ProvidePlugin({
       process: "process/browser", // provide a shim for the global `process` variable
+      Buffer: ["buffer", "Buffer"],
     }),
   ],
   externals: {
     vscode: "commonjs vscode", // ignored because it doesn't exist
+    "node:util": "commonjs util",
+    "node:worker_threads": "commonjs worker_threads",
+    "node:util/types": "commonjs util/types",
+    "node:url": "commonjs url",
+    "node:tls": "commonjs tls",
+    "node:zlib": "commonjs zlib",
+    "node:stream": "commonjs stream",
+    "node:stream/web" : "commonjs stream/web",
+    "node:querystring": "commonjs querystring",
+    "node:process" : "commonjs process",
+    "node:perf_hooks" : "commonjs perf_hooks",
+    "node:path": "commonjs path",
+    "node:os": "commonjs os",
+    "node:net": "commonjs net",
+    "node:http2": "commonjs http2",
+    "node:http": "commonjs http",
+    "node:https": "commonjs https",
+    "node:fs": "commonjs fs",
+    "node:events": "commonjs events",
+    "node:diagnostics_channel": "commonjs diagnostics_channel",
+    "node:crypto": "commonjs crypto",
+    "node:console": "commonjs console",
+    "node:child_process": "commonjs child_process",
+    "node:buffer": "commonjs buffer",
+    "node:async_hooks": "commonjs async_hooks",
+    "node:assert": "commonjs assert"
   },
   performance: {
     hints: false,

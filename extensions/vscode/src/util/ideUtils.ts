@@ -23,7 +23,7 @@ import {
 
 import type { FileEdit, RangeInFile, Thread } from "core";
 
-const util = require("node:util");
+const util = require("util");
 const asyncExec = util.promisify(require("node:child_process").exec);
 
 export class VsCodeIdeUtils {
