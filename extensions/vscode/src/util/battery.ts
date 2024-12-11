@@ -4,7 +4,7 @@ const UPDATE_INTERVAL_MS = 1000;
 
 declare global {
   interface Navigator {
-    getBattery?: () => Promise<{ charging: boolean, level?: number }>;
+    getBattery?: () => Promise<{ charging: boolean; level?: number }>;
   }
 }
 
