@@ -1,5 +1,5 @@
-import { constants, getTimestamp } from "../../deploy/constants.js";
-import { Telemetry } from "../../util/posthog.js";
+import { constants, getTimestamp } from "../../deploy/constants";
+import { Telemetry } from "../../util/posthog";
 
 export async function getHeaders() {
   return {

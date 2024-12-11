@@ -1,25 +1,25 @@
-import { ConfigHandler } from "../config/ConfigHandler.js";
-import { TRIAL_FIM_MODEL } from "../config/onboarding.js";
+import { ConfigHandler } from "../config/ConfigHandler";
+import { TRIAL_FIM_MODEL } from "../config/onboarding";
 import { IDE, ILLM } from "../index.js";
-import OpenAI from "../llm/llms/OpenAI.js";
-import { DEFAULT_AUTOCOMPLETE_OPTS } from "../util/parameters.js";
+import OpenAI from "../llm/llms/OpenAI";
+import { DEFAULT_AUTOCOMPLETE_OPTS } from "../util/parameters";
 
-import { shouldCompleteMultiline } from "./classification/shouldCompleteMultiline.js";
+import { shouldCompleteMultiline } from "./classification/shouldCompleteMultiline";
 import { AutocompleteLanguageInfo } from "./constants/AutocompleteLanguageInfo.js";
 import { aggregateSnippets } from "./aggregateSnippets";
 // @prettier-ignore
 
-import { ContextRetrievalService } from "./context/ContextRetrievalService.js";
-import { AutocompleteSnippet } from "./context/ranking/index.js";
-import { BracketMatchingService } from "./filtering/BracketMatchingService.js";
-import { CompletionStreamer } from "./generation/CompletionStreamer.js";
-import { postprocessCompletion } from "./postprocessing/index.js";
-import { shouldPrefilter } from "./prefiltering/index.js";
-import { renderPrompt } from "./templating/index.js";
-import { AutocompleteDebouncer } from "./util/AutocompleteDebouncer.js";
-import { AutocompleteLoggingService } from "./util/AutocompleteLoggingService.js";
-import AutocompleteLruCache from "./util/AutocompleteLruCache.js";
-import { HelperVars } from "./util/HelperVars.js";
+import { ContextRetrievalService } from "./context/ContextRetrievalService";
+import { AutocompleteSnippet } from "./context/ranking/index";
+import { BracketMatchingService } from "./filtering/BracketMatchingService";
+import { CompletionStreamer } from "./generation/CompletionStreamer";
+import { postprocessCompletion } from "./postprocessing/index";
+import { shouldPrefilter } from "./prefiltering/index";
+import { renderPrompt } from "./templating/index";
+import { AutocompleteDebouncer } from "./util/AutocompleteDebouncer";
+import { AutocompleteLoggingService } from "./util/AutocompleteLoggingService";
+import AutocompleteLruCache from "./util/AutocompleteLruCache";
+import { HelperVars } from "./util/HelperVars";
 import { AutocompleteInput, AutocompleteOutcome } from "./util/types.js";
 
 const autocompleteCache = AutocompleteLruCache.get();

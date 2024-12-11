@@ -1,7 +1,7 @@
 // Fill in the middle prompts
 
 import { CompletionOptions } from "../../index.js";
-import { getLastNPathParts, shortestRelativePaths } from "../../util/index.js";
+import { getLastNPathParts, shortestRelativePaths } from "../../util/index";
 import { AutocompleteSnippet } from "../context/ranking/index.js";
 
 export interface AutocompleteTemplate {

@@ -9,7 +9,7 @@ import {
 } from "../../index.js";
 import { ConfigResult } from "../load.js";
 
-import doLoadConfig from "./doLoadConfig.js";
+import doLoadConfig from "./doLoadConfig";
 import { IProfileLoader } from "./IProfileLoader.js";
 
 export default class ControlPlaneProfileLoader implements IProfileLoader {

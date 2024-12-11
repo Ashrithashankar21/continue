@@ -5,12 +5,12 @@ import {
   filterLeadingAndTrailingNewLineInsertion,
   skipLines,
   stopAtLines,
-} from "../autocomplete/filtering/streamTransforms/lineStream.js";
-import { streamDiff } from "../diff/streamDiff.js";
-import { streamLines } from "../diff/util.js";
+} from "../autocomplete/filtering/streamTransforms/lineStream";
+import { streamDiff } from "../diff/streamDiff";
+import { streamLines } from "../diff/util";
 import { ChatMessage, DiffLine, ILLM, Prediction } from "../index.js";
-import { gptEditPrompt } from "../llm/templates/edit.js";
-import { Telemetry } from "../util/posthog.js";
+import { gptEditPrompt } from "../llm/templates/edit";
+import { Telemetry } from "../util/posthog";
 
 function constructPrompt(
   prefix: string,

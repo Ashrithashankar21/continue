@@ -5,8 +5,8 @@ import sqlite3 from "sqlite3";
 import {
   DatabaseConnection,
   truncateSqliteLikePattern,
-} from "../../indexing/refreshIndex.js";
-import { getTabAutocompleteCacheSqlitePath } from "../../util/paths.js";
+} from "../../indexing/refreshIndex";
+import { getTabAutocompleteCacheSqlitePath } from "../../util/paths";
 
 export class AutocompleteLruCache {
   private static capacity = 1000;

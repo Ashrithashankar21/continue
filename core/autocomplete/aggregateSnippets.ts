@@ -3,7 +3,7 @@ import {
   fillPromptWithSnippets,
   rankAndOrderSnippets,
   type AutocompleteSnippet,
-} from "./context/ranking/index.js";
+} from "./context/ranking/index";
 import { HelperVars } from "./util/HelperVars.js";
 
 function filterSnippetsAlreadyInCaretWindow(

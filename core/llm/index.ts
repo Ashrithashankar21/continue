@@ -17,32 +17,32 @@ import {
   RequestOptions,
   TemplateType,
 } from "../index.js";
-import { logDevData } from "../util/devdata.js";
-import { DevDataSqliteDb } from "../util/devdataSqlite.js";
-import { fetchwithRequestOptions } from "../util/fetchWithOptions.js";
-import mergeJson from "../util/merge.js";
-import { Telemetry } from "../util/posthog.js";
-import { withExponentialBackoff } from "../util/withExponentialBackoff.js";
+import { logDevData } from "../util/devdata";
+import { DevDataSqliteDb } from "../util/devdataSqlite";
+import { fetchwithRequestOptions } from "../util/fetchWithOptions";
+import mergeJson from "../util/merge";
+import { Telemetry } from "../util/posthog";
+import { withExponentialBackoff } from "../util/withExponentialBackoff";
 
 import {
   autodetectPromptTemplates,
   autodetectTemplateFunction,
   autodetectTemplateType,
   modelSupportsImages,
-} from "./autodetect.js";
+} from "./autodetect";
 import {
   CONTEXT_LENGTH_FOR_MODEL,
   DEFAULT_ARGS,
   DEFAULT_CONTEXT_LENGTH,
   DEFAULT_MAX_TOKENS,
-} from "./constants.js";
+} from "./constants";
 import {
   compileChatMessages,
   countTokens,
   pruneRawPromptFromTop,
-} from "./countTokens.js";
-import { stripImages } from "./images.js";
-import CompletionOptionsForModels from "./templates/options.js";
+} from "./countTokens";
+import { stripImages } from "./images";
+import CompletionOptionsForModels from "./templates/options";
 
 export abstract class BaseLLM implements ILLM {
   static providerName: ModelProvider;

@@ -11,18 +11,18 @@ import {
   IndexTag,
   IndexingProgressUpdate,
 } from "../index.js";
-import { getBasename } from "../util/index.js";
-import { getLanceDbPath, migrate } from "../util/paths.js";
+import { getBasename } from "../util/index";
+import { getLanceDbPath, migrate } from "../util/paths";
 
-import { chunkDocument, shouldChunk } from "./chunk/chunk.js";
-import { DatabaseConnection, SqliteDb, tagToString } from "./refreshIndex.js";
+import { chunkDocument, shouldChunk } from "./chunk/chunk";
+import { DatabaseConnection, SqliteDb, tagToString } from "./refreshIndex";
 import {
   CodebaseIndex,
   IndexResultType,
   MarkCompleteCallback,
   PathAndCacheKey,
   RefreshIndexResults,
-} from "./types.js";
+} from "./types";
 
 // LanceDB  converts to lowercase, so names must all be lowercase
 interface LanceDbRow {

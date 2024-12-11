@@ -6,7 +6,7 @@ import sqlite3 from "sqlite3";
 import * as vscode from "vscode";
 
 import { IndexTag, IndexingProgressUpdate } from "../index.js";
-import { getIndexSqlitePath } from "../util/paths.js";
+import { getIndexSqlitePath } from "../util/paths";
 
 import {
   CodebaseIndex,

@@ -4,9 +4,9 @@ import {
   LLMOptions,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
-import { streamResponse } from "../stream.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
+import { streamResponse } from "../stream";
 
 interface OllamaChatMessage extends ChatMessage {
   images?: string[];

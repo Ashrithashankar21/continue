@@ -5,7 +5,7 @@ import { EmbeddingsProviderName } from "../../index.js";
 // prettier-ignore
 import { type PipelineType } from "../../vendor/modules/@xenova/transformers/src/transformers.js";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 class EmbeddingsPipeline {
   static task: PipelineType = "feature-extraction";

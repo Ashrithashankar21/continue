@@ -1,7 +1,7 @@
 import {
   ControlPlaneClient,
   ControlPlaneSessionInfo,
-} from "../control-plane/client.js";
+} from "../control-plane/client";
 import {
   BrowserSerializedContinueConfig,
   ContinueConfig,
@@ -10,20 +10,20 @@ import {
   IdeSettings,
   ILLM,
 } from "../index.js";
-import Ollama from "../llm/llms/Ollama.js";
-import { GlobalContext } from "../util/GlobalContext.js";
+import Ollama from "../llm/llms/Ollama";
+import { GlobalContext } from "../util/GlobalContext";
 
 import { ConfigResult } from "./load.js";
 import {
   LOCAL_ONBOARDING_CHAT_MODEL,
   ONBOARDING_LOCAL_MODEL_TITLE,
-} from "./onboarding.js";
-import ControlPlaneProfileLoader from "./profile/ControlPlaneProfileLoader.js";
-import LocalProfileLoader from "./profile/LocalProfileLoader.js";
+} from "./onboarding";
+import ControlPlaneProfileLoader from "./profile/ControlPlaneProfileLoader";
+import LocalProfileLoader from "./profile/LocalProfileLoader";
 import {
   ProfileDescription,
   ProfileLifecycleManager,
-} from "./ProfileLifecycleManager.js";
+} from "./ProfileLifecycleManager";
 
 export type { ProfileDescription };
 

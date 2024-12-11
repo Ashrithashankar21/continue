@@ -1,5 +1,5 @@
 import { ChunkWithoutID } from "../../index.js";
-import { countTokensAsync } from "../../llm/countTokens.js";
+import { countTokensAsync } from "../../llm/countTokens";
 
 export async function* basicChunker(
   contents: string,

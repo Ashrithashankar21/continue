@@ -3,7 +3,7 @@ import fetch, { RequestInit, Response } from "node-fetch";
 
 import { ModelDescription } from "../index.js";
 
-import { controlPlaneEnv } from "./env.js";
+import { controlPlaneEnv } from "./env";
 
 export interface ControlPlaneSessionInfo {
   accessToken: string;

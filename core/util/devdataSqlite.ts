@@ -4,7 +4,7 @@ import * as vscode from "vscode";
 
 import { DatabaseConnection } from "../indexing/refreshIndex.js";
 
-import { getDevDataSqlitePath } from "./paths.js";
+import { getDevDataSqlitePath } from "./paths";
 
 export class DevDataSqliteDb {
   static db: DatabaseConnection | null = null;

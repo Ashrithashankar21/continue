@@ -11,7 +11,7 @@ import {
   defaultIgnoreFile,
   getGlobalContinueIgArray,
   gitIgArrayFromFile,
-} from "./ignore.js";
+} from "./ignore";
 
 export interface WalkerOptions {
   ignoreFiles?: string[];

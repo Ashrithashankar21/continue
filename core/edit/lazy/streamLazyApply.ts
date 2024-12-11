@@ -2,13 +2,13 @@ import {
   filterLeadingAndTrailingNewLineInsertion,
   filterLeadingNewline,
   stopAtLines,
-} from "../../autocomplete/filtering/streamTransforms/lineStream.js";
-import { streamDiff } from "../../diff/streamDiff.js";
-import { LineStream, streamLines } from "../../diff/util.js";
+} from "../../autocomplete/filtering/streamTransforms/lineStream";
+import { streamDiff } from "../../diff/streamDiff";
+import { LineStream, streamLines } from "../../diff/util";
 import { DiffLine, ILLM } from "../../index.js";
 
-import { lazyApplyPromptForModel, UNCHANGED_CODE } from "./prompts.js";
-import { BUFFER_LINES_BELOW, getReplacementWithLlm } from "./replace.js";
+import { lazyApplyPromptForModel, UNCHANGED_CODE } from "./prompts";
+import { BUFFER_LINES_BELOW, getReplacementWithLlm } from "./replace";
 
 export async function* streamLazyApply(
   oldCode: string,

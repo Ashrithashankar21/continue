@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-import { getDevDataFilePath } from "./paths.js";
+import { getDevDataFilePath } from "./paths";
 
 export async function logDevData(tableName: string, data: any) {
   const filepath: string = getDevDataFilePath(tableName);

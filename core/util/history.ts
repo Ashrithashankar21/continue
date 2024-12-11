@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 import { PersistedSessionInfo, SessionInfo } from "../index.js";
 import { ListHistoryOptions } from "../protocol/core.js";
 
-import { getSessionFilePath, getSessionsListPath } from "./paths.js";
+import { getSessionFilePath, getSessionsListPath } from "./paths";
 
 function safeParseArray<T>(
   value: string,

@@ -6,10 +6,10 @@ import {
   AsyncEncoder,
   GPTAsyncEncoder,
   LlamaAsyncEncoder,
-} from "./asyncEncoder.js";
-import { autodetectTemplateType } from "./autodetect.js";
-import { TOKEN_BUFFER_FOR_SAFETY } from "./constants.js";
-import { stripImages } from "./images.js";
+} from "./asyncEncoder";
+import { autodetectTemplateType } from "./autodetect";
+import { TOKEN_BUFFER_FOR_SAFETY } from "./constants";
+import { stripImages } from "./images";
 import llamaTokenizer from "./llamaTokenizer.js";
 interface Encoding {
   encode: Tiktoken["encode"];

@@ -2,13 +2,13 @@ import os from "node:os";
 
 import { Analytics } from "@continuedev/config-types";
 
-import ContinueProxyAnalyticsProvider from "./analytics/ContinueProxyAnalyticsProvider.js";
+import ContinueProxyAnalyticsProvider from "./analytics/ContinueProxyAnalyticsProvider";
 import {
   ControlPlaneProxyInfo,
   IAnalyticsProvider,
 } from "./analytics/IAnalyticsProvider.js";
-import LogStashAnalyticsProvider from "./analytics/LogStashAnalyticsProvider.js";
-import PostHogAnalyticsProvider from "./analytics/PostHogAnalyticsProvider.js";
+import LogStashAnalyticsProvider from "./analytics/LogStashAnalyticsProvider";
+import PostHogAnalyticsProvider from "./analytics/PostHogAnalyticsProvider";
 import { ControlPlaneClient } from "./client.js";
 
 function createAnalyticsProvider(

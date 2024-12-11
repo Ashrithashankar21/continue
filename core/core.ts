@@ -19,7 +19,7 @@ import { ControlPlaneClient } from "./control-plane/client";
 import { streamDiffLines } from "./edit/streamDiffLines";
 import { CodebaseIndexer, PauseToken } from "./indexing/CodebaseIndexer";
 import DocsService from "./indexing/docs/DocsService";
-import { defaultIgnoreFile } from "./indexing/ignore.js";
+import { defaultIgnoreFile } from "./indexing/ignore";
 import Ollama from "./llm/llms/Ollama";
 import { createNewPromptFileV2 } from "./promptFiles/v2/createNewPromptFile";
 import { ChatDescriber } from "./util/chatDescriber";

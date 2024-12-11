@@ -1,6 +1,6 @@
 import os from "node:os";
 
-import { TeamAnalytics } from "../control-plane/TeamAnalytics.js";
+import { TeamAnalytics } from "../control-plane/TeamAnalytics";
 import { IdeInfo } from "../index.js";
 
 export class Telemetry {

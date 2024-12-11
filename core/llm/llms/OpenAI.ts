@@ -4,9 +4,9 @@ import {
   LLMOptions,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
-import { streamSse } from "../stream.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
+import { streamSse } from "../stream";
 
 const NON_CHAT_MODELS = [
   "text-davinci-002",

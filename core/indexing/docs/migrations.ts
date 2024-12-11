@@ -1,9 +1,9 @@
 import { type Database } from "sqlite";
 import { Table } from "vectordb";
 
-import { editConfigJson, migrate } from "../../util/paths.js";
+import { editConfigJson, migrate } from "../../util/paths";
 
-import DocsService, { SqliteDocsRow } from "./DocsService.js";
+import DocsService, { SqliteDocsRow } from "./DocsService";
 
 export async function runLanceMigrations(table: Table) {
   await new Promise((resolve) =>

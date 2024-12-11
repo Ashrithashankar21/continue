@@ -3,21 +3,21 @@ import * as vscode from "vscode";
 import { ConfigHandler } from "../config/ConfigHandler.js";
 import { IContinueServerClient } from "../continueServer/interface.js";
 import { IDE, IndexingProgressUpdate, IndexTag } from "../index.js";
-import { extractMinimalStackTraceInfo } from "../util/extractMinimalStackTraceInfo.js";
+import { extractMinimalStackTraceInfo } from "../util/extractMinimalStackTraceInfo";
 import { getBasename } from "../util/index.js";
-import { getIndexSqlitePath, getLanceDbPath } from "../util/paths.js";
+import { getIndexSqlitePath, getLanceDbPath } from "../util/paths";
 
-import { ChunkCodebaseIndex } from "./chunk/ChunkCodebaseIndex.js";
-import { CodeSnippetsCodebaseIndex } from "./CodeSnippetsIndex.js";
-import { FullTextSearchCodebaseIndex } from "./FullTextSearchCodebaseIndex.js";
-import { LanceDbIndex } from "./LanceDbIndex.js";
-import { getComputeDeleteAddRemove } from "./refreshIndex.js";
+import { ChunkCodebaseIndex } from "./chunk/ChunkCodebaseIndex";
+import { CodeSnippetsCodebaseIndex } from "./CodeSnippetsIndex";
+import { FullTextSearchCodebaseIndex } from "./FullTextSearchCodebaseIndex";
+import { LanceDbIndex } from "./LanceDbIndex";
+import { getComputeDeleteAddRemove } from "./refreshIndex";
 import {
   CodebaseIndex,
   IndexResultType,
   RefreshIndexResults,
-} from "./types.js";
-import { walkDirAsync } from "./walkDir.js";
+} from "./types";
+import { walkDirAsync } from "./walkDir";
 
 export class PauseToken {
   constructor(private _paused: boolean) {}

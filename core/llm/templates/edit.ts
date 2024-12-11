@@ -1,5 +1,5 @@
 import { ChatMessage, PromptTemplate } from "../../index.js";
-import { gptEditPrompt } from "./edit/gpt.js";
+import { gptEditPrompt } from "./edit/gpt";
 
 const simplifiedEditPrompt = `Consider the following code:
 \`\`\`{{{language}}}

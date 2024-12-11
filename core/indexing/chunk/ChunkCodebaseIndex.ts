@@ -4,17 +4,17 @@ import { RunResult } from "sqlite3";
 
 import { IContinueServerClient } from "../../continueServer/interface.js";
 import { Chunk, IndexTag, IndexingProgressUpdate } from "../../index.js";
-import { getBasename } from "../../util/index.js";
-import { DatabaseConnection, SqliteDb, tagToString } from "../refreshIndex.js";
+import { getBasename } from "../../util/index";
+import { DatabaseConnection, SqliteDb, tagToString } from "../refreshIndex";
 import {
   IndexResultType,
   MarkCompleteCallback,
   PathAndCacheKey,
   RefreshIndexResults,
   type CodebaseIndex,
-} from "../types.js";
+} from "../types";
 
-import { chunkDocument, shouldChunk } from "./chunk.js";
+import { chunkDocument, shouldChunk } from "./chunk";
 
 export class ChunkCodebaseIndex implements CodebaseIndex {
   relativeExpectedTime: number = 1;

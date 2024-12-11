@@ -6,7 +6,7 @@ import {
   IContextProvider,
 } from "../index.js";
 
-import { ConfigResult, finalToBrowserConfig } from "./load.js";
+import { ConfigResult, finalToBrowserConfig } from "./load";
 import { IProfileLoader } from "./profile/IProfileLoader.js";
 
 export interface ProfileDescription {

@@ -17,7 +17,7 @@ import {
   templateAlpacaMessages,
   xWinCoderTemplateMessages,
   zephyrTemplateMessages,
-} from "./templates/chat.js";
+} from "./templates/chat";
 import {
   alpacaEditPrompt,
   claudeEditPrompt,
@@ -34,7 +34,7 @@ import {
   simplifiedEditPrompt,
   xWinCoderEditPrompt,
   zephyrEditPrompt,
-} from "./templates/edit.js";
+} from "./templates/edit";
 
 const PROVIDER_HANDLES_TEMPLATING: ModelProvider[] = [
   "lmstudio",

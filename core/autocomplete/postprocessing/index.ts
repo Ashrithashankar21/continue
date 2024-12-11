@@ -1,5 +1,5 @@
-import { longestCommonSubsequence } from "../../util/lcs.js";
-import { lineIsRepeated } from "../filtering/streamTransforms/lineStream.js";
+import { longestCommonSubsequence } from "../../util/lcs";
+import { lineIsRepeated } from "../filtering/streamTransforms/lineStream";
 
 import type { ILLM } from "../../index.js";
 
