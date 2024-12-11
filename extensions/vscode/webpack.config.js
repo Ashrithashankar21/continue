@@ -67,7 +67,7 @@ const webExtensionConfig = {
   plugins: [
     new webpack.ProvidePlugin({
       process: "process/browser", // provide a shim for the global `process` variable
-      Buffer: ["buffer", "Buffer"],
+      // Buffer: ["buffer", "Buffer"],
     }),
   ],
   externals: {

@@ -1,8 +1,9 @@
 import * as path from "node:path";
-import * as vscode from "vscode";
+
 
 import { runTests } from "@vscode/test-electron";
 import { defaultConfig } from "core/config/default";
+import * as vscode from "vscode";
 
 export const testWorkspacePath = path.resolve(
   __dirname,
@@ -23,40 +24,40 @@ const continueGlobalDir = path.resolve(
 );
 
 function setupTestWorkspace() {
-  if (vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
     vscode.workspace.fs.delete(vscode.Uri.file(testWorkspacePath));
   }
   vscode.workspace.fs.createDirectory(vscode.Uri.file(testWorkspacePath));
 
   vscode.workspace.fs.writeFile(
     vscode.Uri.file(path.join(testWorkspacePath, "test.py")),
-    vscode.Uri.file("print('Hello World!')"),
+    new TextEncoder().encode("print('Hello World!')"),
   );
   vscode.workspace.fs.writeFile(
     vscode.Uri.file(path.join(testWorkspacePath, "index.js")),
-    vscode.Uri.file("console.log('Hello World!')"),
+    new TextEncoder().encode("console.log('Hello World!')"),
   );
   vscode.workspace.fs.writeFile(
     vscode.Uri.file(path.join(testWorkspacePath, "test.py")),
-    vscode.Uri.file("print('Hello World!')"),
+    new TextEncoder().encode("print('Hello World!')"),
   );
   vscode.workspace.fs.createDirectory(
     vscode.Uri.file(path.join(testWorkspacePath, "test-folder")),
   );
   vscode.workspace.fs.writeFile(
     vscode.Uri.file(path.join(testWorkspacePath, "test-folder", "test.js")),
-    vscode.Uri.file("console.log('Hello World!')"),
+    new TextEncoder().encode("console.log('Hello World!')"),
   );
 }
 
 function setupContinueGlobalDir() {
-  if (vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
     vscode.workspace.fs.delete(vscode.Uri.file(continueGlobalDir));
   }
   vscode.workspace.fs.createDirectory(vscode.Uri.file(continueGlobalDir));
   vscode.workspace.fs.writeFile(
     vscode.Uri.file(path.join(continueGlobalDir, "config.json")),
-    vscode.Uri.file(
+    new TextEncoder().encode(
       JSON.stringify({
         ...defaultConfig,
         models: [
@@ -73,13 +74,13 @@ function setupContinueGlobalDir() {
 }
 
 function cleanupTestWorkspace() {
-  if (vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(testWorkspacePath))) {
     vscode.workspace.fs.delete(vscode.Uri.file(testWorkspacePath));
   }
 }
 
 function cleanupContinueGlobalDir() {
-  if (vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(continueGlobalDir))) {
     vscode.workspace.fs.delete(vscode.Uri.file(continueGlobalDir));
   }
 }

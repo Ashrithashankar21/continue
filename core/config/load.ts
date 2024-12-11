@@ -79,15 +79,17 @@ export interface ConfigResult<T> {
   configLoadInterrupted: boolean;
 }
 
-function resolveSerializedConfig(filepath: string): SerializedContinueConfig {
+async function resolveSerializedConfig(filepath: string): Promise<SerializedContinueConfig> {
   const fileUri = vscode.Uri.file(filepath);
   const fileData = vscode.workspace.fs.readFile(fileUri);
   let content = Buffer.from(fileData.toString()).toString();
   const config = JSONC.parse(content) as unknown as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
-    const env = {
-      ...process.env,
-      ...getContinueDotEnv(),
+    const continueDotEnv: Record<string, string>  = await getContinueDotEnv();
+    
+    const env: Record<string, string> = {
+      ...Object.fromEntries(Object.entries(process.env).filter(([key, value]) => value !== undefined)) as Record<string, string> ,
+      ...continueDotEnv,
     };
 
     config.env.forEach((envVar) => {
@@ -110,17 +112,17 @@ const configMergeKeys = {
   customCommands: (a: any, b: any) => a.name === b.name,
 };
 
-function loadSerializedConfig(
+async function loadSerializedConfig(
   workspaceConfigs: ContinueRcJson[],
   ideSettings: IdeSettings,
   ideType: IdeType,
   overrideConfigJson: SerializedContinueConfig | undefined,
-): ConfigResult<SerializedContinueConfig> {
+): Promise<ConfigResult<SerializedContinueConfig>> {
   const configPath = getConfigJsonPath(ideType);
   let config: SerializedContinueConfig = overrideConfigJson!;
   if (!config) {
     try {
-      config = resolveSerializedConfig(configPath);
+      config = await resolveSerializedConfig(await configPath);
     } catch (e) {
       throw new Error(`Failed to parse config.json: ${e}`);
     }
@@ -216,7 +218,7 @@ async function serializedToIntermediateConfig(
       .filter(({ path }) => path.endsWith(".prompt"));
 
     // Also read from ~/.continue/.prompts
-    promptFiles.push(...readAllGlobalPromptFiles());
+    promptFiles.push(...await readAllGlobalPromptFiles());
 
     for (const file of promptFiles) {
       const slashCommand = slashCommandFromPromptFile(file.path, file.content);
@@ -683,7 +685,7 @@ async function tryBuildConfigTs() {
 async function buildConfigTsWithBinary() {
   const cmd = [
     escapeSpacesInPath(getEsbuildBinaryPath()),
-    escapeSpacesInPath(getConfigTsPath()),
+    escapeSpacesInPath(await getConfigTsPath()),
     "--bundle",
     `--outfile=${escapeSpacesInPath(getConfigJsPath())}`,
     "--platform=node",
@@ -703,7 +705,7 @@ async function buildConfigTsWithNodeModule() {
   const { build } = await import("esbuild");
 
   await build({
-    entryPoints: [getConfigTsPath()],
+    entryPoints: [await getConfigTsPath()],
     bundle: true,
     platform: "node",
     format: "cjs",
@@ -729,11 +731,11 @@ async function readConfigJs() {
 async function buildConfigTsandReadConfigJs(ide: IDE, ideType: IdeType) {
   const configTsPath = getConfigTsPath();
 
-  if (!vscode.workspace.fs.stat(vscode.Uri.file(configTsPath))) {
+  if (!vscode.workspace.fs.stat(vscode.Uri.file(await configTsPath))) {
     return;
   }
 
-  const fileUri = vscode.Uri.file(configTsPath);
+  const fileUri = vscode.Uri.file(await configTsPath);
   const fileContent = await vscode.workspace.fs.readFile(fileUri);
   const textDecoder = new TextDecoder("utf-8");
   const currentContent = textDecoder.decode(fileContent);
@@ -764,7 +766,7 @@ async function loadFullConfigNode(
     config: serialized,
     errors,
     configLoadInterrupted,
-  } = loadSerializedConfig(
+  } = await loadSerializedConfig(
     workspaceConfigs,
     ideSettings,
     ideType,

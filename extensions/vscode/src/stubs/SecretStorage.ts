@@ -57,7 +57,7 @@ export class SecretStorage {
     const result = Buffer.concat([salt, iv, tag, encrypted]);
     vscode.workspace.fs.writeFile(
       vscode.Uri.file(filePath),
-      vscode.Uri.file(result),
+      new TextEncoder().encode(result.toString()),
     );
   }
 
@@ -65,13 +65,13 @@ export class SecretStorage {
     const key = await this.getOrCreateEncryptionKey();
     const data = vscode.workspace.fs.readFile(vscode.Uri.file(filePath));
 
-    const salt = data.subarray(0, this.saltLength);
-    const iv = data.subarray(this.saltLength, this.saltLength + this.ivLength);
-    const tag = data.subarray(
+    const salt = (await data).subarray(0, this.saltLength);
+    const iv = (await data).subarray(this.saltLength, this.saltLength + this.ivLength);
+    const tag = (await data).subarray(
       this.saltLength + this.ivLength,
       this.saltLength + this.ivLength + this.tagLength,
     );
-    const encrypted = data.subarray(
+    const encrypted = (await data).subarray(
       this.saltLength + this.ivLength + this.tagLength,
     );
 

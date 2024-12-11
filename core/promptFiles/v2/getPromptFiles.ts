@@ -51,7 +51,7 @@ export async function getAllPromptFilesV2(
     .filter(({ path }) => path.endsWith(".prompt"));
 
   // Also read from ~/.continue/.prompts
-  promptFiles.push(...readAllGlobalPromptFiles());
+  promptFiles.push(...await readAllGlobalPromptFiles());
 
   return await Promise.all(
     promptFiles.map(async (file) => {

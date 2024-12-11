@@ -61,9 +61,9 @@ class DFSWalker {
     const root = this.newRootWalkContext();
     const stack = [root];
     for (let cur = stack.pop(); cur; cur = stack.pop()) {
-      const walkableEntries = await this.listDirForWalking(cur.walkableEntry);
+      const walkableEntries = await this.listDirForWalking((await cur).walkableEntry);
       const ignoreContexts = await this.getIgnoreToApplyInDir(
-        cur,
+        await cur,
         walkableEntries,
       );
       for (const w of walkableEntries) {
@@ -71,10 +71,14 @@ class DFSWalker {
           continue;
         }
         if (this.entryIsDirectory(w.entry)) {
-          stack.push({
-            walkableEntry: w,
-            ignoreContexts: ignoreContexts,
-          });
+          stack.push(
+            new Promise<WalkContext>((resolve) => {
+              resolve({
+                walkableEntry: w,
+                ignoreContexts: ignoreContexts,
+              });
+            })
+          );
           if (this.options.onlyDirs) {
             // when onlyDirs is enabled the walker will only return directory names
             yield fixupFunc(w.relPath);
@@ -86,7 +90,7 @@ class DFSWalker {
     }
   }
 
-  private newRootWalkContext(): WalkContext {
+  private async newRootWalkContext(): Promise<WalkContext> {
     const globalIgnoreFile = getGlobalContinueIgArray();
     return {
       walkableEntry: {
@@ -100,7 +104,7 @@ class DFSWalker {
           ignore: ignore()
             .add(defaultIgnoreDir)
             .add(defaultIgnoreFile)
-            .add(globalIgnoreFile),
+            .add(await globalIgnoreFile),
           dirname: "",
         },
       ],

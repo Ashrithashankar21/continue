@@ -687,8 +687,8 @@ const commandsMap: (
 
       vscode.commands.executeCommand("workbench.action.copyEditorToNewWindow");
     },
-    "continue.openConfigJson": () => {
-      ide.openFile(getConfigJsonPath());
+    "continue.openConfigJson": async () => {
+      ide.openFile(await getConfigJsonPath());
     },
     "continue.selectFilesAsContext": async (
       firstUri: vscode.Uri,
@@ -826,7 +826,7 @@ const commandsMap: (
           description: getAutocompleteStatusBarDescription(selected, model),
         })),
       ];
-      quickPick.onDidAccept(() => {
+      quickPick.onDidAccept(async () => {
         const selectedOption = quickPick.selectedItems[0].label;
         const targetStatus =
           getStatusBarStatusFromQuickPickItemLabel(selectedOption);
@@ -841,7 +841,7 @@ const commandsMap: (
         } else if (
           selectedOption === "$(gear) Configure autocomplete options"
         ) {
-          ide.openFile(getConfigJsonPath());
+          ide.openFile(await getConfigJsonPath());
         } else if (
           autocompleteModels.some((model) => model.title === selectedOption)
         ) {

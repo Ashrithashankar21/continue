@@ -1,4 +1,3 @@
-import * as vscode from "vscode";
 import * as os from "node:os";
 import * as path from "node:path";
 
@@ -25,7 +24,7 @@ async function readFile(path: string): Promise<string> {
 }
 
 async function writeFile(uri: vscode.Uri, contents: string) {
-  await vscode.workspace.vscode.workspace.fs.writeFile(
+  await vscode.workspace.fs.writeFile(
     uri,
     new TextEncoder().encode(contents),
   );
@@ -311,7 +310,7 @@ export class DiffManager {
 
 async function recordAcceptReject(accepted: boolean, diffInfo: DiffInfo) {
   const devDataDir = devDataPath();
-  const suggestionsPath = path.join(devDataDir, "suggestions.json");
+  const suggestionsPath = path.join(await devDataDir, "suggestions.json");
 
   // Initialize suggestions list
   let suggestions = [];

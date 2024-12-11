@@ -78,7 +78,7 @@ async function getEntriesFilteredByIgnore(dir: string, ide: IDE) {
     ig = ig.add(igPatterns);
   }
 
-  const filteredEntries = entries.filter((entry) => !ig.ignores(entry.name));
+  const filteredEntries = entries.filter((entry) => !ig.ignores(entry[0]));
 
   return filteredEntries;
 }
@@ -89,15 +89,15 @@ async function gatherProjectContext(
 ): Promise<string> {
   let context = "";
 
-  async function appendFileContent(entry, relativePath, context, fullPath) {
+  async function appendFileContent(entry: [string, vscode.FileType], relativePath: string, context: string, fullPath: string) {
     const filePath = fullPath;
-    const fileContentUint8 = await vscode.workspace.fs.readFile(filePath);
+    const fileContentUint8 = await vscode.workspace.fs.readFile(vscode.Uri.file(filePath));
     const fileContent = new TextDecoder("utf-8").decode(fileContentUint8);
 
-    if (entry.name.toLowerCase() === "readme.md") {
+    if (entry[0].toLowerCase() === "readme.md") {
       context += `README for ${relativePath}:\n${fileContent}\n\n`;
-    } else if (LANGUAGE_DEP_MGMT_FILENAMES.includes(entry.name)) {
-      context += `${entry.name} for ${relativePath}:\n${fileContent}\n\n`;
+    } else if (LANGUAGE_DEP_MGMT_FILENAMES.includes(entry[0])) {
+      context += `${entry[0]} for ${relativePath}:\n${fileContent}\n\n`;
     }
     return context;
   }
@@ -110,10 +110,10 @@ async function gatherProjectContext(
     const entries = await getEntriesFilteredByIgnore(dir, ide);
 
     for (const entry of entries) {
-      const fullPath = path.join(dir, entry.name);
+      const fullPath = path.join(dir, entry[0]);
       const relativePath = path.relative(workspaceDir, fullPath);
 
-      if (entry.isDirectory()) {
+      if (entry[1] === vscode.FileType.Directory) {
         context += `\nFolder: ${relativePath}\n`;
         await exploreDirectory(fullPath, currentDepth + 1);
       } else {

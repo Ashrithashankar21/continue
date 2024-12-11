@@ -1,4 +1,3 @@
-import * as vscode from "vscode";
 import path from "path";
 
 import { FromWebviewProtocol, ToWebviewProtocol } from "core/protocol";
@@ -7,6 +6,7 @@ import { extractMinimalStackTraceInfo } from "core/util/extractMinimalStackTrace
 import { Message } from "core/util/messenger";
 import { Telemetry } from "core/util/posthog";
 import { v4 as uuidv4 } from "uuid";
+import * as vscode from "vscode";
 
 import { IMessenger } from "../../../core/util/messenger";
 
@@ -22,7 +22,7 @@ export async function showTutorial() {
   if (process.platform !== "darwin") {
     let tutorialContent = vscode.workspace.fs.readFile(
       vscode.Uri.file(tutorialPath),
-    );
+    ).toString();
     tutorialContent = tutorialContent.replace("⌘", "^").replace("Cmd", "Ctrl");
     vscode.workspace.fs.writeFile(
       vscode.Uri.file(tutorialPath),

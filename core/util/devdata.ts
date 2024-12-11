@@ -1,9 +1,9 @@
-import { writeFileSync } from "fs";
+import * as vscode from "vscode";
 
 import { getDevDataFilePath } from "./paths.js";
 
-export function logDevData(tableName: string, data: any) {
+export async function logDevData(tableName: string, data: any) {
   const filepath: string = getDevDataFilePath(tableName);
   const jsonLine = JSON.stringify(data);
-  writeFileSync(filepath, `${jsonLine}\n`, { flag: "a" });
+  await vscode.workspace.fs.writeFile(vscode.Uri.file(filepath), new TextEncoder().encode(`${jsonLine}\n`));
 }

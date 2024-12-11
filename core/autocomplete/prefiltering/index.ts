@@ -59,7 +59,7 @@ export async function shouldPrefilter(
   }
 
   // Check whether we're in the continue config.json file
-  if (helper.filepath === getConfigJsonPath()) {
+  if (helper.filepath === await getConfigJsonPath()) {
     return true;
   }
 

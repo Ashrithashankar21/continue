@@ -186,7 +186,7 @@ class VsCodeIde implements IDE {
             "Remove for me",
             "Open config.json",
           )
-          .then((selection) => {
+          .then(async (selection) => {
             if (selection === "Remove for me") {
               editConfigJson((configJson) => {
                 configJson.models = configJson.models.filter(
@@ -196,7 +196,7 @@ class VsCodeIde implements IDE {
                 return configJson;
               });
             } else if (selection === "Open config.json") {
-              this.openFile(getConfigJsonPath());
+              this.openFile(await getConfigJsonPath());
             }
           });
       }
@@ -374,7 +374,8 @@ class VsCodeIde implements IDE {
   }
 
   async getContinueDir(): Promise<string> {
-    return getContinueGlobalPath();
+    const result = await getContinueGlobalPath();
+    return result ?? '';  // Default to empty string if result is undefined
   }
 
   async writeFile(path: string, contents: string): Promise<void> {

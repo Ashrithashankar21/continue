@@ -124,7 +124,7 @@ class GreptileContextProvider extends BaseContextProvider {
     // Fallback to using Git commands
     try {
       const currentDir = process.cwd();
-      if (this.isGitRepository(currentDir)) {
+      if (await this.isGitRepository(currentDir)) {
         const workspaceDir = execSync("git rev-parse --show-toplevel")
           .toString()
           .trim();

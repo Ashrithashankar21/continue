@@ -1,13 +1,13 @@
-import * as vscode from "vscode";
-
 import { IContextProvider } from "core";
 import { ConfigHandler } from "core/config/ConfigHandler";
+import { SYSTEM_PROMPT_DOT_FILE } from "core/config/getSystemPromptDotFile";
 import { controlPlaneEnv, EXTENSION_NAME } from "core/control-plane/env";
 import { Core } from "core/core";
 import { FromCoreProtocol, ToCoreProtocol } from "core/protocol";
 import { InProcessMessenger } from "core/util/messenger";
 import { getConfigJsonPath, getConfigTsPath } from "core/util/paths";
 import { v4 as uuidv4 } from "uuid";
+import * as vscode from "vscode";
 
 import { ContinueCompletionProvider } from "../autocomplete/completionProvider";
 import {
@@ -36,7 +36,7 @@ import { VsCodeIde } from "../VsCodeIde";
 
 import { VsCodeMessenger } from "./VsCodeMessenger";
 
-import { SYSTEM_PROMPT_DOT_FILE } from "core/config/getSystemPromptDotFile";
+
 import type { VsCodeWebviewProtocol } from "../webviewProtocol";
 
 export class VsCodeExtension {
@@ -251,9 +251,17 @@ export class VsCodeExtension {
 
     // Listen for file saving - use global file watcher so that changes
     // from outside the window are also caught
-    const configJsonUri = vscode.Uri.file(getConfigJsonPath());
+    let configJsonUri ;
+    getConfigJsonPath()
+    .then((configJsonPath) => {
+      configJsonUri = vscode.Uri.file(configJsonPath);
+      // Now you can use configJsonUri for further operations
+    })
+    .catch((error) => {
+      console.error("Error while getting configJsonPath:", error);
+    });    
     const configWatcher = vscode.workspace.createFileSystemWatcher(
-      configJsonUri.fsPath,
+      configJsonUri!.fsPath,
     );
 
     configWatcher.onDidChange(async () => {
@@ -270,9 +278,17 @@ export class VsCodeExtension {
 
     context.subscriptions.push(configWatcher);
 
-    const configTsUri = vscode.Uri.file(getConfigTsPath());
+    let configTsUri ;
+    getConfigTsPath()
+    .then((configTsPath) => {
+      configTsUri = vscode.Uri.file(configTsPath);
+      // Now you can use configJsonUri for further operations
+    })
+    .catch((error) => {
+      console.error("Error while getting configJsonPath:", error);
+    });  
     const configTsWatcher = vscode.workspace.createFileSystemWatcher(
-      configTsUri.fsPath,
+      configTsUri!.fsPath,
     );
 
     configTsWatcher.onDidChange(async () => {
@@ -293,7 +309,7 @@ export class VsCodeExtension {
       // Listen for file changes in the workspace
       const filepath = event.uri.fsPath;
 
-      if (arePathsEqual(filepath, getConfigJsonPath())) {
+      if (arePathsEqual(filepath, await getConfigJsonPath())) {
         // Trigger a toast notification to provide UI feedback that config
         // has been updated
         const showToast = context.globalState.get<boolean>(
