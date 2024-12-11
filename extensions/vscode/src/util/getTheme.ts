@@ -61,8 +61,12 @@ export function getTheme() {
 
     if (currentTheme === undefined && builtinThemes[colorTheme]) {
       const filename = `${builtinThemes[colorTheme]}.json`;
-      currentTheme =  vscode.workspace.fs
-        .readFile(vscode.Uri.file(path.join(getExtensionUri().fsPath, "builtin-themes", filename)))
+      currentTheme = vscode.workspace.fs
+        .readFile(
+          vscode.Uri.file(
+            path.join(getExtensionUri().fsPath, "builtin-themes", filename),
+          ),
+        )
         .toString();
     }
 
@@ -70,8 +74,15 @@ export function getTheme() {
     let parsed = parseThemeString(currentTheme);
 
     if (parsed.include) {
-      const includeThemeString = vscode.workspace.fs.readFile(
-          vscode.Uri.file(path.join(getExtensionUri().fsPath, "builtin-themes", parsed.include)),
+      const includeThemeString = vscode.workspace.fs
+        .readFile(
+          vscode.Uri.file(
+            path.join(
+              getExtensionUri().fsPath,
+              "builtin-themes",
+              parsed.include,
+            ),
+          ),
         )
         .toString();
       const includeTheme = parseThemeString(includeThemeString);

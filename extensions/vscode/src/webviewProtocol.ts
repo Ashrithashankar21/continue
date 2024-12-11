@@ -20,9 +20,9 @@ export async function showTutorial() {
   );
   // Ensure keyboard shortcuts match OS
   if (process.platform !== "darwin") {
-    let tutorialContent = vscode.workspace.fs.readFile(
-      vscode.Uri.file(tutorialPath),
-    ).toString();
+    let tutorialContent = vscode.workspace.fs
+      .readFile(vscode.Uri.file(tutorialPath))
+      .toString();
     tutorialContent = tutorialContent.replace("⌘", "^").replace("Cmd", "Ctrl");
     vscode.workspace.fs.writeFile(
       vscode.Uri.file(tutorialPath),

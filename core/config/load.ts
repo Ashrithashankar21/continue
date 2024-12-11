@@ -79,16 +79,22 @@ export interface ConfigResult<T> {
   configLoadInterrupted: boolean;
 }
 
-async function resolveSerializedConfig(filepath: string): Promise<SerializedContinueConfig> {
+async function resolveSerializedConfig(
+  filepath: string,
+): Promise<SerializedContinueConfig> {
   const fileUri = vscode.Uri.file(filepath);
   const fileData = vscode.workspace.fs.readFile(fileUri);
   let content = Buffer.from(fileData.toString()).toString();
   const config = JSONC.parse(content) as unknown as SerializedContinueConfig;
   if (config.env && Array.isArray(config.env)) {
-    const continueDotEnv: Record<string, string>  = await getContinueDotEnv();
-    
+    const continueDotEnv: Record<string, string> = await getContinueDotEnv();
+
     const env: Record<string, string> = {
-      ...Object.fromEntries(Object.entries(process.env).filter(([key, value]) => value !== undefined)) as Record<string, string> ,
+      ...(Object.fromEntries(
+        Object.entries(process.env).filter(
+          ([key, value]) => value !== undefined,
+        ),
+      ) as Record<string, string>),
       ...continueDotEnv,
     };
 
@@ -218,7 +224,7 @@ async function serializedToIntermediateConfig(
       .filter(({ path }) => path.endsWith(".prompt"));
 
     // Also read from ~/.continue/.prompts
-    promptFiles.push(...await readAllGlobalPromptFiles());
+    promptFiles.push(...(await readAllGlobalPromptFiles()));
 
     for (const file of promptFiles) {
       const slashCommand = slashCommandFromPromptFile(file.path, file.content);

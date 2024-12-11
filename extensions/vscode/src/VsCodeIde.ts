@@ -375,7 +375,7 @@ class VsCodeIde implements IDE {
 
   async getContinueDir(): Promise<string> {
     const result = await getContinueGlobalPath();
-    return result ?? '';  // Default to empty string if result is undefined
+    return result ?? ""; // Default to empty string if result is undefined
   }
 
   async writeFile(path: string, contents: string): Promise<void> {

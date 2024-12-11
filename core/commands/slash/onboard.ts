@@ -89,9 +89,16 @@ async function gatherProjectContext(
 ): Promise<string> {
   let context = "";
 
-  async function appendFileContent(entry: [string, vscode.FileType], relativePath: string, context: string, fullPath: string) {
+  async function appendFileContent(
+    entry: [string, vscode.FileType],
+    relativePath: string,
+    context: string,
+    fullPath: string,
+  ) {
     const filePath = fullPath;
-    const fileContentUint8 = await vscode.workspace.fs.readFile(vscode.Uri.file(filePath));
+    const fileContentUint8 = await vscode.workspace.fs.readFile(
+      vscode.Uri.file(filePath),
+    );
     const fileContent = new TextDecoder("utf-8").decode(fileContentUint8);
 
     if (entry[0].toLowerCase() === "readme.md") {

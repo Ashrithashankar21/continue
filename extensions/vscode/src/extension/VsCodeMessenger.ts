@@ -108,7 +108,7 @@ export class VsCodeMessenger {
       );
     });
 
-    this.onWebview("openConfigJson", async(msg) => {
+    this.onWebview("openConfigJson", async (msg) => {
       this.ide.openFile(await getConfigJsonPath());
     });
 
@@ -292,10 +292,12 @@ export class VsCodeMessenger {
       );
       // Ensure keyboard shortcuts match OS
       if (process.platform !== "darwin") {
-        const tutorialContentUint8Array  = await vscode.workspace.fs.readFile(
+        const tutorialContentUint8Array = await vscode.workspace.fs.readFile(
           vscode.Uri.file(tutorialPath),
         );
-        let tutorialContent = new TextDecoder().decode(tutorialContentUint8Array);
+        let tutorialContent = new TextDecoder().decode(
+          tutorialContentUint8Array,
+        );
         tutorialContent = tutorialContent
           .replace("⌘", "^")
           .replace("Cmd", "Ctrl");

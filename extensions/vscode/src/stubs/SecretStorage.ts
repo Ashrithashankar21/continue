@@ -66,7 +66,10 @@ export class SecretStorage {
     const data = vscode.workspace.fs.readFile(vscode.Uri.file(filePath));
 
     const salt = (await data).subarray(0, this.saltLength);
-    const iv = (await data).subarray(this.saltLength, this.saltLength + this.ivLength);
+    const iv = (await data).subarray(
+      this.saltLength,
+      this.saltLength + this.ivLength,
+    );
     const tag = (await data).subarray(
       this.saltLength + this.ivLength,
       this.saltLength + this.ivLength + this.tagLength,

@@ -24,10 +24,7 @@ async function readFile(path: string): Promise<string> {
 }
 
 async function writeFile(uri: vscode.Uri, contents: string) {
-  await vscode.workspace.fs.writeFile(
-    uri,
-    new TextEncoder().encode(contents),
-  );
+  await vscode.workspace.fs.writeFile(uri, new TextEncoder().encode(contents));
 }
 
 // THIS IS LOCAL

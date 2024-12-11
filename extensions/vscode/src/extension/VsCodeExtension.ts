@@ -36,7 +36,6 @@ import { VsCodeIde } from "../VsCodeIde";
 
 import { VsCodeMessenger } from "./VsCodeMessenger";
 
-
 import type { VsCodeWebviewProtocol } from "../webviewProtocol";
 
 export class VsCodeExtension {
@@ -251,15 +250,15 @@ export class VsCodeExtension {
 
     // Listen for file saving - use global file watcher so that changes
     // from outside the window are also caught
-    let configJsonUri ;
+    let configJsonUri;
     getConfigJsonPath()
-    .then((configJsonPath) => {
-      configJsonUri = vscode.Uri.file(configJsonPath);
-      // Now you can use configJsonUri for further operations
-    })
-    .catch((error) => {
-      console.error("Error while getting configJsonPath:", error);
-    });    
+      .then((configJsonPath) => {
+        configJsonUri = vscode.Uri.file(configJsonPath);
+        // Now you can use configJsonUri for further operations
+      })
+      .catch((error) => {
+        console.error("Error while getting configJsonPath:", error);
+      });
     const configWatcher = vscode.workspace.createFileSystemWatcher(
       configJsonUri!.fsPath,
     );
@@ -278,15 +277,15 @@ export class VsCodeExtension {
 
     context.subscriptions.push(configWatcher);
 
-    let configTsUri ;
+    let configTsUri;
     getConfigTsPath()
-    .then((configTsPath) => {
-      configTsUri = vscode.Uri.file(configTsPath);
-      // Now you can use configJsonUri for further operations
-    })
-    .catch((error) => {
-      console.error("Error while getting configJsonPath:", error);
-    });  
+      .then((configTsPath) => {
+        configTsUri = vscode.Uri.file(configTsPath);
+        // Now you can use configJsonUri for further operations
+      })
+      .catch((error) => {
+        console.error("Error while getting configJsonPath:", error);
+      });
     const configTsWatcher = vscode.workspace.createFileSystemWatcher(
       configTsUri!.fsPath,
     );

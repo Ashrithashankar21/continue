@@ -61,7 +61,9 @@ class DFSWalker {
     const root = this.newRootWalkContext();
     const stack = [root];
     for (let cur = stack.pop(); cur; cur = stack.pop()) {
-      const walkableEntries = await this.listDirForWalking((await cur).walkableEntry);
+      const walkableEntries = await this.listDirForWalking(
+        (await cur).walkableEntry,
+      );
       const ignoreContexts = await this.getIgnoreToApplyInDir(
         await cur,
         walkableEntries,
@@ -77,7 +79,7 @@ class DFSWalker {
                 walkableEntry: w,
                 ignoreContexts: ignoreContexts,
               });
-            })
+            }),
           );
           if (this.options.onlyDirs) {
             // when onlyDirs is enabled the walker will only return directory names
