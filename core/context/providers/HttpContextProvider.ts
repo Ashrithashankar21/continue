@@ -2,8 +2,8 @@ import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
-} from "../../index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { BaseContextProvider } from "../index";
 
 class HttpContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {

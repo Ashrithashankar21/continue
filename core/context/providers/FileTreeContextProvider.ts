@@ -2,10 +2,10 @@ import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
-} from "../../index.js";
-import { walkDir } from "../../indexing/walkDir.js";
-import { splitPath } from "../../util/index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { walkDir } from "../../indexing/walkDir";
+import { splitPath } from "../../util/index";
+import { BaseContextProvider } from "../index";
 
 interface Directory {
   name: string;

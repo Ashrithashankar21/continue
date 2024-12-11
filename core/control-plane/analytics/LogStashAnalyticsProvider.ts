@@ -5,7 +5,7 @@ import { Analytics } from "@continuedev/config-types";
 import {
   ControlPlaneProxyInfo,
   IAnalyticsProvider,
-} from "./IAnalyticsProvider.js";
+} from "./IAnalyticsProvider";
 
 export default class LogStashAnalyticsProvider implements IAnalyticsProvider {
   private host?: string;

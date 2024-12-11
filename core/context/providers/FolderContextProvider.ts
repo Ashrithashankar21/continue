@@ -4,13 +4,13 @@ import {
   ContextProviderExtras,
   ContextSubmenuItem,
   LoadSubmenuItemsArgs,
-} from "../../index.js";
+} from "../../index";
 import {
   getBasename,
   groupByLastNPathParts,
   getUniqueFilePath,
-} from "../../util/index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../util/index";
+import { BaseContextProvider } from "../index";
 
 class FolderContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {

@@ -1,9 +1,9 @@
-import { ControlPlaneClient } from "../../control-plane/client.js";
-import { ContinueConfig, IDE, IdeSettings } from "../../index.js";
-import { ConfigResult } from "../load.js";
+import { ControlPlaneClient } from "../../control-plane/client";
+import { ContinueConfig, IDE, IdeSettings } from "../../index";
+import { ConfigResult } from "../load";
 
 import doLoadConfig from "./doLoadConfig";
-import { IProfileLoader } from "./IProfileLoader.js";
+import { IProfileLoader } from "./IProfileLoader";
 
 export default class LocalProfileLoader implements IProfileLoader {
   static ID = "local";

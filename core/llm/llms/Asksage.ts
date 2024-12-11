@@ -4,7 +4,7 @@ import {
   LLMOptions,
   ModelProvider,
 } from "../../index.js";
-import { BaseLLM } from "../index.js";
+import { BaseLLM } from "../index";
 
 class Asksage extends BaseLLM {
   static providerName: ModelProvider = "askSage";

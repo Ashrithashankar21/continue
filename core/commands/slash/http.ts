@@ -1,5 +1,5 @@
-import { SlashCommand } from "../../index.js";
-import { removeQuotesAndEscapes } from "../../util/index.js";
+import { SlashCommand } from "../../index";
+import { removeQuotesAndEscapes } from "../../util/index";
 
 const HttpSlashCommand: SlashCommand = {
   name: "http",

@@ -7,13 +7,13 @@ import {
   MessagePart,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
-import { streamSse } from "../stream.js";
-import { streamResponse } from "../stream.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
+import { streamSse } from "../stream";
+import { streamResponse } from "../stream";
 
-import Anthropic from "./Anthropic.js";
-import Gemini from "./Gemini.js";
+import Anthropic from "./Anthropic";
+import Gemini from "./Gemini";
 
 class VertexAI extends BaseLLM {
   static providerName: ModelProvider = "vertexai";

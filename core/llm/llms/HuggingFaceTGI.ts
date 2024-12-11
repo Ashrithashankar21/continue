@@ -1,6 +1,6 @@
 import { CompletionOptions, LLMOptions, ModelProvider } from "../../index.js";
-import { BaseLLM } from "../index.js";
-import { streamSse } from "../stream.js";
+import { BaseLLM } from "../index";
+import { streamSse } from "../stream";
 
 class HuggingFaceTGI extends BaseLLM {
   private static MAX_STOP_TOKENS = 4;

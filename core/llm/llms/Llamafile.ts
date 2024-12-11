@@ -1,6 +1,6 @@
 import { ModelProvider } from "../../index.js";
 
-import LlamaCpp from "./LlamaCpp.js";
+import LlamaCpp from "./LlamaCpp";
 
 class Llamafile extends LlamaCpp {
   static providerName: ModelProvider = "llamafile";

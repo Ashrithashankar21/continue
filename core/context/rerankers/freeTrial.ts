@@ -1,8 +1,8 @@
 import fetch from "node-fetch";
 
-import { getHeaders } from "../../continueServer/stubs/headers.js";
-import { TRIAL_PROXY_URL } from "../../control-plane/client.js";
-import { Chunk, Reranker } from "../../index.js";
+import { getHeaders } from "../../continueServer/stubs/headers";
+import { TRIAL_PROXY_URL } from "../../control-plane/client";
+import { Chunk, Reranker } from "../../index";
 
 export class FreeTrialReranker implements Reranker {
   name = "free-trial";

@@ -1,8 +1,8 @@
 import { CompletionOptions, LLMOptions, ModelProvider } from "../../index.js";
-import { streamSse } from "../stream.js";
-import { osModelsEditPrompt } from "../templates/edit.js";
+import { streamSse } from "../stream";
+import { osModelsEditPrompt } from "../templates/edit";
 
-import OpenAI from "./OpenAI.js";
+import OpenAI from "./OpenAI";
 
 class Moonshot extends OpenAI {
   static providerName: ModelProvider = "moonshot";

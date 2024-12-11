@@ -9,11 +9,11 @@ import {
   IDE,
   IdeSettings,
   ILLM,
-} from "../index.js";
+} from "../index";
 import Ollama from "../llm/llms/Ollama";
 import { GlobalContext } from "../util/GlobalContext";
 
-import { ConfigResult } from "./load.js";
+import { ConfigResult } from "./load";
 import {
   LOCAL_ONBOARDING_CHAT_MODEL,
   ONBOARDING_LOCAL_MODEL_TITLE,
@@ -120,7 +120,7 @@ export class ConfigHandler {
         } else {
           // Otherwise we stick with local profile, and record choice
           lastSelectedWorkspaceIds[workspaceId] = this.selectedProfileId;
-          this.globalContext.update(
+          await this.globalContext.update(
             "lastSelectedProfileForWorkspace",
             lastSelectedWorkspaceIds,
           );

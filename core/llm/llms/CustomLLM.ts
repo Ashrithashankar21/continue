@@ -4,7 +4,7 @@ import {
   CustomLLM,
   ModelProvider,
 } from "../../index.js";
-import { BaseLLM } from "../index.js";
+import { BaseLLM } from "../index";
 
 class CustomLLMClass extends BaseLLM {
   get providerName(): ModelProvider {

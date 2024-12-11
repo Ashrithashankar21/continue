@@ -1,7 +1,7 @@
 import { Analytics } from "@continuedev/config-types";
 import fetch from "node-fetch";
 
-import { ControlPlaneClient } from "../client.js";
+import { ControlPlaneClient } from "../client";
 
 import {
   ControlPlaneProxyInfo,

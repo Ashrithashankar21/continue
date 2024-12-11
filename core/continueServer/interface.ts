@@ -1,4 +1,4 @@
-import { Chunk } from "../index.js";
+import { Chunk } from "../index";
 
 export interface EmbeddingsCacheChunk {
   vector: number[];

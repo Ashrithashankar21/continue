@@ -1,6 +1,6 @@
 import QuickLRU from "quick-lru";
 
-import { ToWebviewOrCoreFromIdeProtocol } from "../../protocol/ide.js";
+import { ToWebviewOrCoreFromIdeProtocol } from "../../protocol/ide";
 
 // The cache key and value are both a filepath string
 export type RecentlyEditedFilesCacheKeyAndValue =

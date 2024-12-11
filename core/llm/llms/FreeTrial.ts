@@ -1,9 +1,9 @@
-import { TRIAL_FIM_MODEL } from "../../config/onboarding.js";
-import { getHeaders } from "../../continueServer/stubs/headers.js";
-import { TRIAL_PROXY_URL } from "../../control-plane/client.js";
+import { TRIAL_FIM_MODEL } from "../../config/onboarding";
+import { getHeaders } from "../../continueServer/stubs/headers";
+import { TRIAL_PROXY_URL } from "../../control-plane/client";
 import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
-import { BaseLLM } from "../index.js";
-import { streamResponse } from "../stream.js";
+import { BaseLLM } from "../index";
+import { streamResponse } from "../stream";
 
 class FreeTrial extends BaseLLM {
   static providerName: ModelProvider = "free-trial";

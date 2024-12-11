@@ -2,9 +2,9 @@ import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
-} from "../../index.js";
-import { getBasename } from "../../util/index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { getBasename } from "../../util/index";
+import { BaseContextProvider } from "../index";
 
 const HIGHLIGHTS_TOKEN_BUDGET = 2000;
 

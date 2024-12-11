@@ -1,24 +1,24 @@
 import { EmbeddingsProviderName } from "../../index.js";
 
 import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
-import BedrockEmbeddingsProvider from "./BedrockEmbeddingsProvider.js";
-import CohereEmbeddingsProvider from "./CohereEmbeddingsProvider.js";
-import ContinueProxyEmbeddingsProvider from "./ContinueProxyEmbeddingsProvider.js";
-import DeepInfraEmbeddingsProvider from "./DeepInfraEmbeddingsProvider.js";
-import FreeTrialEmbeddingsProvider from "./FreeTrialEmbeddingsProvider.js";
-import GeminiEmbeddingsProvider from "./GeminiEmbeddingsProvider.js";
-import HuggingFaceTEIEmbeddingsProvider from "./HuggingFaceTEIEmbeddingsProvider.js";
-import LMStudioEmbeddingsProvider from "./LMStudio.js";
-import MistralEmbeddingsProvider from "./MistralEmbeddingsProvider.js";
-import NebiusEmbeddingsProvider from "./NebiusEmbeddingsProvider.js";
-import NvidiaEmbeddingsProvider from "./NvidiaEmbeddingsProvider.js";
-import OllamaEmbeddingsProvider from "./OllamaEmbeddingsProvider.js";
-import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider.js";
-import SageMakerEmbeddingsProvider from "./SageMakerEmbeddingsProvider.js";
-import TransformersJsEmbeddingsProvider from "./TransformersJsEmbeddingsProvider.js";
-import VertexEmbeddingsProvider from "./VertexEmbeddingsProvider.js";
-import VoyageEmbeddingsProvider from "./VoyageEmbeddingsProvider.js";
-import WatsonxEmbeddingsProvider from "./WatsonxEmbeddingsProvider.js";
+import BedrockEmbeddingsProvider from "./BedrockEmbeddingsProvider";
+import CohereEmbeddingsProvider from "./CohereEmbeddingsProvider";
+import ContinueProxyEmbeddingsProvider from "./ContinueProxyEmbeddingsProvider";
+import DeepInfraEmbeddingsProvider from "./DeepInfraEmbeddingsProvider";
+import FreeTrialEmbeddingsProvider from "./FreeTrialEmbeddingsProvider";
+import GeminiEmbeddingsProvider from "./GeminiEmbeddingsProvider";
+import HuggingFaceTEIEmbeddingsProvider from "./HuggingFaceTEIEmbeddingsProvider";
+import LMStudioEmbeddingsProvider from "./LMStudio";
+import MistralEmbeddingsProvider from "./MistralEmbeddingsProvider";
+import NebiusEmbeddingsProvider from "./NebiusEmbeddingsProvider";
+import NvidiaEmbeddingsProvider from "./NvidiaEmbeddingsProvider";
+import OllamaEmbeddingsProvider from "./OllamaEmbeddingsProvider";
+import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider";
+import SageMakerEmbeddingsProvider from "./SageMakerEmbeddingsProvider";
+import TransformersJsEmbeddingsProvider from "./TransformersJsEmbeddingsProvider";
+import VertexEmbeddingsProvider from "./VertexEmbeddingsProvider";
+import VoyageEmbeddingsProvider from "./VoyageEmbeddingsProvider";
+import WatsonxEmbeddingsProvider from "./WatsonxEmbeddingsProvider";
 
 type EmbeddingsProviderConstructor = new (
   ...args: any[]

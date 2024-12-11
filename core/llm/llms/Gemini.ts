@@ -5,9 +5,9 @@ import {
   MessagePart,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
-import { streamResponse } from "../stream.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
+import { streamResponse } from "../stream";
 
 class Gemini extends BaseLLM {
   static providerName: ModelProvider = "gemini";

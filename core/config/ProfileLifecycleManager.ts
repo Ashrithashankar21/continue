@@ -4,10 +4,10 @@ import {
   BrowserSerializedContinueConfig,
   ContinueConfig,
   IContextProvider,
-} from "../index.js";
+} from "../index";
 
 import { ConfigResult, finalToBrowserConfig } from "./load";
-import { IProfileLoader } from "./profile/IProfileLoader.js";
+import { IProfileLoader } from "./profile/IProfileLoader";
 
 export interface ProfileDescription {
   title: string;

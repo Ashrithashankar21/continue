@@ -1,12 +1,12 @@
-import { controlPlaneEnv } from "../../control-plane/env.js";
+import { controlPlaneEnv } from "../../control-plane/env";
 import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
   ContextSubmenuItem,
   LoadSubmenuItemsArgs,
-} from "../../index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { BaseContextProvider } from "../index";
 
 class ContinueProxyContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {

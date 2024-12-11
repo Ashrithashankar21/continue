@@ -1,11 +1,11 @@
 import { Chunk, ChunkWithoutID } from "../../index.js";
-import { countTokensAsync } from "../../llm/countTokens.js";
-import { extractMinimalStackTraceInfo } from "../../util/extractMinimalStackTraceInfo.js";
-import { Telemetry } from "../../util/posthog.js";
-import { supportedLanguages } from "../../util/treeSitter.js";
+import { countTokensAsync } from "../../llm/countTokens";
+import { extractMinimalStackTraceInfo } from "../../util/extractMinimalStackTraceInfo";
+import { Telemetry } from "../../util/posthog";
+import { supportedLanguages } from "../../util/treeSitter";
 
-import { basicChunker } from "./basic.js";
-import { codeChunker } from "./code.js";
+import { basicChunker } from "./basic";
+import { codeChunker } from "./code";
 
 export type ChunkDocumentParam = {
   filepath: string;

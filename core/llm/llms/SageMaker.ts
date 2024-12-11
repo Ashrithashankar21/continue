@@ -13,7 +13,7 @@ import {
   LLMOptions,
   ModelProvider,
 } from "../../index.js";
-import { BaseLLM } from "../index.js";
+import { BaseLLM } from "../index";
 
 class SageMaker extends BaseLLM {
   private static PROFILE_NAME: string = "sagemaker";

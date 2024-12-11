@@ -4,9 +4,9 @@ import {
   ContextProviderExtras,
   ContextSubmenuItem,
   LoadSubmenuItemsArgs,
-} from "../../index.js";
-import { CodeSnippetsCodebaseIndex } from "../../indexing/CodeSnippetsIndex.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { CodeSnippetsCodebaseIndex } from "../../indexing/CodeSnippetsIndex";
+import { BaseContextProvider } from "../index";
 
 const MAX_SUBMENU_ITEMS = 10_000;
 

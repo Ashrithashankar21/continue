@@ -5,8 +5,8 @@ import {
   ContextSubmenuItem,
   LoadSubmenuItemsArgs,
   FetchFunction,
-} from "../../index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { BaseContextProvider } from "../index";
 
 //Define helper interfaces for Discord responses
 export interface DiscordChannel {

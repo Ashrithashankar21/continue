@@ -1,6 +1,6 @@
 import { LLMOptions, ModelProvider } from "../../index.js";
 
-import OpenAI from "./OpenAI.js";
+import OpenAI from "./OpenAI";
 
 class Cerebras extends OpenAI {
   static providerName: ModelProvider = "cerebras";

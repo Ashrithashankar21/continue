@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
-import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider.js";
-import { Chunk, Reranker } from "../../index.js";
+import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider";
+import { Chunk, Reranker } from "../../index";
 
 export class ContinueProxyReranker implements Reranker {
   name = "continue-proxy";

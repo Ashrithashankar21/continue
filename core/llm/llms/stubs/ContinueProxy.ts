@@ -1,6 +1,6 @@
 import { ControlPlaneProxyInfo } from "../../../control-plane/analytics/IAnalyticsProvider.js";
-import { Telemetry } from "../../../util/posthog.js";
-import OpenAI from "../OpenAI.js";
+import { Telemetry } from "../../../util/posthog";
+import OpenAI from "../OpenAI";
 
 import type { LLMOptions, ModelProvider } from "../../../index.js";
 

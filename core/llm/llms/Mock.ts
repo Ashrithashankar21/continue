@@ -1,5 +1,5 @@
 import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
-import { BaseLLM } from "../index.js";
+import { BaseLLM } from "../index";
 
 class Mock extends BaseLLM {
   public completion: string = "Test Completion";

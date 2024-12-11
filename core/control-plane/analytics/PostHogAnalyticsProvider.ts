@@ -3,7 +3,7 @@ import { Analytics } from "@continuedev/config-types";
 import {
   ControlPlaneProxyInfo,
   IAnalyticsProvider,
-} from "./IAnalyticsProvider.js";
+} from "./IAnalyticsProvider";
 
 export default class PostHogAnalyticsProvider implements IAnalyticsProvider {
   client?: any;

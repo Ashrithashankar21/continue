@@ -1,5 +1,5 @@
-import { Chunk, ILLM, Reranker } from "../../index.js";
-import { getBasename } from "../../util/index.js";
+import { Chunk, ILLM, Reranker } from "../../index";
+import { getBasename } from "../../util/index";
 
 const RERANK_PROMPT = (
   query: string,

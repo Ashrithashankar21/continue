@@ -1,6 +1,6 @@
 import { LLMOptions, ModelProvider, ChatMessage } from "../../index.js";
 
-import OpenAI from "./OpenAI.js";
+import OpenAI from "./OpenAI";
 
 class Nvidia extends OpenAI {
   // NVIDIA NIMs currently limits the number of stops for Starcoder 2 to 4

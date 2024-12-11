@@ -1,6 +1,6 @@
 import { LLMOptions, ModelProvider } from "../../index.js";
 
-import Ollama from "./Ollama.js";
+import Ollama from "./Ollama";
 
 class Msty extends Ollama {
   static providerName: ModelProvider = "msty";

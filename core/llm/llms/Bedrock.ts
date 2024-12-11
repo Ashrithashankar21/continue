@@ -11,8 +11,8 @@ import {
   MessageContent,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
 
 class Bedrock extends BaseLLM {
   static providerName: ModelProvider = "bedrock";

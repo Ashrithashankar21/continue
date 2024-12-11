@@ -4,8 +4,8 @@ import {
   ContextProviderExtras,
   ContextSubmenuItem,
   LoadSubmenuItemsArgs,
-} from "../../index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { BaseContextProvider } from "../index";
 
 class PostgresContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {

@@ -1,4 +1,4 @@
-import OpenAI from "./OpenAI.js";
+import OpenAI from "./OpenAI";
 
 import type { LLMOptions, ModelProvider } from "../../index.js";
 

@@ -5,11 +5,11 @@ import {
   IdeSettings,
   SerializedContinueConfig,
 } from "../../";
-import { ContinueProxyReranker } from "../../context/rerankers/ContinueProxyReranker.js";
-import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider.js";
-import { ControlPlaneClient } from "../../control-plane/client.js";
-import { controlPlaneEnv } from "../../control-plane/env.js";
-import { TeamAnalytics } from "../../control-plane/TeamAnalytics.js";
+import { ContinueProxyReranker } from "../../context/rerankers/ContinueProxyReranker";
+import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider";
+import { ControlPlaneClient } from "../../control-plane/client";
+import { controlPlaneEnv } from "../../control-plane/env";
+import { TeamAnalytics } from "../../control-plane/TeamAnalytics";
 import ContinueProxyEmbeddingsProvider from "../../indexing/embeddings/ContinueProxyEmbeddingsProvider";
 import ContinueProxy from "../../llm/llms/stubs/ContinueProxy";
 import { Telemetry } from "../../util/posthog";

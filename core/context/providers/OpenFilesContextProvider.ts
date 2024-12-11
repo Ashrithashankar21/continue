@@ -2,9 +2,9 @@ import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
-} from "../../index.js";
-import { getRelativePath } from "../../util/index.js";
-import { BaseContextProvider } from "../index.js";
+} from "../../index";
+import { getRelativePath } from "../../util/index";
+import { BaseContextProvider } from "../index";
 
 class OpenFilesContextProvider extends BaseContextProvider {
   static description: ContextProviderDescription = {

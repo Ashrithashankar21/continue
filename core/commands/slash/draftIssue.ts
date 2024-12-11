@@ -1,6 +1,6 @@
-import { ChatMessage, SlashCommand } from "../../index.js";
-import { stripImages } from "../../llm/images.js";
-import { removeQuotesAndEscapes } from "../../util/index.js";
+import { ChatMessage, SlashCommand } from "../../index";
+import { stripImages } from "../../llm/images";
+import { removeQuotesAndEscapes } from "../../util/index";
 
 const PROMPT = (
   input: string,

@@ -1,6 +1,6 @@
 import { LLMOptions, ModelProvider } from "../../index.js";
 
-import OpenAI from "./OpenAI.js";
+import OpenAI from "./OpenAI";
 
 class Azure extends OpenAI {
   static providerName: ModelProvider = "azure";

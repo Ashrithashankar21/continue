@@ -6,8 +6,8 @@ import {
   LLMOptions,
   ModelProvider,
 } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
 
 interface IFlowiseApiOptions {
   /** Sampling temperature to use */

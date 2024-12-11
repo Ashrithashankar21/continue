@@ -2,7 +2,7 @@ import type {
   ArtifactType,
   EmbeddingsCacheResponse,
   IContinueServerClient,
-} from "../interface.js";
+} from "../interface";
 
 export class ContinueServerClient implements IContinueServerClient {
   url: URL | undefined;

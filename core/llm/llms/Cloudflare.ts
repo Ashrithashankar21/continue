@@ -1,7 +1,7 @@
 import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
-import { stripImages } from "../images.js";
-import { BaseLLM } from "../index.js";
-import { streamSse } from "../stream.js";
+import { stripImages } from "../images";
+import { BaseLLM } from "../index";
+import { streamSse } from "../stream";
 
 export default class Cloudflare extends BaseLLM {
   static providerName: ModelProvider = "cloudflare";

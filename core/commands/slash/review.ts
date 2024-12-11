@@ -1,5 +1,5 @@
-import { ChatMessage, SlashCommand } from "../../index.js";
-import { stripImages } from "../../llm/images.js";
+import { ChatMessage, SlashCommand } from "../../index";
+import { stripImages } from "../../llm/images";
 
 const prompt = `
      Review the following code, focusing on Readability, Maintainability, Code Smells, Speed, and Memory Performance. Provide feedback with these guidelines:

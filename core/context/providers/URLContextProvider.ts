@@ -7,7 +7,7 @@ import {
   ContextItem,
   ContextProviderDescription,
   ContextProviderExtras,
-} from "../../index.js";
+} from "../../index";
 import { fetchFavicon } from "../../util/fetchFavicon";
 
 class URLContextProvider extends BaseContextProvider {

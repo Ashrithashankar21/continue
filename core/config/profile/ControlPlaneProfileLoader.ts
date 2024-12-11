@@ -1,16 +1,16 @@
 import { ConfigJson } from "@continuedev/config-types";
 
-import { ControlPlaneClient } from "../../control-plane/client.js";
+import { ControlPlaneClient } from "../../control-plane/client";
 import {
   ContinueConfig,
   IDE,
   IdeSettings,
   SerializedContinueConfig,
-} from "../../index.js";
-import { ConfigResult } from "../load.js";
+} from "../../index";
+import { ConfigResult } from "../load";
 
 import doLoadConfig from "./doLoadConfig";
-import { IProfileLoader } from "./IProfileLoader.js";
+import { IProfileLoader } from "./IProfileLoader";
 
 export default class ControlPlaneProfileLoader implements IProfileLoader {
   private static RELOAD_INTERVAL = 1000 * 60 * 15; // every 15 minutes

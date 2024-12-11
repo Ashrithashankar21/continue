@@ -5,7 +5,7 @@ import {
 import { fromIni } from "@aws-sdk/credential-providers";
 
 import { CompletionOptions, LLMOptions, ModelProvider } from "../../index.js";
-import { BaseLLM } from "../index.js";
+import { BaseLLM } from "../index";
 
 class BedrockImport extends BaseLLM {
   static providerName: ModelProvider = "bedrockimport";

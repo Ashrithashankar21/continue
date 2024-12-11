@@ -1,11 +1,11 @@
-import { RerankerName } from "../../index.js";
+import { RerankerName } from "../../index";
 
-import { CohereReranker } from "./cohere.js";
-import { ContinueProxyReranker } from "./ContinueProxyReranker.js";
-import { FreeTrialReranker } from "./freeTrial.js";
-import { LLMReranker } from "./llm.js";
-import { HuggingFaceTEIReranker } from "./tei.js";
-import { VoyageReranker } from "./voyage.js";
+import { CohereReranker } from "./cohere";
+import { ContinueProxyReranker } from "./ContinueProxyReranker";
+import { FreeTrialReranker } from "./freeTrial";
+import { LLMReranker } from "./llm";
+import { HuggingFaceTEIReranker } from "./tei";
+import { VoyageReranker } from "./voyage";
 
 export const AllRerankers: { [key in RerankerName]: any } = {
   cohere: CohereReranker,
