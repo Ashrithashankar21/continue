@@ -1,7 +1,12 @@
-import * as si from "systeminformation";
 import { Disposable, EventEmitter } from "vscode";
 
 const UPDATE_INTERVAL_MS = 1000;
+
+declare global {
+  interface Navigator {
+    getBattery?: () => Promise<{ charging: boolean, level?: number }>;
+  }
+}
 
 export class Battery implements Disposable {
   private updateTimeout: NodeJS.Timeout | undefined;
@@ -9,7 +14,6 @@ export class Battery implements Disposable {
   private readonly onChangeLevelEmitter = new EventEmitter<number>();
   private acConnected: boolean = true;
   private level = 100;
-  private readonly batteryStatsPromise = si.battery();
 
   constructor() {
     this.updateTimeout = setInterval(() => this.update(), UPDATE_INTERVAL_MS);
@@ -22,16 +26,19 @@ export class Battery implements Disposable {
   }
 
   private async update() {
-    const stats = await this.batteryStatsPromise;
-    const level = stats.hasBattery ? stats.percent : 100;
-    const isACConnected =
-      !stats.hasBattery || stats.acConnected || level == 100;
+    let level = this.level;
+    let isACConnected = this.acConnected;
+
+    if (navigator.getBattery) {
+      const battery = await navigator.getBattery();
+      level = battery.level !== undefined ? battery.level * 100 : 100;
+      isACConnected = battery.charging;
+    }
 
     if (isACConnected !== this.acConnected) {
       this.acConnected = isACConnected;
       this.onChangeACEmitter.fire(isACConnected);
     }
-
     if (level !== this.level) {
       this.level = level;
       this.onChangeLevelEmitter.fire(level);
@@ -43,7 +50,6 @@ export class Battery implements Disposable {
   }
 
   public isACConnected(): boolean {
-    return false;
     return this.acConnected;
   }
 

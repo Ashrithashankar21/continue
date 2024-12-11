@@ -1,0 +1,1859 @@
+(node:26716) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Executing prepublish script 'npm run vscode:prepublish'...
+
+> continue-test@0.9.232 vscode:prepublish
+> npm run package-web
+
+
+> continue-test@0.9.232 package-web
+> webpack --mode production --devtool hidden-source-map
+
+assets by status 20.5 MiB [cached] 6 assets
+3713 modules
+
+WARNING in ../../core/node_modules/esbuild/lib/main.js 1831:8-28
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/esbuild/lib/main.js 1898:15-32
+Module not found: Error: Can't resolve 'pnpapi' in 'C:\continue\core\node_modules\esbuild\lib'
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/esbuild/lib/main.js 1931:21-46
+Module not found: Error: Can't resolve 'worker_threads' in 'C:\continue\core\node_modules\esbuild\lib'
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/jinja-js/lib/jinja.js 26:22-29
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ../../core/node_modules/jinja-js/jinja.js 1:0-42
+ @ ../../core/llm/llms/SageMaker.ts 9:35-54
+ @ ../../core/llm/llms/index.ts 40:36-58
+ @ ../../core/config/load.ts 49:15-37
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/jsdom/lib/jsdom/utils.js 111:2-36
+Module not found: Error: Can't resolve 'canvas' in 'C:\continue\core\node_modules\jsdom\lib\jsdom'
+ @ ../../core/node_modules/jsdom/lib/jsdom/browser/Window.js 7:26-45
+ @ ../../core/node_modules/jsdom/lib/api.js 13:25-61
+ @ ../../core/util/fetchFavicon.ts 6:16-32
+ @ ../../core/indexing/docs/DocsService.ts 12:23-57
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/pg/lib/native/client.js 7:11-31
+Module not found: Error: Can't resolve 'pg-native' in 'C:\continue\core\node_modules\pg\lib\native'
+ @ ../../core/node_modules/pg/lib/native/index.js 2:0-36
+ @ ../../core/node_modules/pg/lib/index.js 32:26-45 43:24-43
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 65:17-54
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/system-ca/lib/impl.js 99:40-81
+Module not found: Error: Can't resolve 'win-export-certificate-and-key' in 'C:\continue\core\node_modules\system-ca\lib'
+ @ ../../core/node_modules/system-ca/lib/index.js 23:15-32
+ @ ../../core/util/ca.ts 29:20-40
+ @ ./src/extension.ts 31:13-36
+
+WARNING in ../../core/node_modules/system-ca/lib/impl.js 111:40-83
+Module not found: Error: Can't resolve 'macos-export-certificate-and-key' in 'C:\continue\core\node_modules\system-ca\lib'
+ @ ../../core/node_modules/system-ca/lib/index.js 23:15-32
+ @ ../../core/util/ca.ts 29:20-40
+ @ ./src/extension.ts 31:13-36
+
+WARNING in ../../core/node_modules/vectordb/native.js 21:14-37
+Module not found: Error: Can't resolve './index.node' in 'C:\continue\core\node_modules\vectordb'
+ @ ../../core/node_modules/vectordb/dist/index.js 26:5-28
+ @ ../../core/indexing/docs/DocsService.ts 9:35-54
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/config/load.ts 576:89-99
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/config/load.ts 582:105-115
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/config/load.ts 591:37-66
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/config/load.ts 606:100-110
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/config/load.ts 608:37-75
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/yargs-parser/build/index.cjs 1029:19-32
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/node_modules/yargs/build/index.cjs 1:60569-60592 1:61841-61864
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/yargs/build/index.cjs 1:437-463
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/yargs/build/index.cjs 1:626-644
+Critical dependency: the request of a dependency is an expression
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/yargs/build/index.cjs 1:60883-60890
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ../../core/node_modules/yargs/build/index.cjs 1:61275-61282
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+WARNING in ./node_modules/mocha/mocha.js 19551:26-55
+Critical dependency: the request of a dependency is an expression
+ @ ./src/test/suite/index.ts 5:0-22
+
+21 warnings have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+ERROR in ../../core/node_modules/@lancedb/vectordb-win32-x64-msvc/README.md 1:1
+Module parse failed: Unexpected character ' ' (1:1)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> # `@lancedb/vectordb-win32-x64-msvc`
+| 
+| Prebuilt binary package for `vectordb` on `win32-x64-msvc`.
+ @ ../../core/node_modules/@lancedb/ sync ^\.\/vectordb\-.*$ ./vectordb-win32-x64-msvc/README.md
+ @ ../../core/node_modules/vectordb/native.js 24:16-63
+ @ ../../core/node_modules/vectordb/dist/index.js 26:5-28
+ @ ../../core/indexing/docs/DocsService.ts 9:35-54
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/@lancedb/vectordb-win32-x64-msvc/index.node 1:2
+Module parse failed: Unexpected character '�' (1:2)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+(Source code omitted for this binary file)
+ @ ../../core/node_modules/@lancedb/ sync ^\.\/vectordb\-.*$ ./vectordb-win32-x64-msvc/index.node
+ @ ../../core/node_modules/vectordb/native.js 24:16-63
+ @ ../../core/node_modules/vectordb/dist/index.js 26:5-28
+ @ ../../core/indexing/docs/DocsService.ts 9:35-54
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/@tootallnate/quickjs-emscripten/dist/generated/emscripten-module.WASM_RELEASE_SYNC.js 13:21-34
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\@tootallnate\quickjs-emscripten\dist\generated'
+ @ ../../core/node_modules/@tootallnate/quickjs-emscripten/dist/variants.js 130:68-129
+ @ ../../core/node_modules/@tootallnate/quickjs-emscripten/dist/index.js 31:19-40
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 42:29-71
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/agent-base/dist/index.js 30:25-39
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\agent-base\dist'
+ @ ../../core/node_modules/https-proxy-agent/dist/index.js 34:21-42
+ @ ../../core/util/fetchWithOptions.ts 35:28-56
+ @ ../../core/core.ts 27:27-61
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/basic-ftp/dist/Client.js 4:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\basic-ftp\dist'
+ @ ../../core/node_modules/basic-ftp/dist/index.js 21:13-32
+ @ ../../core/node_modules/get-uri/dist/ftp.js 7:20-40
+ @ ../../core/node_modules/get-uri/dist/index.js 11:14-30
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/basic-ftp/dist/Client.js 6:14-28
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\basic-ftp\dist'
+ @ ../../core/node_modules/basic-ftp/dist/index.js 21:13-32
+ @ ../../core/node_modules/get-uri/dist/ftp.js 7:20-40
+ @ ../../core/node_modules/get-uri/dist/index.js 11:14-30
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/basic-ftp/dist/FtpContext.js 4:14-28
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\basic-ftp\dist'
+ @ ../../core/node_modules/basic-ftp/dist/index.js 22:13-36
+ @ ../../core/node_modules/get-uri/dist/ftp.js 7:20-40
+ @ ../../core/node_modules/get-uri/dist/index.js 11:14-30
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/basic-ftp/dist/netUtils.js 4:14-28
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\basic-ftp\dist'
+ @ ../../core/node_modules/basic-ftp/dist/Client.js 13:19-40
+ @ ../../core/node_modules/basic-ftp/dist/index.js 21:13-32
+ @ ../../core/node_modules/get-uri/dist/ftp.js 7:20-40
+ @ ../../core/node_modules/get-uri/dist/index.js 11:14-30
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/basic-ftp/dist/transfer.js 6:14-28
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\basic-ftp\dist'
+ @ ../../core/node_modules/basic-ftp/dist/index.js 26:17-38
+ @ ../../core/node_modules/get-uri/dist/ftp.js 7:20-40
+ @ ../../core/node_modules/get-uri/dist/index.js 11:14-30
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/bindings/bindings.js 5:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\bindings'
+ @ ../../core/node_modules/sqlite3/lib/sqlite3-binding.js 1:17-36
+ @ ../../core/node_modules/sqlite3/lib/sqlite3.js 2:16-47
+ @ ../../core/util/devdataSqlite.ts 31:34-52
+ @ ../../core/core.ts 26:24-55
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/esbuild/lib/downloaded-@esbuild-win32-x64-esbuild.exe 1:2
+Module parse failed: Unexpected character '�' (1:2)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+(Source code omitted for this binary file)
+ @ ../../core/node_modules/esbuild/lib/ sync ^.*\/.*$ ./downloaded-@esbuild-win32-x64-esbuild.exe
+ @ ../../core/node_modules/esbuild/lib/main.js 1826:14-50
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/esbuild/lib/main.d.ts 1:7
+Module parse failed: Unexpected token (1:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+> export type Platform = 'browser' | 'node' | 'neutral'
+| export type Format = 'iife' | 'cjs' | 'esm'
+| export type Loader = 'base64' | 'binary' | 'copy' | 'css' | 'dataurl' | 'default' | 'empty' | 'file' | 'js' | 'json' | 'jsx' | 'text' | 'ts' | 'tsx'
+ @ ../../core/node_modules/esbuild/lib/ sync ^.*\/.*$ ./main.d.ts ./main.d
+ @ ../../core/node_modules/esbuild/lib/main.js 1826:14-50
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/esbuild/lib/main.js 1733:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\esbuild\lib'
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/esbuild/lib/main.js 1922:20-44
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\esbuild\lib'
+ @ ../../core/config/load.ts 518:70-88
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/escalade/sync/index.js 2:34-47
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\escalade\sync'
+ @ ../../core/node_modules/yargs/build/index.cjs 1:60701-60725
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/extract-zip/index.js 3:44-57
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\extract-zip'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 39:38-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/fd-slicer/index.js 1:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\fd-slicer'
+ @ ../../core/node_modules/yauzl/index.js 3:16-36
+ @ ../../core/node_modules/extract-zip/index.js 8:14-30
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 39:38-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/forever-agent/index.js 6:10-24
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\forever-agent'
+ @ ../../core/node_modules/request/request.js 14:19-43
+ @ ../../core/node_modules/request/index.js 143:18-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/forever-agent/index.js 7:10-24
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\forever-agent'
+ @ ../../core/node_modules/request/request.js 14:19-43
+ @ ../../core/node_modules/request/index.js 143:18-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/gcp-metadata/build/src/gcp-residency.js 19:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\gcp-metadata\build\src'
+ @ ../../core/node_modules/gcp-metadata/build/src/index.js 26:24-50 404:13-39
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 21:0-45
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/get-uri/dist/file.js 8:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\get-uri\dist'
+ @ ../../core/node_modules/get-uri/dist/index.js 10:15-32
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/google-auth-library/build/src/auth/filesubjecttokensupplier.js 19:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\google-auth-library\build\src\auth'
+ @ ../../core/node_modules/google-auth-library/build/src/auth/identitypoolclient.js 19:35-72
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 52:27-63
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/google-auth-library/build/src/auth/googleauth.js 29:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\google-auth-library\build\src\auth'
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 17:21-49
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/google-auth-library/build/src/auth/googleauth.js 30:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\google-auth-library\build\src\auth'
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 17:21-49
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/google-auth-library/build/src/auth/pluggable-auth-handler.js 19:21-45
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\google-auth-library\build\src\auth'
+ @ ../../core/node_modules/google-auth-library/build/src/auth/pluggable-auth-client.js 19:33-68
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 60:30-69
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/google-auth-library/build/src/auth/pluggable-auth-handler.js 20:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\google-auth-library\build\src\auth'
+ @ ../../core/node_modules/google-auth-library/build/src/auth/pluggable-auth-client.js 19:33-68
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 60:30-69
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/graceful-fs/graceful-fs.js 1:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\graceful-fs'
+ @ ../../core/node_modules/fs-extra/lib/fs/index.js 5:11-33
+ @ ../../core/node_modules/fs-extra/lib/index.js 5:5-20
+ @ ../../core/node_modules/get-uri/dist/file.js 9:19-38
+ @ ../../core/node_modules/get-uri/dist/index.js 10:15-32
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/gtoken/build/src/index.js 22:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\gtoken\build\src'
+ @ ../../core/node_modules/google-auth-library/build/src/auth/jwtclient.js 17:17-34
+ @ ../../core/node_modules/google-auth-library/build/src/index.js 36:18-45
+ @ ../../core/indexing/embeddings/VertexEmbeddingsProvider.ts 6:30-60
+ @ ../../core/indexing/embeddings/index.ts 22:51-88
+ @ ../../core/config/load.ts 47:21-54
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/http-proxy-agent/dist/index.js 30:25-39
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\http-proxy-agent\dist'
+ @ ../../core/util/fetchWithOptions.ts 34:27-54
+ @ ../../core/core.ts 27:27-61
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/http-proxy-agent/dist/index.js 31:25-39
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\http-proxy-agent\dist'
+ @ ../../core/util/fetchWithOptions.ts 34:27-54
+ @ ../../core/core.ts 27:27-61
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/https-proxy-agent/dist/index.js 30:25-39
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\https-proxy-agent\dist'
+ @ ../../core/util/fetchWithOptions.ts 35:28-56
+ @ ../../core/core.ts 27:27-61
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/https-proxy-agent/dist/index.js 31:25-39
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\https-proxy-agent\dist'
+ @ ../../core/util/fetchWithOptions.ts 35:28-56
+ @ ../../core/core.ts 27:27-61
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/jsdom/lib/api.js 3:11-33
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\jsdom\lib'
+ @ ../../core/util/fetchFavicon.ts 6:16-32
+ @ ../../core/indexing/docs/DocsService.ts 12:23-57
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/jsdom/lib/jsdom/browser/resources/resource-loader.js 2:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\jsdom\lib\jsdom\browser\resources'
+ @ ../../core/node_modules/jsdom/lib/api.js 16:23-78
+ @ ../../core/util/fetchFavicon.ts 6:16-32
+ @ ../../core/indexing/docs/DocsService.ts 12:23-57
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/jsdom/lib/jsdom/living/xhr/XMLHttpRequest-impl.js 4:22-46
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\jsdom\lib\jsdom\living\xhr'
+ @ ../../core/node_modules/jsdom/lib/jsdom/living/generated/XMLHttpRequest.js 655:13-53
+ @ ../../core/node_modules/jsdom/lib/jsdom/living/interfaces.js 170:18-55
+ @ ../../core/node_modules/jsdom/lib/jsdom/browser/Window.js 6:30-61
+ @ ../../core/node_modules/jsdom/lib/api.js 13:25-61
+ @ ../../core/util/fetchFavicon.ts 6:16-32
+ @ ../../core/indexing/docs/DocsService.ts 12:23-57
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/jsdom/lib/jsdom/living/xhr/xhr-utils.js 2:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\jsdom\lib\jsdom\living\xhr'
+ @ ../../core/node_modules/jsdom/lib/jsdom/living/xhr/XMLHttpRequest-impl.js 10:17-39
+ @ ../../core/node_modules/jsdom/lib/jsdom/living/generated/XMLHttpRequest.js 655:13-53
+ @ ../../core/node_modules/jsdom/lib/jsdom/living/interfaces.js 170:18-55
+ @ ../../core/node_modules/jsdom/lib/jsdom/browser/Window.js 6:30-61
+ @ ../../core/node_modules/jsdom/lib/api.js 13:25-61
+ @ ../../core/util/fetchFavicon.ts 6:16-32
+ @ ../../core/indexing/docs/DocsService.ts 12:23-57
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/jsonfile/index.js 5:8-21
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\jsonfile'
+ @ ../../core/node_modules/fs-extra/lib/json/jsonfile.js 3:17-36
+ @ ../../core/node_modules/fs-extra/lib/json/index.js 4:17-38
+ @ ../../core/node_modules/fs-extra/lib/index.js 10:5-22
+ @ ../../core/node_modules/get-uri/dist/file.js 9:19-38
+ @ ../../core/node_modules/get-uri/dist/index.js 10:15-32
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 40:18-36
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/mac-ca/dist/index.js 25:12-26
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\mac-ca\dist'
+ @ ../../core/util/ca.ts 35:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/mac-ca/dist/index.js 26:22-46
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\mac-ca\dist'
+ @ ../../core/util/ca.ts 35:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/mysql2/lib/connection.js 18:12-26
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\mysql2\lib'
+ @ ../../core/node_modules/mysql2/index.js 5:19-49
+ @ ../../core/node_modules/mysql2/promise.js 3:13-34
+ @ ../../core/node_modules/dbinfoz/src/adapters/MysqlAdapter.js 1:0-35 7:16-32 17:33-47 24:30-44
+ @ ../../core/node_modules/dbinfoz/src/index.js 2:0-54 11:17-29
+ @ ../../core/context/providers/DatabaseContextProvider.ts
+ @ ../../core/context/providers/index.ts 11:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/mysql2/lib/connection.js 19:12-26
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\mysql2\lib'
+ @ ../../core/node_modules/mysql2/index.js 5:19-49
+ @ ../../core/node_modules/mysql2/promise.js 3:13-34
+ @ ../../core/node_modules/dbinfoz/src/adapters/MysqlAdapter.js 1:0-35 7:16-32 17:33-47 24:30-44
+ @ ../../core/node_modules/dbinfoz/src/index.js 2:0-54 11:17-29
+ @ ../../core/context/providers/DatabaseContextProvider.ts
+ @ ../../core/context/providers/index.ts 11:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/mysql2/lib/server.js 3:12-26
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\mysql2\lib'
+ @ ../../core/node_modules/mysql2/index.js 37:17-43
+ @ ../../core/node_modules/mysql2/promise.js 3:13-34
+ @ ../../core/node_modules/dbinfoz/src/adapters/MysqlAdapter.js 1:0-35 7:16-32 17:33-47 24:30-44
+ @ ../../core/node_modules/dbinfoz/src/index.js 2:0-54 11:17-29
+ @ ../../core/context/providers/DatabaseContextProvider.ts
+ @ ../../core/context/providers/index.ts 11:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-proxy-agent/dist/index.js 30:25-39
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\pac-proxy-agent\dist'
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-proxy-agent/dist/index.js 31:25-39
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\pac-proxy-agent\dist'
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-proxy-agent/node_modules/socks-proxy-agent/dist/index.js 33:25-39
+Module not found: Error: Can't resolve 'dns' in 'C:\continue\core\node_modules\pac-proxy-agent\node_modules\socks-proxy-agent\dist'
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 39:28-56
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-proxy-agent/node_modules/socks-proxy-agent/dist/index.js 34:25-39
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\pac-proxy-agent\node_modules\socks-proxy-agent\dist'
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 39:28-56
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-resolver/dist/myIpAddress.js 7:30-44
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\pac-resolver\dist'
+ @ ../../core/node_modules/pac-resolver/dist/index.js 19:38-62
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 41:23-46
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pac-resolver/dist/util.js 4:14-28
+Module not found: Error: Can't resolve 'dns' in 'C:\continue\core\node_modules\pac-resolver\dist'
+ @ ../../core/node_modules/pac-resolver/dist/dnsResolve.js 3:15-32
+ @ ../../core/node_modules/pac-resolver/dist/index.js 14:37-60
+ @ ../../core/node_modules/pac-proxy-agent/dist/index.js 41:23-46
+ @ ../../core/node_modules/proxy-agent/dist/index.js 37:26-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pg-connection-string/index.js 76:69-82
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\pg-connection-string'
+ @ ../../core/node_modules/pg/lib/connection-parameters.js 7:12-49
+ @ ../../core/node_modules/pg/lib/client.js 8:27-61
+ @ ../../core/node_modules/pg/lib/index.js 3:13-32
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pg/lib/connection-parameters.js 3:10-24
+Module not found: Error: Can't resolve 'dns' in 'C:\continue\core\node_modules\pg\lib'
+ @ ../../core/node_modules/pg/lib/client.js 8:27-61
+ @ ../../core/node_modules/pg/lib/index.js 3:13-32
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pg/lib/connection.js 3:10-24
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\pg\lib'
+ @ ../../core/node_modules/pg/lib/index.js 5:17-40
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pg/lib/stream.js 6:14-28
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\pg\lib'
+ @ ../../core/node_modules/pg/lib/connection.js 7:39-58
+ @ ../../core/node_modules/pg/lib/index.js 5:17-40
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pg/lib/stream.js 21:12-26
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\pg\lib'
+ @ ../../core/node_modules/pg/lib/connection.js 7:39-58
+ @ ../../core/node_modules/pg/lib/index.js 5:17-40
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/pgpass/lib/index.js 4:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\pgpass\lib'
+ @ ../../core/node_modules/pg/lib/client.js 229:23-40
+ @ ../../core/node_modules/pg/lib/index.js 3:13-32
+ @ ../../core/context/providers/PostgresContextProvider.ts 39:67-80
+ @ ../../core/context/providers/index.ts 26:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/proxy-agent/node_modules/socks-proxy-agent/dist/index.js 33:25-39
+Module not found: Error: Can't resolve 'dns' in 'C:\continue\core\node_modules\proxy-agent\node_modules\socks-proxy-agent\dist'
+ @ ../../core/node_modules/proxy-agent/dist/index.js 40:28-56
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/proxy-agent/node_modules/socks-proxy-agent/dist/index.js 34:25-39
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\proxy-agent\node_modules\socks-proxy-agent\dist'
+ @ ../../core/node_modules/proxy-agent/dist/index.js 40:28-56
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/lib/detect.js 1:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\lib'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 9:22-44
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 2:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\lib'
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/request/lib/har.js 3:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\request\lib'
+ @ ../../core/node_modules/request/request.js 23:10-34
+ @ ../../core/node_modules/request/index.js 143:18-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/request/node_modules/tough-cookie/lib/cookie.js 32:10-24
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\request\node_modules\tough-cookie\lib'
+ @ ../../core/node_modules/request/lib/cookies.js 3:12-35
+ @ ../../core/node_modules/request/index.js 18:14-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/require-directory/index.js 3:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\require-directory'
+ @ ../../core/node_modules/yargs/build/index.cjs 1:61300-61328
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/socks/build/client/socksclient.js 14:12-26
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\socks\build\client'
+ @ ../../core/node_modules/socks/build/index.js 17:13-44
+ @ ../../core/node_modules/proxy-agent/node_modules/socks-proxy-agent/dist/index.js 30:16-32
+ @ ../../core/node_modules/proxy-agent/dist/index.js 40:28-56
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/socks/build/common/helpers.js 8:12-26
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\socks\build\common'
+ @ ../../core/node_modules/socks/build/client/socksclient.js 17:18-46
+ @ ../../core/node_modules/socks/build/index.js 17:13-44
+ @ ../../core/node_modules/proxy-agent/node_modules/socks-proxy-agent/dist/index.js 30:16-32
+ @ ../../core/node_modules/proxy-agent/dist/index.js 40:28-56
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 36:22-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/system-ca/lib/impl.js 7:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\system-ca\lib'
+ @ ../../core/node_modules/system-ca/lib/index.js 23:15-32
+ @ ../../core/util/ca.ts 29:20-40
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/system-ca/lib/index.js 24:14-28
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\system-ca\lib'
+ @ ../../core/util/ca.ts 29:20-40
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/system-ca/lib/index.js 59:79-104
+Module not found: Error: Can't resolve 'worker_threads' in 'C:\continue\core\node_modules\system-ca\lib'
+ @ ../../core/util/ca.ts 29:20-40
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/tar-fs/index.js 3:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar-fs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 40:33-50
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/node_modules/mkdirp/dist/cjs/src/opts-arg.js 4:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\node_modules\mkdirp\dist\cjs\src'
+ @ ../../core/node_modules/tar/node_modules/mkdirp/dist/cjs/src/index.js 6:22-46
+ @ ../../core/node_modules/tar/dist/commonjs/mkdir.js 9:17-34
+ @ ../../core/node_modules/tar/dist/commonjs/unpack.js 41:19-40
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 49:13-35
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/node_modules/mkdirp/dist/cjs/src/use-native.js 4:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\node_modules\mkdirp\dist\cjs\src'
+ @ ../../core/node_modules/tar/node_modules/mkdirp/dist/cjs/src/index.js 8:24-50 16:22-48
+ @ ../../core/node_modules/tar/dist/commonjs/mkdir.js 9:17-34
+ @ ../../core/node_modules/tar/dist/commonjs/unpack.js 41:19-40
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 49:13-35
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tunnel-agent/index.js 3:10-24
+Module not found: Error: Can't resolve 'net' in 'C:\continue\core\node_modules\tunnel-agent'
+ @ ../../core/node_modules/request/lib/tunnel.js 4:13-36
+ @ ../../core/node_modules/request/request.js 29:13-43
+ @ ../../core/node_modules/request/index.js 143:18-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tunnel-agent/index.js 4:10-24
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\tunnel-agent'
+ @ ../../core/node_modules/request/lib/tunnel.js 4:13-36
+ @ ../../core/node_modules/request/request.js 29:13-43
+ @ ../../core/node_modules/request/index.js 143:18-38
+ @ ../../core/indexing/docs/preIndexed.ts 9:34-52
+ @ ../../core/indexing/docs/DocsService.ts 20:21-44
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/web-tree-sitter/tree-sitter.js 1:950-963
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\web-tree-sitter'
+ @ ../../core/util/treeSitter.ts 35:42-68
+ @ ../../core/autocomplete/util/ast.ts 6:21-53
+ @ ./src/autocomplete/lsp.ts 29:14-51
+ @ ./src/VsCodeIde.ts 34:14-43
+ @ ./src/extension/VsCodeExtension.ts 53:20-43
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/win-ca/lib/crypt32-ia32.node 1:2
+Module parse failed: Unexpected character '�' (1:2)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+(Source code omitted for this binary file)
+ @ ../../core/node_modules/win-ca/lib/ sync ^\.\/crypt32\-.*$ ./crypt32-ia32.node
+ @ ../../core/node_modules/win-ca/lib/n-api.js 3:10-46
+ @ ../../core/node_modules/win-ca/lib/index.js 36:8-26
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/win-ca/lib/crypt32-x64.node 1:2
+Module parse failed: Unexpected character '�' (1:2)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+(Source code omitted for this binary file)
+ @ ../../core/node_modules/win-ca/lib/ sync ^\.\/crypt32\-.*$ ./crypt32-x64.node
+ @ ../../core/node_modules/win-ca/lib/n-api.js 3:10-46
+ @ ../../core/node_modules/win-ca/lib/index.js 36:8-26
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/win-ca/lib/fallback.js 4:16-40
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\win-ca\lib'
+ @ ../../core/node_modules/win-ca/lib/index.js 25:20-45 35:8-29
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/win-ca/lib/inject.js 4:6-20
+Module not found: Error: Can't resolve 'tls' in 'C:\continue\core\node_modules\win-ca\lib'
+ @ ../../core/node_modules/win-ca/lib/index.js 22:23-49 55:15-34
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/win-ca/lib/save.js 3:5-18
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\win-ca\lib'
+ @ ../../core/node_modules/win-ca/lib/index.js 52:12-29
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/win-ca/node_modules/make-dir/index.js 2:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\win-ca\node_modules\make-dir'
+ @ ../../core/node_modules/win-ca/lib/save.js 6:10-29
+ @ ../../core/node_modules/win-ca/lib/index.js 52:12-29
+ @ ../../core/util/ca.ts 40:78-95
+ @ ./src/extension.ts 31:13-36
+
+ERROR in ../../core/node_modules/workerpool/dist/workerpool.js 49:63-88
+Module not found: Error: Can't resolve 'worker_threads' in 'C:\continue\core\node_modules\workerpool\dist'
+ @ ../../core/llm/asyncEncoder.ts 8:37-58
+ @ ../../core/llm/countTokens.ts 15:23-48
+ @ ./src/diff/vertical/manager.ts 28:22-53
+ @ ./src/extension/VsCodeExtension.ts 42:18-53
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/workerpool/dist/workerpool.js 585:71-95
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\workerpool\dist'
+ @ ../../core/llm/asyncEncoder.ts 8:37-58
+ @ ../../core/llm/countTokens.ts 15:23-48
+ @ ./src/diff/vertical/manager.ts 28:22-53
+ @ ./src/extension/VsCodeExtension.ts 42:18-53
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/yauzl/index.js 1:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\yauzl'
+ @ ../../core/node_modules/extract-zip/index.js 8:14-30
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 39:38-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/graceful-fs/graceful-fs.js 1:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\extensions\vscode\node_modules\graceful-fs'
+ @ ./node_modules/mz/fs.js 5:7-29
+ @ ./node_modules/read-last-lines/dist/index.js 1:20-36
+ @ ./src/commands.ts 39:42-68
+ @ ./src/extension/VsCodeExtension.ts 39:19-41
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/empty/index.js 4:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\extensions\vscode\node_modules\monaco-vscode-textmate-theme-converter\node_modules\fs-extra\lib\empty'
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/index.js 10:2-20
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/lib/cjs/index.js 4:9-28
+ @ ./src/util/getTheme.ts 32:14-71
+ @ ./src/ContinueGUIWebviewViewProvider.ts 29:19-45
+ @ ./src/extension/VsCodeExtension.ts 40:41-85
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/index.js 23:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\extensions\vscode\node_modules\monaco-vscode-textmate-theme-converter\node_modules\fs-extra\lib'
+Did you mean './fs'?
+Requests that should resolve in the current directory need to start with './'.
+Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+If changing the source code is not an option there is also a resolve options called 'preferRelative' which tries to resolve these kind of requests in the current directory too.
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/lib/cjs/index.js 4:9-28
+ @ ./src/util/getTheme.ts 32:14-71
+ @ ./src/ContinueGUIWebviewViewProvider.ts 29:19-45
+ @ ./src/extension/VsCodeExtension.ts 40:41-85
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/jsonfile/index.js 5:8-21
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\extensions\vscode\node_modules\monaco-vscode-textmate-theme-converter\node_modules\jsonfile'
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/json/jsonfile.js 4:17-36
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/json/index.js 4:17-38
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/node_modules/fs-extra/lib/index.js 12:2-19
+ @ ./node_modules/monaco-vscode-textmate-theme-converter/lib/cjs/index.js 4:9-28
+ @ ./src/util/getTheme.ts 32:14-71
+ @ ./src/ContinueGUIWebviewViewProvider.ts 29:19-45
+ @ ./src/extension/VsCodeExtension.ts 40:41-85
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/mz/fs.js 7:7-20
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\extensions\vscode\node_modules\mz'
+Did you mean './fs'?
+Requests that should resolve in the current directory need to start with './'.
+Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+If changing the source code is not an option there is also a resolve options called 'preferRelative' which tries to resolve these kind of requests in the current directory too.
+ @ ./node_modules/read-last-lines/dist/index.js 1:20-36
+ @ ./src/commands.ts 39:42-68
+ @ ./src/extension/VsCodeExtension.ts 39:19-41
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ./node_modules/node-machine-id/dist/index.js 1:82-106
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\extensions\vscode\node_modules\node-machine-id\dist'
+ @ ./src/util/vscode.ts 36:26-52
+ @ ./src/commands.ts 43:17-41
+ @ ./src/extension/VsCodeExtension.ts 39:19-41
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/commands/slash/share.ts 32:38-105
+Module not found: Error: Can't resolve '../../autocomplete/constants/AutocompleteLanguageInfo.js' in 'C:\continue\core\commands\slash'
+ @ ../../core/commands/slash/index.ts 13:32-50
+ @ ../../core/commands/index.ts 10:32-50
+ @ ../../core/config/load.ts 39:16-44
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/commands/slash/share.ts 33:20-50
+Module not found: Error: Can't resolve '../../llm/images.js' in 'C:\continue\core\commands\slash'
+ @ ../../core/commands/slash/index.ts 13:32-50
+ @ ../../core/commands/index.ts 10:32-50
+ @ ../../core/config/load.ts 39:16-44
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/config/load.ts 33:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\config'
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/context/providers/FolderContextProvider.ts 37:103-139
+Module not found: Error: Can't resolve '../retrieval/retrieval.js' in 'C:\continue\core\context\providers'
+ @ ../../core/context/providers/index.ts 17:48-82
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/context/providers/GreptileContextProvider.ts 26:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\context\providers'
+ @ ../../core/context/providers/index.ts 21:50-86
+ @ ../../core/config/load.ts 43:16-53
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/util/tts.ts 7:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\util'
+ @ ../../core/core.ts 32:14-35
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/@isaacs/fs-minipass/dist/commonjs/index.js 8:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\@isaacs\fs-minipass\dist\commonjs'
+ @ ../../core/node_modules/tar/dist/commonjs/create.js 7:22-52
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 30:13-35 31:18-40
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 36:30-49
+Module not found: Error: Can't resolve 'readline' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/Cache.js 12:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 34:17-38
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/browser-data/firefox.js 12:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs\browser-data'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/browser-data/browser-data.js 36:29-52
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 24:24-65
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 35:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 36:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/fileUtil.js 37:19-41
+Module not found: Error: Can't resolve 'fs/promises' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 22:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/httpUtil.js 32:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 23:22-46
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 13:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 14:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/install.js 15:19-41
+Module not found: Error: Can't resolve 'fs/promises' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 17:19-42
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/launch.js 12:40-64
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 9:18-40
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/launch.js 13:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 9:18-40
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/launch.js 15:35-54
+Module not found: Error: Can't resolve 'readline' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\@puppeteer\browsers\lib\cjs'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 9:18-40
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/BrowserLauncher.js 32:13-26
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/node.js 26:13-44
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/index.js 23:13-38
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 26:13-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/ChromeLauncher.js 12:19-41
+Module not found: Error: Can't resolve 'fs/promises' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/PuppeteerNode.js 12:28-58
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 30:27-61
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/FirefoxLauncher.js 12:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/PuppeteerNode.js 13:29-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 30:27-61
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/FirefoxLauncher.js 13:19-41
+Module not found: Error: Can't resolve 'fs/promises' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/PuppeteerNode.js 13:29-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 30:27-61
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/ScreenRecorder.js 50:24-48
+Module not found: Error: Can't resolve 'child_process' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 31:28-63
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/util/fs.js 12:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer\node\util'
+Did you mean './fs'?
+Requests that should resolve in the current directory need to start with './'.
+Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+If changing the source code is not an option there is also a resolve options called 'preferRelative' which tries to resolve these kind of requests in the current directory too.
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/FirefoxLauncher.js 20:16-39
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/node/PuppeteerNode.js 13:29-60
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 30:27-61
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/puppeteer-chromium-resolver/node_modules/puppeteer-core/lib/cjs/puppeteer/puppeteer-core.js 27:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\puppeteer-chromium-resolver\node_modules\puppeteer-core\lib\cjs\puppeteer'
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 5:18-43
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/sqlite/build/utils/migrate.js 4:11-24
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\sqlite\build\utils'
+ @ ../../core/node_modules/sqlite/build/Database.js 5:18-44
+ @ ../../core/node_modules/sqlite/build/index.js 7:19-40
+ @ ../../core/util/devdataSqlite.ts 30:17-34
+ @ ../../core/core.ts 26:24-55
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/dist/commonjs/get-write-flag.js 14:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\dist\commonjs'
+ @ ../../core/node_modules/tar/dist/commonjs/unpack.js 40:28-58
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 49:13-35
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/dist/commonjs/mkdir.js 8:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\dist\commonjs'
+ @ ../../core/node_modules/tar/dist/commonjs/unpack.js 41:19-40
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 49:13-35
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/dist/commonjs/pack.js 38:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\dist\commonjs'
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 41:13-33
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/tar/dist/commonjs/write-entry.js 30:29-42
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\tar\dist\commonjs'
+ @ ../../core/node_modules/tar/dist/commonjs/index.js 53:13-40
+ @ ../../core/config/load.ts 37:25-39
+ @ ../../core/config/ProfileLifecycleManager.ts 4:15-32
+ @ ../../core/config/ConfigHandler.ts 13:34-70
+ @ ../../core/core.ts 11:24-57
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/yargs-parser/build/index.cjs 5:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\yargs-parser\build'
+ @ ../../core/node_modules/yargs/build/index.cjs 1:60569-60592 1:61841-61864
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/yargs/build/index.cjs 1:60475-60488
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\yargs\build'
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/node_modules/y18n/build/index.cjs 3:9-22
+Module not found: Error: Can't resolve 'fs' in 'C:\continue\core\node_modules\y18n\build'
+ @ ../../core/node_modules/yargs/build/index.cjs 1:60550-60565
+ @ ../../core/node_modules/yargs/yargs 3:68-96
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/CLI.js 39:32-54
+ @ ../../core/node_modules/puppeteer-chromium-resolver/node_modules/@puppeteer/browsers/lib/cjs/main.js 31:15-34
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/util.js 5:11-41
+ @ ../../core/node_modules/puppeteer-chromium-resolver/lib/index.js 7:13-33
+ @ ../../core/indexing/docs/crawlers/ChromiumCrawler.ts 33:54-92
+ @ ../../core/indexing/docs/DocsCrawler.ts 9:26-63
+ @ ../../core/indexing/docs/DocsService.ts 18:38-62
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/vendor/modules/@xenova/transformers/src/backends/onnx.js 32:11-18
+Module not found: Error: Can't resolve 'process/browser' in 'C:\continue\core\vendor\modules\@xenova\transformers\src\backends'
+Did you mean 'browser.js'?
+BREAKING CHANGE: The request 'process/browser' failed to resolve only because it was resolved as fully specified
+(probably because the origin is strict EcmaScript Module, e. g. a module with javascript mimetype, a '*.mjs' file, or a '*.js' file where the package.json contains '"type": "module"').
+The extension in the request is mandatory for it to be fully specified.
+Add the extension to the request.
+ @ ../../core/vendor/modules/@xenova/transformers/src/env.js 28:0-42 29:26-30
+ @ ../../core/vendor/modules/@xenova/transformers/src/transformers.js 14:0-25 14:0-25
+ @ ../../core/indexing/embeddings/TransformersJsEmbeddingsProvider.ts
+ @ ../../core/indexing/docs/DocsService.ts 16:59-116
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/vendor/modules/@xenova/transformers/src/utils/hub.js 185:11-18
+Module not found: Error: Can't resolve 'process/browser' in 'C:\continue\core\vendor\modules\@xenova\transformers\src\utils'
+Did you mean 'browser.js'?
+BREAKING CHANGE: The request 'process/browser' failed to resolve only because it was resolved as fully specified
+(probably because the origin is strict EcmaScript Module, e. g. a module with javascript mimetype, a '*.mjs' file, or a '*.js' file where the package.json contains '"type": "module"').
+The extension in the request is mandatory for it to be fully specified.
+Add the extension to the request.
+ @ ../../core/vendor/modules/@xenova/transformers/src/processors.js 27:0-46 2023:13-25
+ @ ../../core/vendor/modules/@xenova/transformers/src/pipelines.js 40:0-59 2899:15-28 2911:15-28 2923:15-28 2935:16-29 2947:15-28 2960:15-28 2973:15-28 2986:15-28 2999:15-28 3011:15-28 3023:15-28 3035:15-28 3047:15-28
+ @ ../../core/vendor/modules/@xenova/transformers/src/transformers.js 15:0-31 15:0-31
+ @ ../../core/indexing/embeddings/TransformersJsEmbeddingsProvider.ts
+ @ ../../core/indexing/docs/DocsService.ts 16:59-116
+ @ ../../core/core.ts 20:38-76
+ @ ./src/extension/VsCodeExtension.ts 32:15-35
+ @ ./src/activation/activate.ts 9:26-65
+ @ ./src/extension.ts 38:82-114
+
+ERROR in ../../core/vendor/modules/@xenova/transformers/src/transformers.js + 15 modules
+Cannot read properties of undefined (reading 'module')
+while analyzing module javascript/esm|C:\continue\core\vendor\modules\@xenova\transformers\src\backends\onnx.js for concatenation
+
+119 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.96.1 compiled with 125 errors and 21 warnings in 82003 ms
+ ERROR  npm failed with exit code 1
