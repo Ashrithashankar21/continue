@@ -6,10 +6,10 @@ import ContinueProxyAnalyticsProvider from "./analytics/ContinueProxyAnalyticsPr
 import {
   ControlPlaneProxyInfo,
   IAnalyticsProvider,
-} from "./analytics/IAnalyticsProvider.js";
+} from "./analytics/IAnalyticsProvider";
 import LogStashAnalyticsProvider from "./analytics/LogStashAnalyticsProvider";
 import PostHogAnalyticsProvider from "./analytics/PostHogAnalyticsProvider";
-import { ControlPlaneClient } from "./client.js";
+import { ControlPlaneClient } from "./client";
 
 function createAnalyticsProvider(
   config: Analytics,

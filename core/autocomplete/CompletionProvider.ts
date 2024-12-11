@@ -1,11 +1,11 @@
 import { ConfigHandler } from "../config/ConfigHandler";
 import { TRIAL_FIM_MODEL } from "../config/onboarding";
-import { IDE, ILLM } from "../index.js";
+import { IDE, ILLM } from "../index";
 import OpenAI from "../llm/llms/OpenAI";
 import { DEFAULT_AUTOCOMPLETE_OPTS } from "../util/parameters";
 
 import { shouldCompleteMultiline } from "./classification/shouldCompleteMultiline";
-import { AutocompleteLanguageInfo } from "./constants/AutocompleteLanguageInfo.js";
+import { AutocompleteLanguageInfo } from "./constants/AutocompleteLanguageInfo";
 import { aggregateSnippets } from "./aggregateSnippets";
 // @prettier-ignore
 
@@ -20,7 +20,7 @@ import { AutocompleteDebouncer } from "./util/AutocompleteDebouncer";
 import { AutocompleteLoggingService } from "./util/AutocompleteLoggingService";
 import AutocompleteLruCache from "./util/AutocompleteLruCache";
 import { HelperVars } from "./util/HelperVars";
-import { AutocompleteInput, AutocompleteOutcome } from "./util/types.js";
+import { AutocompleteInput, AutocompleteOutcome } from "./util/types";
 
 const autocompleteCache = AutocompleteLruCache.get();
 

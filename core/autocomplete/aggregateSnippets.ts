@@ -1,10 +1,10 @@
-import { ContextRetrievalService } from "./context/ContextRetrievalService.js";
+import { ContextRetrievalService } from "./context/ContextRetrievalService";
 import {
   fillPromptWithSnippets,
   rankAndOrderSnippets,
   type AutocompleteSnippet,
 } from "./context/ranking/index";
-import { HelperVars } from "./util/HelperVars.js";
+import { HelperVars } from "./util/HelperVars";
 
 function filterSnippetsAlreadyInCaretWindow(
   snippets: AutocompleteSnippet[],

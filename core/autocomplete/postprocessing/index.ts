@@ -1,7 +1,7 @@
 import { longestCommonSubsequence } from "../../util/lcs";
 import { lineIsRepeated } from "../filtering/streamTransforms/lineStream";
 
-import type { ILLM } from "../../index.js";
+import type { ILLM } from "../../index";
 
 function rewritesLineAbove(completion: string, prefix: string): boolean {
   const lineAbove = prefix

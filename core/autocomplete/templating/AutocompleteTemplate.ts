@@ -1,8 +1,8 @@
 // Fill in the middle prompts
 
-import { CompletionOptions } from "../../index.js";
+import { CompletionOptions } from "../../index";
 import { getLastNPathParts, shortestRelativePaths } from "../../util/index";
-import { AutocompleteSnippet } from "../context/ranking/index.js";
+import { AutocompleteSnippet } from "../context/ranking/index";
 
 export interface AutocompleteTemplate {
   compilePrefixSuffix?: (

@@ -1,7 +1,7 @@
-import { RangeInFileWithContents } from "../../../commands/util.js";
+import { RangeInFileWithContents } from "../../../commands/util";
 import { Range } from "../../../index.js";
 import { countTokens } from "../../../llm/countTokens";
-import { HelperVars } from "../../util/HelperVars.js";
+import { HelperVars } from "../../util/HelperVars";
 
 export type AutocompleteSnippet = RangeInFileWithContents & {
   score?: number;
