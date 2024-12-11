@@ -13,10 +13,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@continuedev/config-types": "^1.0.5",
+    "cross-fetch": "^4.0.0",
     "follow-redirects": "^1.15.6",
     "http-proxy-agent": "^7.0.2",
-    "https-proxy-agent": "^7.0.5",
-    "node-fetch": "^3.3.2"
+    "https-proxy-agent": "^7.0.5"
   },
   "devDependencies": {
     "@types/follow-redirects": "^1.14.4",

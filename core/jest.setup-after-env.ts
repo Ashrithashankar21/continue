@@ -2,7 +2,7 @@
 import { TextDecoder, TextEncoder } from "util";
 
 import { jest } from "@jest/globals";
-import fetch, { Request, Response } from "node-fetch";
+import fetch, { Request, Response } from "cross-fetch";
 
 if (process.env.DEBUG === "jest") {
   jest.setTimeout(5 * 60 * 1000);
@@ -30,3 +30,4 @@ globalThis.TextDecoder = TextDecoder;
 //     vscode.workspace.fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
 //   }
 // });
+

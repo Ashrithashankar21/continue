@@ -1,5 +1,5 @@
 import { streamSse } from "@continuedev/fetch";
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 import { OpenAI } from "openai/index.mjs";
 import {
   ChatCompletion,

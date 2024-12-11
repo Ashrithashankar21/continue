@@ -1,4 +1,4 @@
-import { Response } from "node-fetch";
+import { Response } from "cross-fetch";
 
 import { EmbeddingsProviderName, EmbedOptions } from "../../index";
 import { withExponentialBackoff } from "../../util/withExponentialBackoff";

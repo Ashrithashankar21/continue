@@ -3,13 +3,14 @@ import * as followRedirects from "follow-redirects";
 import { HttpProxyAgent } from "http-proxy-agent";
 import { globalAgent } from "https";
 import { HttpsProxyAgent } from "https-proxy-agent";
-import fetch, { RequestInit, Response } from "node-fetch";
+import fetch from "cross-fetch";
 import * as vscode from "vscode";
 import tls from "node:tls";
+import type RequestInit from "cross-fetch";
 
 const { http, https } = (followRedirects as any).default;
 
-export function fetchwithRequestOptions(
+export async function fetchwithRequestOptions(
   url_: URL | string,
   init?: RequestInit,
   requestOptions?: RequestOptions,
@@ -35,11 +36,13 @@ export function fetchwithRequestOptions(
       ? [requestOptions?.caBundlePath]
       : requestOptions?.caBundlePath;
   if (customCerts) {
-    ca.push(
-      ...customCerts.map((customCert) =>
-        vscode.workspace.fs.readFile(vscode.Uri.file(customCert)),
-      ),
+    const customCertContents = await Promise.all(
+      customCerts.map(async (customCert) => {
+        const fileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(customCert));
+        return Buffer.from(fileContents).toString();
+      })
     );
+    ca.push(...customCertContents);
   }
 
   const timeout = (requestOptions?.timeout ?? TIMEOUT) * 1000; // measured in ms
@@ -112,7 +115,7 @@ export function fetchwithRequestOptions(
     ...init,
     body: updatedBody ?? init?.body,
     headers: headers,
-    agent: agent,
+    // agent: agent,
   });
 
   return resp;

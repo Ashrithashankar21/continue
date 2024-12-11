@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 
 import { getHeaders } from "../../continueServer/stubs/headers";
 import { TRIAL_PROXY_URL } from "../../control-plane/client";

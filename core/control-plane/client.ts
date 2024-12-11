@@ -1,9 +1,12 @@
 import { ConfigJson } from "@continuedev/config-types";
-import fetch, { RequestInit, Response } from "node-fetch";
+import fetch from "cross-fetch";
+
 
 import { ModelDescription } from "../index";
 
 import { controlPlaneEnv } from "./env";
+
+import type RequestInit from "cross-fetch";
 
 export interface ControlPlaneSessionInfo {
   accessToken: string;

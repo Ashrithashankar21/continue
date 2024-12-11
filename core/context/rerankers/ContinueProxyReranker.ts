@@ -1,4 +1,4 @@
-import fetch from "node-fetch";
+import fetch from "cross-fetch";
 
 import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider";
 import { Chunk, Reranker } from "../../index";

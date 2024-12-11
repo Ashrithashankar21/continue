@@ -1,13 +1,17 @@
 import { globalAgent } from "https";
 import tls from "node:tls";
 
+import fetch from "cross-fetch";
 import * as followRedirects from "follow-redirects";
 import { HttpProxyAgent } from "http-proxy-agent";
 import { HttpsProxyAgent } from "https-proxy-agent";
-import fetch, { RequestInit, Response } from "node-fetch";
 import * as vscode from "vscode";
 
-import { RequestOptions } from "../index.js";
+import {RequestOptions} from "../index.js";
+
+import type RequestInit from "cross-fetch";
+
+
 
 const { http, https } = (followRedirects as any).default;
 
@@ -116,7 +120,7 @@ export async function fetchwithRequestOptions(
     ...init,
     body: updatedBody ?? init?.body,
     headers: headers,
-    agent: agent,
+    // agent: agent,
   });
 
   return resp;

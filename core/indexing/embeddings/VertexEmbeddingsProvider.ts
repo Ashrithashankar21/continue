@@ -1,5 +1,5 @@
 import { GoogleAuth } from "google-auth-library";
-import { Response } from "node-fetch";
+import { Response } from "cross-fetch";
 
 import {
   EmbeddingsProviderName,
