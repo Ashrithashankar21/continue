@@ -1,7 +1,6 @@
 import { ConfigJson } from "@continuedev/config-types";
 import fetch from "cross-fetch";
 
-
 import { ModelDescription } from "../index";
 
 import { controlPlaneEnv } from "./env";

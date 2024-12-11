@@ -30,4 +30,3 @@ globalThis.TextDecoder = TextDecoder;
 //     vscode.workspace.fs.rmSync(process.env.CONTINUE_GLOBAL_DIR!, { recursive: true });
 //   }
 // });
-

@@ -38,9 +38,11 @@ export async function fetchwithRequestOptions(
   if (customCerts) {
     const customCertContents = await Promise.all(
       customCerts.map(async (customCert) => {
-        const fileContents = await vscode.workspace.fs.readFile(vscode.Uri.file(customCert));
+        const fileContents = await vscode.workspace.fs.readFile(
+          vscode.Uri.file(customCert),
+        );
         return Buffer.from(fileContents).toString();
-      })
+      }),
     );
     ca.push(...customCertContents);
   }

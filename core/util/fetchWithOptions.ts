@@ -7,11 +7,9 @@ import { HttpProxyAgent } from "http-proxy-agent";
 import { HttpsProxyAgent } from "https-proxy-agent";
 import * as vscode from "vscode";
 
-import {RequestOptions} from "../index.js";
+import { RequestOptions } from "../index.js";
 
 import type RequestInit from "cross-fetch";
-
-
 
 const { http, https } = (followRedirects as any).default;
 
