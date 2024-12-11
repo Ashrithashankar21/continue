@@ -12,11 +12,7 @@ import { CodeSnippetsCodebaseIndex } from "./CodeSnippetsIndex";
 import { FullTextSearchCodebaseIndex } from "./FullTextSearchCodebaseIndex";
 import { LanceDbIndex } from "./LanceDbIndex";
 import { getComputeDeleteAddRemove } from "./refreshIndex";
-import {
-  CodebaseIndex,
-  IndexResultType,
-  RefreshIndexResults,
-} from "./types";
+import { CodebaseIndex, IndexResultType, RefreshIndexResults } from "./types";
 import { walkDirAsync } from "./walkDir";
 
 export class PauseToken {

@@ -80,7 +80,7 @@ const webExtensionConfig = {
     "node:zlib": "commonjs zlib",
     "node:stream": "commonjs stream",
     "node:stream/web": "commonjs stream/web",
-    "node:string_decoder":"commonjs string_decoder",
+    "node:string_decoder": "commonjs string_decoder",
     "node:querystring": "commonjs querystring",
     "node:process": "commonjs process",
     "node:perf_hooks": "commonjs perf_hooks",
