@@ -1,8 +1,8 @@
-import { ToIdeFromWebviewOrCoreProtocol } from "./ide.js";
-import { ToWebviewFromIdeOrCoreProtocol } from "./webview.js";
+import { ToIdeFromWebviewOrCoreProtocol } from "./ide";
+import { ToWebviewFromIdeOrCoreProtocol } from "./webview";
 
-import type { RangeInFileWithContents } from "../commands/util.js";
-import type { ContextSubmenuItem, MessageContent } from "../index.js";
+import type { RangeInFileWithContents } from "../commands/util";
+import type { ContextSubmenuItem, MessageContent } from "../index";
 
 export type ToIdeFromWebviewProtocol = ToIdeFromWebviewOrCoreProtocol & {
   onLoad: [

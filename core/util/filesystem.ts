@@ -15,10 +15,10 @@ import {
   RangeInFile,
   Thread,
   ToastType,
-} from "../index.d.js";
-import { GetGhTokenArgs } from "../protocol/ide.js";
+} from "../index";
+import { GetGhTokenArgs } from "../protocol/ide";
 
-import { getContinueGlobalPath } from "./paths.js";
+import { getContinueGlobalPath } from "./paths";
 
 class FileSystemIde implements IDE {
   constructor(private readonly workspaceDir: string) {}

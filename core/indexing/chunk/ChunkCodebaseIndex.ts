@@ -2,8 +2,8 @@ import * as path from "path";
 
 import { RunResult } from "sqlite3";
 
-import { IContinueServerClient } from "../../continueServer/interface.js";
-import { Chunk, IndexTag, IndexingProgressUpdate } from "../../index.js";
+import { IContinueServerClient } from "../../continueServer/interface";
+import { Chunk, IndexTag, IndexingProgressUpdate } from "../../index";
 import { getBasename } from "../../util/index";
 import { DatabaseConnection, SqliteDb, tagToString } from "../refreshIndex";
 import {

@@ -1,4 +1,4 @@
-import { ChatMessage } from "../../index.js";
+import { ChatMessage } from "../../index";
 import { stripImages } from "../images";
 
 function templateFactory(

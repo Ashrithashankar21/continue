@@ -1,7 +1,7 @@
-import { ProfileDescription } from "../config/ConfigHandler.js";
+import { ProfileDescription } from "../config/ConfigHandler";
 
-import { ToCoreFromIdeOrWebviewProtocol } from "./core.js";
-import { ToWebviewFromIdeOrCoreProtocol } from "./webview.js";
+import { ToCoreFromIdeOrWebviewProtocol } from "./core";
+import { ToWebviewFromIdeOrCoreProtocol } from "./webview";
 
 export type ToCoreFromWebviewProtocol = ToCoreFromIdeOrWebviewProtocol & {
   didChangeSelectedProfile: [{ id: string }, void];

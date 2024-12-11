@@ -1,4 +1,4 @@
-import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
+import { ChatMessage, CompletionOptions, ModelProvider } from "../../index";
 import { stripImages } from "../images";
 import { BaseLLM } from "../index";
 import { streamSse } from "../stream";

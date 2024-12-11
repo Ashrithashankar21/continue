@@ -1,12 +1,12 @@
-import { DatabaseConnection, SqliteDb } from "./refreshIndex.js";
+import { DatabaseConnection, SqliteDb } from "./refreshIndex";
 import {
   IndexResultType,
   MarkCompleteCallback,
   RefreshIndexResults,
   type CodebaseIndex,
-} from "./types.js";
+} from "./types";
 
-import type { IndexTag, IndexingProgressUpdate } from "../index.js";
+import type { IndexTag, IndexingProgressUpdate } from "../index";
 
 /**
  * This is a CodebaseIndex used for testing which files get indexed.

@@ -2,7 +2,7 @@ import path from "node:path";
 
 import ignore, { Ignore } from "ignore";
 
-import { FileType, IDE } from "../index.d.js";
+import { FileType, IDE } from "../index";
 
 import {
   DEFAULT_IGNORE_DIRS,

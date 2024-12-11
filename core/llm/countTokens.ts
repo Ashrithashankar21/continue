@@ -1,6 +1,6 @@
 import { Tiktoken, encodingForModel as _encodingForModel } from "js-tiktoken";
 
-import { ChatMessage, MessageContent, MessagePart } from "../index.js";
+import { ChatMessage, MessageContent, MessagePart } from "../index";
 
 import {
   AsyncEncoder,
@@ -10,7 +10,7 @@ import {
 import { autodetectTemplateType } from "./autodetect";
 import { TOKEN_BUFFER_FOR_SAFETY } from "./constants";
 import { stripImages } from "./images";
-import llamaTokenizer from "./llamaTokenizer.js";
+import llamaTokenizer from "./llamaTokenizer";
 interface Encoding {
   encode: Tiktoken["encode"];
   decode: Tiktoken["decode"];

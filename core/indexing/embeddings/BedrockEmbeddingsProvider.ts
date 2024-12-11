@@ -8,9 +8,9 @@ import {
   EmbeddingsProviderName,
   EmbedOptions,
   FetchFunction,
-} from "../../index.js";
+} from "../../index";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 interface ModelConfig {
   formatPayload: (text: string) => any;

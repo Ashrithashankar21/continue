@@ -8,7 +8,7 @@ import {
 } from "../autocomplete/filtering/streamTransforms/lineStream";
 import { streamDiff } from "../diff/streamDiff";
 import { streamLines } from "../diff/util";
-import { ChatMessage, DiffLine, ILLM, Prediction } from "../index.js";
+import { ChatMessage, DiffLine, ILLM, Prediction } from "../index";
 import { gptEditPrompt } from "../llm/templates/edit";
 import { Telemetry } from "../util/posthog";
 

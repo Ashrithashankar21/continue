@@ -4,10 +4,10 @@ import path from "node:path";
 import { changed, diff as myersDiff } from "myers-diff";
 import * as vscode from "vscode";
 
-import { streamDiff } from "../diff/streamDiff.js";
-import { DiffLine, DiffLineType } from "../index.js";
+import { streamDiff } from "../diff/streamDiff";
+import { DiffLine, DiffLineType } from "../index";
 
-import { generateLines } from "./util.js";
+import { generateLines } from "./util";
 
 // "modification" is an extra type used to represent an "old" + "new" diff line
 type MyersDiffTypes = Extract<DiffLineType, "new" | "old"> | "modification";

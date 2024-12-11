@@ -1,6 +1,6 @@
-import { EmbeddingsProviderName, EmbedOptions } from "../../index.js";
+import { EmbeddingsProviderName, EmbedOptions } from "../../index";
 
-import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider.js";
+import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider";
 
 class MistralEmbeddingsProvider extends OpenAIEmbeddingsProvider {
   static providerName: EmbeddingsProviderName = "mistral";

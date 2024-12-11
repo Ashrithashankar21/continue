@@ -1,4 +1,4 @@
-import { ChatHistory, ChatMessage, MessagePart } from "../index.js";
+import { ChatHistory, ChatMessage, MessagePart } from "../index";
 
 const SYSTEM_MESSAGE = `When generating new code:
 

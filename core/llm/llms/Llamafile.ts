@@ -1,4 +1,4 @@
-import { ModelProvider } from "../../index.js";
+import { ModelProvider } from "../../index";
 
 import LlamaCpp from "./LlamaCpp";
 

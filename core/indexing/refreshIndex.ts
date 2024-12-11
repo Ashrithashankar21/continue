@@ -5,7 +5,7 @@ import { open, type Database } from "sqlite";
 import sqlite3 from "sqlite3";
 import * as vscode from "vscode";
 
-import { IndexTag, IndexingProgressUpdate } from "../index.js";
+import { IndexTag, IndexingProgressUpdate } from "../index";
 import { getIndexSqlitePath } from "../util/paths";
 
 import {
@@ -15,7 +15,7 @@ import {
   MarkCompleteCallback,
   PathAndCacheKey,
   RefreshIndexResults,
-} from "./types.js";
+} from "./types";
 
 export type DatabaseConnection = Database<sqlite3.Database>;
 

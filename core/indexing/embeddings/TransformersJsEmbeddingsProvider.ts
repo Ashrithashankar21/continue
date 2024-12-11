@@ -1,6 +1,6 @@
 import path from "path";
 
-import { EmbeddingsProviderName } from "../../index.js";
+import { EmbeddingsProviderName } from "../../index";
 // @ts-ignore
 // prettier-ignore
 import { type PipelineType } from "../../vendor/modules/@xenova/transformers/src/transformers.js";

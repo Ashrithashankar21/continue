@@ -1,4 +1,4 @@
-import { CompletionOptions, LLMOptions, ModelProvider } from "../../index.js";
+import { CompletionOptions, LLMOptions, ModelProvider } from "../../index";
 import { BaseLLM } from "../index";
 import { streamSse } from "../stream";
 

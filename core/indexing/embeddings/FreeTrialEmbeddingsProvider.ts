@@ -1,15 +1,15 @@
 import { Response } from "node-fetch";
 
-import { getHeaders } from "../../continueServer/stubs/headers.js";
-import { TRIAL_PROXY_URL } from "../../control-plane/client.js";
+import { getHeaders } from "../../continueServer/stubs/headers";
+import { TRIAL_PROXY_URL } from "../../control-plane/client";
 import {
   EmbeddingsProviderName,
   EmbedOptions,
   FetchFunction,
-} from "../../index.js";
-import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";
+} from "../../index";
+import { withExponentialBackoff } from "../../util/withExponentialBackoff";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 class FreeTrialEmbeddingsProvider extends BaseEmbeddingsProvider {
   static providerName: EmbeddingsProviderName = "free-trial";

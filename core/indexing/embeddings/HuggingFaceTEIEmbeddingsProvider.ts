@@ -4,10 +4,10 @@ import {
   EmbeddingsProviderName,
   EmbedOptions,
   FetchFunction,
-} from "../../index.js";
-import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";
+} from "../../index";
+import { withExponentialBackoff } from "../../util/withExponentialBackoff";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 class HuggingFaceTEIEmbeddingsProvider extends BaseEmbeddingsProvider {
   static providerName: EmbeddingsProviderName = "huggingface-tei";

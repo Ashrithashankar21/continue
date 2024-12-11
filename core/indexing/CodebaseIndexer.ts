@@ -1,10 +1,10 @@
 import * as vscode from "vscode";
 
-import { ConfigHandler } from "../config/ConfigHandler.js";
-import { IContinueServerClient } from "../continueServer/interface.js";
-import { IDE, IndexingProgressUpdate, IndexTag } from "../index.js";
+import { ConfigHandler } from "../config/ConfigHandler";
+import { IContinueServerClient } from "../continueServer/interface";
+import { IDE, IndexingProgressUpdate, IndexTag } from "../index";
 import { extractMinimalStackTraceInfo } from "../util/extractMinimalStackTraceInfo";
-import { getBasename } from "../util/index.js";
+import { getBasename } from "../util/index";
 import { getIndexSqlitePath, getLanceDbPath } from "../util/paths";
 
 import { ChunkCodebaseIndex } from "./chunk/ChunkCodebaseIndex";

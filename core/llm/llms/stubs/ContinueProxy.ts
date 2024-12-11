@@ -1,8 +1,8 @@
-import { ControlPlaneProxyInfo } from "../../../control-plane/analytics/IAnalyticsProvider.js";
+import { ControlPlaneProxyInfo } from "../../../control-plane/analytics/IAnalyticsProvider";
 import { Telemetry } from "../../../util/posthog";
 import OpenAI from "../OpenAI";
 
-import type { LLMOptions, ModelProvider } from "../../../index.js";
+import type { LLMOptions, ModelProvider } from "../../../index";
 
 class ContinueProxy extends OpenAI {
   set controlPlaneProxyInfo(value: ControlPlaneProxyInfo) {

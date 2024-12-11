@@ -1,4 +1,4 @@
-import { DiffLine, DiffLineType } from "../index.js";
+import { DiffLine, DiffLineType } from "../index";
 
 import { LineStream, matchLine } from "./util";
 

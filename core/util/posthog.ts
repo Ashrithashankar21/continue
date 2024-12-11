@@ -1,7 +1,7 @@
 import os from "node:os";
 
 import { TeamAnalytics } from "../control-plane/TeamAnalytics";
-import { IdeInfo } from "../index.js";
+import { IdeInfo } from "../index";
 
 export class Telemetry {
   // Set to undefined whenever telemetry is disabled

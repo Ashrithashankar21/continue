@@ -1,4 +1,4 @@
-import { IndexTag, IndexingProgressUpdate } from "../index.js";
+import { IndexTag, IndexingProgressUpdate } from "../index";
 
 export enum IndexResultType {
   Compute = "compute",

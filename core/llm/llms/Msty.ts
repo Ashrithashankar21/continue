@@ -1,4 +1,4 @@
-import { LLMOptions, ModelProvider } from "../../index.js";
+import { LLMOptions, ModelProvider } from "../../index";
 
 import Ollama from "./Ollama";
 

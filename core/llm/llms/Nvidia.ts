@@ -1,4 +1,4 @@
-import { LLMOptions, ModelProvider, ChatMessage } from "../../index.js";
+import { LLMOptions, ModelProvider, ChatMessage } from "../../index";
 
 import OpenAI from "./OpenAI";
 

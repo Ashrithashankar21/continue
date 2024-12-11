@@ -1,6 +1,6 @@
 import { SyntaxNode } from "web-tree-sitter";
 
-import { ChunkWithoutID } from "../../index.js";
+import { ChunkWithoutID } from "../../index";
 import { countTokensAsync } from "../../llm/countTokens";
 import { getParserForFile } from "../../util/treeSitter";
 

@@ -1,7 +1,7 @@
 import { TRIAL_FIM_MODEL } from "../../config/onboarding";
 import { getHeaders } from "../../continueServer/stubs/headers";
 import { TRIAL_PROXY_URL } from "../../control-plane/client";
-import { ChatMessage, CompletionOptions, ModelProvider } from "../../index.js";
+import { ChatMessage, CompletionOptions, ModelProvider } from "../../index";
 import { BaseLLM } from "../index";
 import { streamResponse } from "../stream";
 

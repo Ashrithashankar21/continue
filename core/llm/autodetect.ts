@@ -1,4 +1,4 @@
-import { ModelCapability, ModelProvider, TemplateType } from "../index.js";
+import { ModelCapability, ModelProvider, TemplateType } from "../index";
 
 import {
   anthropicTemplateMessages,

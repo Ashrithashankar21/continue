@@ -4,7 +4,7 @@ import type {
   CompletionOptions,
   LLMOptions,
   ModelProvider,
-} from "../../index.js";
+} from "../../index";
 
 class Together extends OpenAI {
   static providerName: ModelProvider = "together";

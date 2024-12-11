@@ -1,5 +1,5 @@
-import { ToCoreFromIdeOrWebviewProtocol } from "./core.js";
-import { ToIdeFromWebviewOrCoreProtocol } from "./ide.js";
+import { ToCoreFromIdeOrWebviewProtocol } from "./core";
+import { ToIdeFromWebviewOrCoreProtocol } from "./ide";
 
 export type ToIdeFromCoreProtocol = ToIdeFromWebviewOrCoreProtocol;
 export type ToCoreFromIdeProtocol = ToCoreFromIdeOrWebviewProtocol;

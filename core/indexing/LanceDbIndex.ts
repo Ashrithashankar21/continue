@@ -3,14 +3,14 @@ import { RunResult } from "sqlite3";
 import { v4 as uuidv4 } from "uuid";
 import lance, { Table } from "vectordb";
 
-import { IContinueServerClient } from "../continueServer/interface.js";
+import { IContinueServerClient } from "../continueServer/interface";
 import {
   BranchAndDir,
   Chunk,
   EmbeddingsProvider,
   IndexTag,
   IndexingProgressUpdate,
-} from "../index.js";
+} from "../index";
 import { getBasename } from "../util/index";
 import { getLanceDbPath, migrate } from "../util/paths";
 

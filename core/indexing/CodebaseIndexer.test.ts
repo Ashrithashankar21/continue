@@ -3,21 +3,21 @@ import path from "node:path";
 
 import { jest } from "@jest/globals";
 
-import { ContinueServerClient } from "../continueServer/stubs/client.js";
-import { testConfigHandler, testIde } from "../test/util/fixtures.js";
+import { ContinueServerClient } from "../continueServer/stubs/client";
+import { testConfigHandler, testIde } from "../test/util/fixtures";
 import {
   addToTestDir,
   setUpTestDir,
   tearDownTestDir,
   TEST_DIR,
-} from "../test/util/testDir.js";
-import { getIndexSqlitePath } from "../util/paths.js";
+} from "../test/util/testDir";
+import { getIndexSqlitePath } from "../util/paths";
 
-import { CodebaseIndexer, PauseToken } from "./CodebaseIndexer.js";
-import { getComputeDeleteAddRemove } from "./refreshIndex.js";
-import { TestCodebaseIndex } from "./TestCodebaseIndex.js";
-import { CodebaseIndex } from "./types.js";
-import { walkDir } from "./walkDir.js";
+import { CodebaseIndexer, PauseToken } from "./CodebaseIndexer";
+import { getComputeDeleteAddRemove } from "./refreshIndex";
+import { TestCodebaseIndex } from "./TestCodebaseIndex";
+import { CodebaseIndex } from "./types";
+import { walkDir } from "./walkDir";
 
 jest.useFakeTimers();
 

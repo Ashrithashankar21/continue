@@ -1,9 +1,9 @@
 import { Response } from "node-fetch";
 
-import { EmbeddingsProviderName, EmbedOptions } from "../../index.js";
-import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";
+import { EmbeddingsProviderName, EmbedOptions } from "../../index";
+import { withExponentialBackoff } from "../../util/withExponentialBackoff";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 class NvidiaEmbeddingsProvider extends BaseEmbeddingsProvider {
   static maxBatchSize = 96;

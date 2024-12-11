@@ -10,7 +10,7 @@ import {
   LLMOptions,
   MessageContent,
   ModelProvider,
-} from "../../index.js";
+} from "../../index";
 import { stripImages } from "../images";
 import { BaseLLM } from "../index";
 

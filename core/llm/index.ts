@@ -16,7 +16,7 @@ import {
   PromptTemplate,
   RequestOptions,
   TemplateType,
-} from "../index.js";
+} from "../index";
 import { logDevData } from "../util/devdata";
 import { DevDataSqliteDb } from "../util/devdataSqlite";
 import { fetchwithRequestOptions } from "../util/fetchWithOptions";

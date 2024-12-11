@@ -2,12 +2,12 @@ import {
   EmbeddingsProviderName,
   EmbedOptions,
   FetchFunction,
-} from "../../index.js";
-import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";
+} from "../../index";
+import { withExponentialBackoff } from "../../util/withExponentialBackoff";
 
 import BaseEmbeddingsProvider, {
   IBaseEmbeddingsProvider,
-} from "./BaseEmbeddingsProvider.js";
+} from "./BaseEmbeddingsProvider";
 
 let accessToken = {
   expiration: 0,

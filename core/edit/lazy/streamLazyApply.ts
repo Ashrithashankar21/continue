@@ -5,7 +5,7 @@ import {
 } from "../../autocomplete/filtering/streamTransforms/lineStream";
 import { streamDiff } from "../../diff/streamDiff";
 import { LineStream, streamLines } from "../../diff/util";
-import { DiffLine, ILLM } from "../../index.js";
+import { DiffLine, ILLM } from "../../index";
 
 import { lazyApplyPromptForModel, UNCHANGED_CODE } from "./prompts";
 import { BUFFER_LINES_BELOW, getReplacementWithLlm } from "./replace";

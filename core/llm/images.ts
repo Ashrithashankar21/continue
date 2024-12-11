@@ -1,4 +1,4 @@
-import { MessageContent } from "../index.js";
+import { MessageContent } from "../index";
 
 export function stripImages(content: MessageContent): string {
   if (Array.isArray(content)) {

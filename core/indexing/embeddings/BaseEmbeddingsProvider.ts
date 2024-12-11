@@ -3,7 +3,7 @@ import {
   EmbeddingsProvider,
   EmbeddingsProviderName,
   FetchFunction,
-} from "../../index.js";
+} from "../../index";
 import { DEFAULT_MAX_CHUNK_SIZE } from "../../llm/constants";
 
 export interface IBaseEmbeddingsProvider extends EmbeddingsProvider {

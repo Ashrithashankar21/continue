@@ -1,6 +1,6 @@
-import { ConfigValidationError } from "../config/validation.js";
+import { ConfigValidationError } from "../config/validation";
 
-import type { ContextItemWithId, IndexingProgressUpdate } from "../index.js";
+import type { ContextItemWithId, IndexingProgressUpdate } from "../index";
 
 export type ToWebviewFromIdeOrCoreProtocol = {
   configUpdate: [undefined, void];

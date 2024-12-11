@@ -1,9 +1,9 @@
 import { Response } from "node-fetch";
 
-import { EmbeddingsProviderName } from "../../index.js";
-import { withExponentialBackoff } from "../../util/withExponentialBackoff.js";
+import { EmbeddingsProviderName } from "../../index";
+import { withExponentialBackoff } from "../../util/withExponentialBackoff";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 
 /**
  * [View the Gemini Text Embedding docs.](https://ai.google.dev/gemini-api/docs/models/gemini#text-embedding-and-embedding)

@@ -1,8 +1,8 @@
 import {
   GetGhTokenArgs,
   ToIdeFromWebviewOrCoreProtocol,
-} from "../protocol/ide.js";
-import { FromIdeProtocol } from "../protocol/index.js";
+} from "../protocol/ide";
+import { FromIdeProtocol } from "../protocol/index";
 
 import type {
   ContinueRcJson,
@@ -16,7 +16,7 @@ import type {
   Range,
   RangeInFile,
   Thread,
-} from "../index.js";
+} from "../index";
 
 export class MessageIde implements IDE {
   constructor(

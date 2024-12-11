@@ -1,6 +1,6 @@
-import { EmbeddingsProviderName } from "../../index.js";
+import { EmbeddingsProviderName } from "../../index";
 
-import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider.js";
+import BaseEmbeddingsProvider from "./BaseEmbeddingsProvider";
 import BedrockEmbeddingsProvider from "./BedrockEmbeddingsProvider";
 import CohereEmbeddingsProvider from "./CohereEmbeddingsProvider";
 import ContinueProxyEmbeddingsProvider from "./ContinueProxyEmbeddingsProvider";

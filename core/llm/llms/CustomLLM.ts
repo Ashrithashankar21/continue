@@ -3,7 +3,7 @@ import {
   CompletionOptions,
   CustomLLM,
   ModelProvider,
-} from "../../index.js";
+} from "../../index";
 import { BaseLLM } from "../index";
 
 class CustomLLMClass extends BaseLLM {

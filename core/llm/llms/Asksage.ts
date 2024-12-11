@@ -3,7 +3,7 @@ import {
   CompletionOptions,
   LLMOptions,
   ModelProvider,
-} from "../../index.js";
+} from "../../index";
 import { BaseLLM } from "../index";
 
 class Asksage extends BaseLLM {

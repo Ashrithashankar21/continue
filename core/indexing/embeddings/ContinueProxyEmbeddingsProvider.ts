@@ -1,7 +1,7 @@
-import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider.js";
-import { EmbeddingsProviderName } from "../../index.js";
+import { ControlPlaneProxyInfo } from "../../control-plane/analytics/IAnalyticsProvider";
+import { EmbeddingsProviderName } from "../../index";
 
-import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider.js";
+import OpenAIEmbeddingsProvider from "./OpenAIEmbeddingsProvider";
 
 class ContinueProxyEmbeddingsProvider extends OpenAIEmbeddingsProvider {
   static providerName: EmbeddingsProviderName = "continue-proxy";
