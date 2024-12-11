@@ -1,4 +1,4 @@
-import * as YAML from "yaml";
+import * as jsyaml from "js-yaml";
 
 import { ContinueSDK, SlashCommand } from "../..";
 import { stripImages } from "../../llm/images";
@@ -12,6 +12,11 @@ export function extractName(preamble: { name?: string }, path: string): string {
   return preamble.name ?? getBasename(path).split(".prompt")[0];
 }
 
+interface Preamble {
+  name?: string;
+  [key: string]: any; // This allows other properties if needed
+}
+
 export function parsePromptFile(path: string, content: string) {
   let [preambleRaw, prompt] = content.split("\n---\n");
   if (prompt === undefined) {
@@ -19,7 +24,7 @@ export function parsePromptFile(path: string, content: string) {
     preambleRaw = "";
   }
 
-  const preamble = YAML.parse(preambleRaw) ?? {};
+  const preamble: Preamble = jsyaml.load(preambleRaw) ?? {};
   const name = extractName(preamble, path);
   const description = preamble.description ?? name;
 

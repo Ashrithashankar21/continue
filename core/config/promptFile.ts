@@ -1,7 +1,7 @@
 import path from "path";
 
 import Handlebars from "handlebars";
-import * as YAML from "yaml";
+import * as jsyaml from "js-yaml";
 
 import { walkDir } from "../indexing/walkDir";
 import { stripImages } from "../llm/images";
@@ -134,6 +134,11 @@ export function slashCommandFromPromptFile(
   };
 }
 
+interface Preamble {
+  name?: string;
+  [key: string]: any; // This allows other properties if needed
+}
+
 function parsePromptFile(path: string, content: string) {
   let [preambleRaw, prompt] = content.split("\n---\n");
   if (prompt === undefined) {
@@ -141,7 +146,7 @@ function parsePromptFile(path: string, content: string) {
     preambleRaw = "";
   }
 
-  const preamble = YAML.parse(preambleRaw) ?? {};
+  const preamble: Preamble = jsyaml.load(preambleRaw) ?? {};
   const name = preamble.name ?? getBasename(path).split(".prompt")[0];
   const description = preamble.description ?? name;
   const version = preamble.version ?? 2;

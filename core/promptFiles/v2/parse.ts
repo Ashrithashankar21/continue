@@ -1,4 +1,4 @@
-import * as YAML from "yaml";
+import * as jsyaml from "js-yaml";
 
 import { getBasename } from "../../util";
 
@@ -16,13 +16,18 @@ export function getPreambleAndBody(content: string): [string, string] {
   return [preamble, body];
 }
 
+interface Preamble {
+  name?: string;
+  [key: string]: any; // This allows other properties if needed
+}
+
 export function parsePreamble(
   path: string,
   content: string,
 ): { [key: string]: any; name: string; description: string } {
   const [preambleRaw, _] = getPreambleAndBody(content);
 
-  const preamble = YAML.parse(preambleRaw) ?? {};
+  const preamble: Preamble = jsyaml.load(preambleRaw) ?? {};
   const name = extractName(preamble, path);
   const description = preamble.description ?? name;
 
