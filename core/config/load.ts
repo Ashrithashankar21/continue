@@ -28,7 +28,7 @@ import {
 import {
   slashCommandFromDescription,
   slashFromCustomCommand,
-} from "../commands/index.js";
+} from "../commands/index";
 import CodebaseContextProvider from "../context/providers/CodebaseContextProvider";
 import ContinueProxyContextProvider from "../context/providers/ContinueProxyContextProvider";
 import CustomContextProviderClass from "../context/providers/CustomContextProvider";
@@ -70,8 +70,8 @@ import {
   DEFAULT_PROMPTS_FOLDER,
   getPromptFiles,
   slashCommandFromPromptFile,
-} from "./promptFile.js";
-import { ConfigValidationError, validateConfig } from "./validation.js";
+} from "./promptFile";
+import { ConfigValidationError, validateConfig } from "./validation";
 
 export interface ConfigResult<T> {
   config: T | undefined;
